@@ -1,11 +1,14 @@
 import { Modal } from "antd";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { types } from "../const";
+
 const ModalClips = () => {
   const videoId = useSelector((state) => state.booking.srcTrailer);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
+  const videoRef = useRef(null);
+
   const handleCancel = () => {
     console.log("Tắt modal");
     setIsModalOpen(false);
@@ -13,7 +16,11 @@ const ModalClips = () => {
       type: types.SENDING_TRAILER_URL,
       payload: "",
     });
+    if (videoRef.current) {
+      videoRef.current = "";
+    }
   };
+
   useEffect(() => {
     if (videoId) {
       setIsModalOpen(true);
@@ -21,36 +28,46 @@ const ModalClips = () => {
     } else {
       setIsModalOpen(false);
       console.log("Cleared ID <<<<<<", videoId);
+      if (videoRef.current) {
+        videoRef.current.src = "";
+      }
     }
   }, [videoId]);
-  console.log("render component", videoId)
+
+  console.log("render component", videoId);
+
   return (
     <>
-      <Modal
-        open={isModalOpen}
-        onCancel={handleCancel}
-        footer={null}
-        className="modal__trailer"
-        centered
-        width={""}
-        afterClose={handleCancel}
-        mum={videoId}
-      >
-        <iframe
-          src={videoId && `https://www.youtube.com/embed/${videoId}`}
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-          title="youtube"
-        ></iframe>
-      </Modal>
-      <div className=" fixed top-0 bg-red-600 p-5">
-        <h1 className="text-green-400">Hay lắm đ!t mẹ mày {videoId && `https://www.youtube.com/embed/${videoId}`}</h1>
-        <button
-          className="bg-yellow-300 p-1"
-          onClick={handleCancel}
-        >Click</button>
+      {isModalOpen && (
+        <Modal
+          visible={isModalOpen}
+          onCancel={handleCancel}
+          footer={null}
+          className="modal__trailer"
+          centered
+          width={""}
+          afterClose={handleCancel}
+        >
+          <iframe
+            ref={videoRef}
+            src={videoId && `https://www.youtube.com/embed/${videoId}`}
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+            title="youtube"
+          ></iframe>
+        </Modal>
+      )}
+      <div className="fixed top-0 bg-red-600 p-5">
+        <h1 className="text-green-400">
+          Hay lắm đ!t mẹ mày{" "}
+          {videoId && `https://www.youtube.com/embed/${videoId}`}
+        </h1>
+        <button className="bg-yellow-300 p-1" onClick={handleCancel}>
+          Click
+        </button>
       </div>
     </>
   );
 };
+
 export default ModalClips;

@@ -3,6 +3,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { routes } from "./app/routes";
 import Header from "./components/Header";
+import "./sass/app.scss"
 // const mapRoutes = routes.map(item => <Route path={item.path} element={<item.component/>} key={item.path}/>)
 const mapRoutes = routes.map(({ path, component: Component }) => (
   <Route path={path} element={<Component />} key={path} />
