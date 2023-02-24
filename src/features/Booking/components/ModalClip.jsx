@@ -1,17 +1,22 @@
 import { Modal } from "antd";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { types } from "../const";
+
 const ModalClips = () => {
   const videoId = useSelector((state) => state.booking.srcTrailer);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
+  const videoRef = useRef(null);
   const handleCancel = () => {
     setIsModalOpen(false);
     dispatch({
       type: types.SENDING_TRAILER_URL,
       payload: "",
     });
+    if (videoRef.current) {
+      videoRef.current = "";
+    }
   };
   useEffect(() => {
     if (videoId) {
@@ -39,7 +44,7 @@ const ModalClips = () => {
           title="youtube"
         ></iframe>
       </Modal>
-
   );
 };
+
 export default ModalClips;
