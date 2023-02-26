@@ -3,16 +3,24 @@ import { types } from "../const";
 import { BsStarFill, BsStarHalf, BsStar, BsPlayCircle } from "react-icons/bs";
 import { showRating } from "../utilities/utilities";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 function MovieItem(props) {
   const item = props.item;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const onShow = (
-    <button className="bg-green-700 text-white text-lg w-32 py-2 rounded-lg">
+    <button
+      className="bg-red-700 text-white text-lg w-32 py-2 rounded-md"
+      onClick={() => navigate("/Booking/Detail/"+ item.maPhim)}
+    >
       Mua vé
     </button>
   );
   const commingSoon = (
-    <button className="bg-yellow-600 text-white text-lg w-32 py-2 rounded-lg">
+    <button
+      className="bg-yellow-600 text-white text-lg w-32 py-2 rounded-md"
+      onClick={() => navigate("/Booking/Detail/"+ item.maPhim)}
+    >
       Sắp ra mắt
     </button>
   );
@@ -35,13 +43,16 @@ function MovieItem(props) {
               </div>
             </div>
             <div className="play-trailer absolute top-0 right-0 left-0 bottom-0 opacity-5 hover:opacity-100 text-slate-200 text-8xl flex justify-center items-center rounded-md flex-col">
-              <BsPlayCircle className="cursor-pointer rounded-full hover:text-yellow-400 duration-300" 
-                onClick={()=> dispatch({
-                  type: types.SENDING_TRAILER_URL,
-                  payload: item.trailer
-                })}
-                />
-                <p className="text-center text-base">Xem trailer</p>
+              <BsPlayCircle
+                className="cursor-pointer rounded-full hover:text-yellow-400 duration-300"
+                onClick={() =>
+                  dispatch({
+                    type: types.SENDING_TRAILER_URL,
+                    payload: item.trailer,
+                  })
+                }
+              />
+              <p className="text-center text-base">Xem trailer</p>
             </div>
             <img src={item.hinhAnh} className="h-full w-full" alt="img" />
           </div>

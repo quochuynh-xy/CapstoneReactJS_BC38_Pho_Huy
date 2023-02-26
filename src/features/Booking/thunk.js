@@ -30,3 +30,14 @@ export const fetchMovies = (page) => async (dispatch, getState) => {
     console.log(error);
   }
 };
+export const fetchListMovies =  (theaterId) => async (dispatch, getState) => {
+  try {
+    const promise = await  movieServices.getShowScheduleByTheater(theaterId);
+    dispatch({
+      type: types.GET_MOVIES_LIST,
+      payload: promise.data.content
+    })
+  } catch (error) {
+    console.log(error);
+  }
+}

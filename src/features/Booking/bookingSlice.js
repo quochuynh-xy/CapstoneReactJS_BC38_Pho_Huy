@@ -1,9 +1,10 @@
 import produce from "immer";
 import { types } from "./const"; // action type
 const initState = {
-  banner: [],
-  pageMovies: {},
-  srcTrailer: null
+  banner: [], // Thông tin banner
+  pageMovies: {}, // Danh sách phim phân trang
+  srcTrailer: null, // URL xem trước trailer
+  listOfMovies: [], // Danh sách phim tổng hợp (có thể là tất cả phim || phim theo cụm rạp)
 };
 const booking = (state = initState, action) => {
   const { type, payload } = action;
@@ -20,6 +21,10 @@ const booking = (state = initState, action) => {
       case types.SENDING_TRAILER_URL: {
         draft.srcTrailer = payload.split("/").pop();
         break;
+      }
+      case types.GET_MOVIES_LIST :{
+        draft.listOfMovies = payload;
+        break
       }
       default:
         return state;

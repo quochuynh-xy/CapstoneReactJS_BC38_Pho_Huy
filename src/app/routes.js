@@ -18,7 +18,7 @@ export const routes = [
     component: Seats,
   },
   {
-    path: "/Booking/Detail",
+    path: "/Booking/Detail/:maPhim",
     component: Detail,
   },
   {

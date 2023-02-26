@@ -19,6 +19,7 @@ function MoviesList() {
       </div>
       <div className="text-center">
         <Pagination
+          className="booking__paginate"
           defaultCurrent={1}
           current={MovieList.currentPage}
           pageSize={8}

@@ -1,6 +1,8 @@
 @import "../../sass/const.scss";
 // Nơi quản lý css của booking feature
+// Home page
 .booking {
+  background-color: $bg-dark-1;
   .ant-carousel {
     .slick-list {
       .backArrow {
@@ -29,9 +31,10 @@
         button {
           width: 12px;
           height: 12px;
-          box-shadow: 0 0 2px 2px #505050;
+          box-shadow: 0 0 0px 2px #000000;
           background-color: #f7c2c2;
           border-radius: 4px;
+          margin: 0 auto;
         }
       }
       li.slick-active {
@@ -39,8 +42,8 @@
         button {
           width: 12px;
           height: 12px;
-          background-color: yellow;
-          margin: 0;
+          background-color: green;
+          margin: 0 auto;
         }
       }
     }
@@ -57,12 +60,290 @@
             opacity: 1;
           }
         }
-        .bg--rate{
+        .bg--rate {
           background-color: #63636379;
         }
       }
       .ant-card-body {
         padding-top: 1rem;
+      }
+    }
+  }
+  .booking__paginate {
+    padding-top: 20px;
+    padding-bottom: 80px;
+    .ant-pagination-disabled {
+      .ant-pagination-item-link {
+        color: #505050;
+      }
+    }
+    .ant-pagination-item-link {
+      color: $cl-primary;
+    }
+    .ant-pagination-item {
+      color: #fff;
+      margin: 0 8px;
+      a {
+        color: $cl-primary;
+        font-weight: 600;
+      }
+      &:hover {
+        a {
+          color: $cl-yellow-2;
+        }
+      }
+    }
+    .ant-pagination-item.ant-pagination-item-active {
+      background-color: transparent;
+      border: none;
+      a {
+        color: $cl-yellow-1;
+        text-decoration: underline;
+        font-size: 1.2rem;
+      }
+    }
+  }
+  .booking__tabs {
+    background-color: $bg-primary;
+    border-radius: 8px;
+    .tabs__logo {
+      margin-left: 32px;
+      margin-right: 32px;
+    }
+    .tabs__body {
+      background-color: #fff;
+      border-radius: 8px;
+      padding-top: 1rem;
+      .ant-tabs-nav {
+        // Danh sách rạp chiếu
+        position: sticky;
+        top: 0;
+        .ant-tabs-nav-wrap {
+          .ant-tabs-nav-list {
+            position: sticky;
+            top: 0;
+            max-height: 800px;
+            overflow-y: scroll;
+            &::-webkit-scrollbar {
+              width: 12px;
+            }
+            /* Track */
+            &::-webkit-scrollbar-track {
+              box-shadow: inset 0 0 4px grey;
+              border-radius: 10px;
+            }
+            /* Handle */
+            &::-webkit-scrollbar-thumb {
+              background: $bg-dark-2;
+              border-radius: 10px;
+            }
+            overflow-y: scroll;
+            .ant-tabs-tab {
+              margin-top: 16px;
+              padding-bottom: 8px;
+              transition: 0.3s;
+              height: 100px;
+              &:hover {
+                .theater--info {
+                  .info__name {
+                    color: $cl-red-3;
+                  }
+                  .info__address {
+                  }
+                }
+              }
+              &.ant-tabs-tab-active {
+                background-color: $bg-dark-3;
+                box-shadow: 0 4px 6px -1px #2655071a, 0 2px 4px -2px #0000001a;
+                .theater--info {
+                  .info__name {
+                    color: #000000;
+                  }
+                  .info__address {
+                    color: $cl-green-3;
+                  }
+                }
+              }
+            }
+            .ant-tabs-ink-bar {
+              background-color: $cl-red-1;
+              width: 4px;
+              right: 2px;
+            }
+          }
+        }
+      }
+      .ant-tabs-content-holder {
+        max-height: 800px;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+          width: 12px;
+        }
+        /* Track */
+        &::-webkit-scrollbar-track {
+          box-shadow: inset 0 0 5px #000000;
+          border-radius: 10px;
+        }
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+          background: $cl-grey-1;
+          border-radius: 10px;
+        }
+        .ant-tabs-content {
+        }
+      }
+    }
+    .ant-tabs-ink-bar {
+      background-color: red;
+      height: 4px;
+    }
+  }
+}
+// Detail page
+.movie__detail {
+  background-color: $bg-dark-1;
+  .detail__info {
+    .container.info {
+      padding: 68px 0;
+      .info__movie {
+        img {
+          border-radius: 8px;
+        }
+        .movie__name {
+          color: $cl-primary;
+        }
+        .movie__date {
+          color: $cl-yellow-2;
+        }
+        .movie__des {
+          color: $cl-primary;
+          font-style: italic;
+        }
+        .buybtn {
+          background-color: $bg-red-1;
+          border-radius: 4px;
+          border: 1px solid $bg-red-1;
+          transition: 0.3s;
+          &:hover {
+            transform: translateY(-4px);
+            color: $cl-yellow-1;
+          }
+        }
+        .trailerbtn {
+          @extend .buybtn;
+          background-color: $bg-green-1;
+          border: 1px solid $bg-green-1;
+        }
+      }
+      .rate__movie {
+        .ant-progress {
+          margin-bottom: 0.5rem;
+          .ant-progress-text {
+            color: $cl-primary;
+            font-weight: bold;
+          }
+        }
+        .star {
+          span {
+            margin: 0 2px;
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+    .detail__info__bg {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      filter: blur(12px);
+      // box-shadow: 4px -1px 22px 0px #000000 inset;
+    }
+  }
+  .detail__showtime {
+    .showtime__parent {
+      .ant-tabs-nav {
+        margin-bottom: 2rem;
+        .ant-tabs-nav-list {
+          .ant-tabs-tab {
+            padding-right: 0.5rem;
+            padding-left: 0.5rem;
+            .parent__tab {
+              transition: 0.5s;
+              color: $cl-primary;
+              font-size: 1.2rem;
+              text-transform: uppercase;
+              font-weight: 600;
+              &:hover {
+                transform: scale(1.2, 1.2);
+                color: $cl-red-2;
+              }
+            }
+            &.ant-tabs-tab-active {
+              .parent__tab {
+                color: $cl-red-1;
+              }
+            }
+          }
+          .ant-tabs-ink-bar {
+            height: 4px;
+            background-color: $cl-red-2;
+            transition: 0.5s;
+          }
+        }
+      }
+      .theaterlist {
+        max-width: 800px;
+        max-height: 800px;
+        margin: 0 auto;
+        padding: 2rem 0.2rem 2rem 0;
+        border-radius: 8px;
+        margin-bottom: 80px;
+        box-shadow: 0 0 2px 0px #505050;
+        background-color: #fff;
+        .ant-tabs-nav {
+          .ant-tabs-nav-wrap {
+            .ant-tabs-nav-list {
+              .ant-tabs-tab {
+                // opacity: 0.6;
+                filter: blur(1px);
+              }
+              .ant-tabs-tab.ant-tabs-tab-active {
+                opacity: 1;
+                filter: blur(0);
+              }
+            }
+            .ant-tabs-ink-bar {
+              width: 4px;
+              background-color: $cl-green-1;
+            }
+          }
+        }
+        .ant-tabs-content-holder {
+          overflow-y: scroll;
+          &::-webkit-scrollbar {
+            width: 3px;
+          }
+          /* Track */
+          &::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px #00000065;
+            border-radius: 10px;
+          }
+          /* Handle */
+          &::-webkit-scrollbar-thumb {
+            background: red;
+            border-radius: 10px;
+          }
+
+        }
+      }
+      .movieInfo {
+        max-width: 1000px;
+        margin: 0 auto;
+        color: $cl-primary;
+      }
+      .movieFeedback {
+        max-width: 800px;
+        margin: 0 auto;
       }
     }
   }
@@ -83,7 +364,6 @@
       width: 3rem;
       height: 3rem;
       .ant-modal-close-x {
-        font-size: 2rem;
         color: #ffff;
       }
     }
