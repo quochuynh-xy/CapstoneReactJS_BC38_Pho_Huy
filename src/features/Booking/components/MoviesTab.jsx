@@ -3,9 +3,11 @@ import { useState, useEffect } from "react";
 import { movieServices } from "../../../services/movieServices";
 import moment from "moment/moment";
 import { getStandFor } from "../utilities/utilities";
+import { useNavigate } from "react-router-dom";
 const { Panel } = Collapse;
 function MoviesTab() {
   const [dataMovies, setDataMovies] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     const promise = movieServices.getShowScheduleByTheater();
     promise
@@ -80,6 +82,7 @@ function MoviesTab() {
                               <button
                               key={index}
                               className="bg-green-100 hover:bg-white text-stone-600 border-solid border border-lime-500 hover:shadow-md hover:border-orange-500 hover:text-orange-500 duration-300 font-bold py-2 px-3 ml-4 rounded-md mb-3 "
+                              onClick={() => navigate(`/Booking/TicketRoom/${time.maLichChieu}`)}
                               >
                               {moment(time.ngayChieuGioChieu).format(
                                 "hh:mm"
