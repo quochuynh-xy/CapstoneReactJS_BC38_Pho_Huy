@@ -3,7 +3,9 @@ import { movieServices } from "../../../services/movieServices";
 import { useState } from "react";
 import { Tabs } from "antd";
 import moment from "moment/moment";
+import { useNavigate } from "react-router-dom";
 const MovieDetailsTabs = (props) => {
+  const navigate = useNavigate();
   const { maPhim } = props;
   const [allTheaters, setAllTheaters] = useState([]); // danh sách hệ thống rạp
   const [movieData, setMovieData] = useState([]); // thông tin phim và cụm rạp
@@ -74,6 +76,7 @@ const MovieDetailsTabs = (props) => {
                             <button
                               key={index}
                               className="bg-green-100 hover:bg-white text-stone-600 border-solid border border-lime-500 hover:shadow-md hover:border-orange-500 hover:text-orange-500 duration-300 font-bold py-2 px-3 ml-2 mb-3 rounded-md"
+                              onClick={()=> navigate(`/Booking/TicketRoom/${rap.maLichChieu}`)}
                             >
                               {moment(rap.ngayChieuGioChieu).format(
                                 "hh:mm"
