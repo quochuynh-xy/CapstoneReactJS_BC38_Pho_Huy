@@ -14,7 +14,7 @@ export const routes = [
     component: Home,
   },
   {
-    path: "/Booking/Seats",
+    path: "/Booking/TicketRoom/:maLichChieu",
     component: Seats,
   },
   {
