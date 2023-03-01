@@ -13,7 +13,7 @@ export const movieServices = {
     https.get("/api/QuanLyRap/LayThongTinLichChieuHeThongRap", {
       params: {
         maNhom: "GP01",
-        maHeThongRap: theaterId
+        maHeThongRap: theaterId,
       },
     }),
   fetchMovieDetail: (movieId) =>
@@ -29,4 +29,10 @@ export const movieServices = {
       },
     }),
   fetchTheatersList: () => https.get("api/QuanLyRap/LayThongTinHeThongRap"),
+  fetchShowById: (MaLichChieu) =>
+    https.get("api/QuanLyDatVe/LayDanhSachPhongVe", {
+      params: {
+        MaLichChieu: MaLichChieu,
+      },
+    }),
 };
