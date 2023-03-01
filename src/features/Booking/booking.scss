@@ -240,7 +240,7 @@
           margin-bottom: 0.5rem;
           .ant-progress-text {
             color: $cl-primary;
-            font-weight: bold;
+            font-weight: 700;
           }
         }
         .star {
@@ -352,6 +352,131 @@
       }
     }
   }
+}
+// Seats page
+.booking__checkout {
+  background-color: $bg-dark-1;
+  .steps {
+    background-color: #f7c2c2;
+  }
+  // step 1: select number of seat
+  .content {
+    .booking__info {
+      .info__movie {
+        padding-bottom: 60px;
+        img {
+          width: 150px;
+          height: 225px;
+          border-radius: 8px;
+        }
+        .detail {
+          margin-left: 24px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          padding-bottom: 12px;
+          .detail__name {
+            color: $cl-green-2;
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+          }
+          .detail__theater {
+            color: $cl-primary;
+            font-size: 1.2rem;
+          }
+          .detail__address {
+            color: $cl-grey-3;
+            font-style: italic;
+            margin-bottom: 12px;
+          }
+          .detail__time {
+            color: $cl-primary;
+            font-weight: bold;
+            line-height: 1.75;
+            span {
+              font-weight: 400;
+              margin-left: 1rem;
+              color: $cl-green-3;
+            }
+          }
+          .detail__day {
+            @extend .detail__time;
+          }
+          .detail__screen {
+            @extend .detail__time;
+          }
+        }
+      }
+      .info__warn {
+        padding-bottom: 24px;
+        ul {
+          color: $cl-primary;
+          li {
+            display: flex;
+            align-items: center;
+            line-height: 1.75;
+            font-size: 1rem;
+            svg {
+              margin-right: 12px;
+              color: yellow;
+            }
+          }
+        }
+      }
+      .table__order {
+        padding-bottom: 40px;
+        table {
+          thead {
+            background-color: grey;
+            font-weight: bold;
+          }
+          tr {
+            border-bottom: 1px solid grey;
+          }
+          td {
+            padding: 16px 40px;
+            input {
+              border-top: 1px solid grey;
+              border-bottom: 1px solid grey;
+              color: $cl-red-1;
+              font-size: 1.2rem;
+              height: 40px;
+              font-weight: 700;
+              &:focus-visible {
+                outline: 1px solid grey;
+              }
+            }
+            ::-webkit-outer-spin-button,
+            ::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+            .btn--minus,
+            .btn--plus {
+              width: 40px;
+              height: 40px;
+              padding: 8px;
+              color: $cl-grey-1;
+              transition: 0.3s;
+              border: 1px solid grey;
+              &:hover {
+                background-color: gold;
+              }
+              &:active {
+                background-color: transparent;
+              }
+            }
+          }
+        }
+        .errmessage {
+          color: $cl-red-2;
+        }
+      }
+    }
+  }
+  // step2: select specific seat
+  
 }
 .modal__trailer {
   .ant-modal-content {

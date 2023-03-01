@@ -5,7 +5,11 @@ const initState = {
   pageMovies: {}, // Danh sách phim phân trang
   srcTrailer: null, // URL xem trước trailer
   listOfMovies: [], // Danh sách phim tổng hợp (có thể là tất cả phim || phim theo cụm rạp)
-  selectedShow: {} // Thông tin của phim và rạp được lựa chọn
+  selectedShow: {}, // Thông tin của phim và rạp được lựa chọn
+  cartInfo: {
+    seatsInfo: {}, // Thông tin ghế chọn
+  }, // Thông tin giỏ hàng
+  bookingStep: 0, // Chọn số lượng vé - đặt ghế - chọn đồ ăn - Thanh toán: 0 - 1 - 2 - 3
 };
 const booking = (state = initState, action) => {
   const { type, payload } = action;
@@ -29,7 +33,18 @@ const booking = (state = initState, action) => {
       }
       case types.GET_DATA_OF_SHOW_ID: {
         draft.selectedShow = payload;
-        break
+        break;
+      }
+      case types.SET_BOOKING_STEP: {
+        draft.bookingStep = payload;
+        break;
+      }
+      case types.START_SELECT_SEATS: {
+        draft.cartInfo = {
+          ...draft.cartInfo,
+          seatsInfo: payload,
+        };
+        break;
       }
       default:
         return state;

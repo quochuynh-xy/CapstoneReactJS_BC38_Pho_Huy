@@ -19,7 +19,6 @@ export const autoLogin = (userToken) => {
         if(!userToken) return
         try {
             const res = await authServices.autoFetchProfile(userToken);
-            console.log(res);
             dispatch({
                 type: types.LOGIN,
                 payload: res.data.content
