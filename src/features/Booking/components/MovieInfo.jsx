@@ -45,7 +45,7 @@ const MovieInfo = (props) => {
               <p className="my-8 movie__des indent-2">{movieInfo?.moTa}</p>
               <button
                 className="buybtn text-white px-8 py-2 rounded-md font-bold"
-                onClick={() => alert(MovieInfo.trailer)}
+                onClick={() => alert("lăn xuống phía dưới để chọn rạp kìa")}
               >
                 MUA VÉ
               </button>

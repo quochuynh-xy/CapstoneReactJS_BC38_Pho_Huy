@@ -5,6 +5,7 @@ const initState = {
   pageMovies: {}, // Danh sách phim phân trang
   srcTrailer: null, // URL xem trước trailer
   listOfMovies: [], // Danh sách phim tổng hợp (có thể là tất cả phim || phim theo cụm rạp)
+  selectedShow: {} // Thông tin của phim và rạp được lựa chọn
 };
 const booking = (state = initState, action) => {
   const { type, payload } = action;
@@ -22,8 +23,12 @@ const booking = (state = initState, action) => {
         draft.srcTrailer = payload.split("/").pop();
         break;
       }
-      case types.GET_MOVIES_LIST :{
+      case types.GET_MOVIES_LIST: {
         draft.listOfMovies = payload;
+        break;
+      }
+      case types.GET_DATA_OF_SHOW_ID: {
+        draft.selectedShow = payload;
         break
       }
       default:
@@ -31,4 +36,4 @@ const booking = (state = initState, action) => {
     }
   });
 };
-export default booking
+export default booking;
