@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { movieServices } from "../../../services/movieServices";
 import { useState } from "react";
-import { Tabs } from "antd";
+import { Tabs, Collapse } from "antd";
 import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
+const { Panel } = Collapse;
 const MovieDetailsTabs = (props) => {
   const navigate = useNavigate();
   const { maPhim } = props;
@@ -58,39 +59,55 @@ const MovieDetailsTabs = (props) => {
                 theater.cumRapChieu.map((cumRap) => {
                   // Danh sách lịch chiếu
                   return (
-                    <div key={cumRap.tenCumRap}>
-                      <div className="flex">
-                        <img
-                          src={cumRap.hinhAnh}
-                          alt={cumRap.tenCumRap}
-                          className="h-16 w-16 rounded"
-                        />
-                        <div className="ml-4">
-                          <h3 className="font-bold">{cumRap.tenCumRap}.</h3>
-                          <p className="text-sm text-neutral-400">{cumRap.diaChi}.</p>
+                    <Collapse
+                      key={cumRap.tenCumRap}
+                      expandIconPosition="end"
+                      defaultActiveKey={1}
+                      className="border-b mb-1 border-solid border-neutral-200"
+                    >
+                      <Panel
+                        key={1}
+                        header={
+                          <div className="flex">
+                            <img
+                              src={cumRap.hinhAnh}
+                              alt={cumRap.tenCumRap}
+                              className="h-16 w-16 rounded"
+                            />
+                            <div className="ml-4">
+                              <h3 className="font-bold">{cumRap.tenCumRap}.</h3>
+                              <p className="text-sm text-neutral-400">
+                                {cumRap.diaChi}.
+                              </p>
+                            </div>
+                          </div>
+                        }
+                      >
+                        <div className="flex mb-3 flex-wrap">
+                          {cumRap.lichChieuPhim.map((rap, index) => {
+                            return (
+                              <button
+                                key={index}
+                                className="bg-green-100 hover:bg-white text-stone-600 border-solid border border-lime-500 hover:shadow-md hover:border-orange-500 hover:text-orange-500 duration-300 font-bold py-2 px-3 ml-2 mb-3 rounded-md"
+                                onClick={() =>
+                                  navigate(
+                                    `/Booking/TicketRoom/${rap.maLichChieu}`
+                                  )
+                                }
+                              >
+                                {moment(rap.ngayChieuGioChieu).format("hh:mm")}{" "}
+                                -
+                                <span className="">
+                                  {moment(rap.ngayChieuGioChieu).format(
+                                    " DD/MM/YY"
+                                  )}
+                                </span>
+                              </button>
+                            );
+                          })}
                         </div>
-                      </div>
-                      <div className="flex text-red-400 my-3 pb-4 shadow-md flex-wrap">
-                        {cumRap.lichChieuPhim.map((rap, index) => {
-                          return (
-                            <button
-                              key={index}
-                              className="bg-green-100 hover:bg-white text-stone-600 border-solid border border-lime-500 hover:shadow-md hover:border-orange-500 hover:text-orange-500 duration-300 font-bold py-2 px-3 ml-2 mb-3 rounded-md"
-                              onClick={()=> navigate(`/Booking/TicketRoom/${rap.maLichChieu}`)}
-                            >
-                              {moment(rap.ngayChieuGioChieu).format(
-                                "hh:mm"
-                              )} - 
-                              <span className="">
-                              {moment(rap.ngayChieuGioChieu).format(
-                                " DD/MM/YY"
-                              )}
-                              </span>
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </div>
+                      </Panel>
+                    </Collapse>
                   );
                 })}
               {!theater.cumRapChieu && (
