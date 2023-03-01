@@ -5,6 +5,7 @@ import { fetchMovieDetail } from "./thunk";
 import { AiFillEdit, AiOutlineDelete } from "react-icons/ai";
 import Loading from "./utils/Loading";
 import { Outlet } from "react-router-dom";
+import NavTab from "./components/NavTab";
 const Admin = () => {
   const dispatch = useDispatch();
   // const [loading, setLoading] = useState(true)
@@ -20,10 +21,10 @@ const Admin = () => {
       style={{ display: "grid", gridTemplateColumns: "0.5fr 3.5fr" }}
     >
       <div>
-        <Outlet />
+        <NavTab/>
       </div>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg  h-99">
-        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400  overscroll-y-auto	">
+        {/* <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400  overscroll-y-auto	">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 sticky  top-0">
             <tr>
               <th scope="col" className="px-6 py-3">
@@ -88,7 +89,8 @@ const Admin = () => {
               <Loading />
             )}
           </tbody>
-        </table>
+        </table> */}
+        <Outlet />
       </div>
     </div>
   );

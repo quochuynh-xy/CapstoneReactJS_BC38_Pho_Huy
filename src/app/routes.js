@@ -8,6 +8,11 @@ import Admin from "../features/Admin/Admin";
 import User from "../features/Admin/User";
 import DetailFilm from "../features/Admin/DetailFilm";
 import AddNews from "../features/Admin/AddNews";
+import React from "react";
+import ShowTime from "../features/Admin/ShowTime";
+import { Navigate, Route } from "react-router-dom";
+import NavTab from "../features/Admin/components/NavTab";
+import AdminLayout from "../HOCs/AdminLayout";
 
 export const routes = [
   {
@@ -15,15 +20,11 @@ export const routes = [
     component: Home,
   },
   {
-    path: "/:id",
-    component: Home,
-  },
-  {
-    path: "/Booking/Seats",
+    path: "/Booking/:id",
     component: Seats,
   },
   {
-    path: "/Booking/Detail",
+    path: "/movie/:id",
     component: Detail,
   },
   {
@@ -39,12 +40,19 @@ export const routes = [
 ];
 
 export const routesAdmin = [
-  {path: "/admin" , component: Admin, children: [
-    {path:'admin/user' , component: User},
-    {path: "admin/detail-films", component: DetailFilm},
+  {
+    path: "/admin", component: Admin, children: [
+      { path: '/admin', component: User },
 
-  {path: "admin/add-new" , component: AddNews}
-  ]} ,
+      { path: '/admin/user', component: User },
+      { path: "/admin/detail-films", component: DetailFilm },
+
+      { path: "/admin/add-new", component: AddNews },
+      { path: "/admin/show-time", component: ShowTime },
+      { path: "*", element: <Navigate to="user" /> }
+
+    ]
+  },
 
 ]
 /**
