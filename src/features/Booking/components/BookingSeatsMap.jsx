@@ -9,15 +9,15 @@ const BookingSeatsMap = () => {
   const [seatingChart, setSeatingChart] = useState([]);
   const CommonSeat = (props) => (
     <button className="p-2 m-1 rounded bg-green-200">
-      {props.data.soGhe}
+      {props.data?.soGhe}
     </button>
   );
   const VipSeat = (props) => (
-    <button className="p-2 m-1 rounded bg-red-200">{props.data.soGhe}</button>
+    <button className="p-2 m-1 rounded bg-red-200">{props.data?.soGhe}</button>
   );
   const TakenSeat = (props) => (
     <button className="p-2 m-1 rounded bg-slate-400">
-      {props.data.soGhe}
+      {props.data?.soGhe}
     </button>
   );
   const splitRow = (totalSeat, quantity = 16) => {
