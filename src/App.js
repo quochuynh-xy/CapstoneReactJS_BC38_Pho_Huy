@@ -8,19 +8,21 @@ const mapRoutes = routes.map(({ path, component: Component }) => (
 ));
 
 const mapRoutesAdmin = routesAdmin.map(({path, component: Component, children})=> {
-  return <Routes path={path} element={<Component />} key={path} >
-    {children?.map(item=>{
-      return <Route path={item.path} key={item.path} element={<item.component />}/>
-    })}
-  </Routes>
+  return <Route path={path} element={<Component />} key={path}>
+  {children?.map(item=>{
+    return <Route path={item.path} key={item.path} element={<item.component />}/>
+  })}
+   </Route>
 })
 
 function App() {
   return (
     <BrowserRouter>
     <Header />
-    {mapRoutesAdmin}
-      <Routes>{mapRoutes}</Routes>
+      <Routes>
+        {mapRoutes}
+        {mapRoutesAdmin}
+      </Routes>
     </BrowserRouter>
   );
 }

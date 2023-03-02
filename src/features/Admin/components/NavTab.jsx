@@ -5,16 +5,16 @@ const NavTab = () => {
   return (
     <div>
       <div>
-        <NavLink to='/user' >User</NavLink>
+      <NavLink to="/admin/user">User</NavLink>
       </div>
       <div>
-        <NavLink to='/detail-films' > Detail Films</NavLink>
+      <NavLink to="/admin/detail-films"> Detail Films</NavLink>
       </div>
       <div>
-        <NavLink to='/add-new' >Add new film</NavLink>
+      <NavLink to="/admin/add-new">Add new film</NavLink>
       </div>
       <div>
-        <NavLink to='/show-time' >Show time</NavLink>
+      <NavLink to="/admin/show-time">Show time</NavLink>
       </div>
     </div>
   )

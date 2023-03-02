@@ -8,6 +8,8 @@ import Admin from "../features/Admin/Admin";
 import User from "../features/Admin/User";
 import DetailFilm from "../features/Admin/DetailFilm";
 import AddNews from "../features/Admin/AddNews";
+import { Navigate } from "react-router-dom";
+import ShowTime from "../features/Admin/ShowTime";
 
 export const routes = [
   {
@@ -38,13 +40,21 @@ export const routes = [
 
 ];
 
-export const routesAdmin = [
-  {path: "/admin" , component: Admin, children: [
-    {path:'admin/user' , component: User},
-    {path: "admin/detail-films", component: DetailFilm},
 
-  {path: "admin/add-new" , component: AddNews}
-  ]} ,
+export const routesAdmin = [
+  {
+    path: "/admin", component: Admin, children: [
+      { path: '/admin', component: User },
+
+      { path: '/admin/user', component: User },
+      { path: "/admin/detail-films", component: DetailFilm },
+
+      { path: "/admin/add-new", component: AddNews },
+      { path: "/admin/show-time", component: ShowTime },
+      { path: "*", element: <Navigate to="user" /> }
+
+    ]
+  },
 
 ]
 /**
