@@ -476,7 +476,111 @@
     }
   }
   // step2: select specific seat
-  
+  .seatandbill {
+    .seatsMap {
+      .screen {
+        width: 80%;
+        margin: 0 auto 120px;
+        background-color: darkkhaki;
+        border-radius: 12px 12px 0 0;
+        p {
+          letter-spacing: 4px;
+          position: relative;
+          &::after {
+            position: absolute;
+            content: "";
+            box-shadow: 0 4px 4px 0px #fff inset;
+            width: 100%;
+            height: 8px;
+            left: 0;
+            top: 22px;
+          }
+        }
+      }
+      .seats {
+        .seat {
+          border: 2px solid transparent;
+          font-size: 0.8rem;
+          width: 40px;
+          margin-bottom: 20px;
+          border-radius: 8px;
+          padding: 4px;
+          text-align: center;
+          font-weight: 700;
+          color: $cl-primary;
+          transition: 0.3s;
+          min-height: 30px;
+          &.selecting {
+            background-color: $bg-green-1;
+          }
+        }
+        .taken {
+          background-color: $bg-dark-4;
+          color: $cl-red-1;
+        }
+        .common {
+          background-color: $bg-dark-2;
+          &:hover {
+            background-color: $bg-green-3;
+            transform: scale(1.1);
+            color: $cl-grey-3;
+          }
+        }
+        .vip {
+          background-color: $bg-orange-1;
+          &:hover {
+            background-color: $bg-green-3;
+            transform: scale(1.1);
+            color: $cl-grey-1;
+          }
+        }
+        .note {
+          span {
+            width: 30px;
+            height: 28px;
+            border-radius: 4px;
+          }
+          .common {
+            background-color: $bg-dark-2;
+          }
+          .taken {
+            background-color: $bg-dark-4;
+          }
+          .vip {
+            background-color: $bg-orange-1;
+          }
+          .pending {
+            background-color: $bg-green-1;
+          }
+        }
+      }
+    }
+    .bill {
+      margin-top: 100px;
+      padding-top: 10px;
+      background-color: $bg-dark-1;
+      max-width: 300px;
+      .title {
+        text-transform: uppercase;
+        font-weight: 600;
+        color: $cl-primary;
+        padding-bottom: 8px;
+        padding-left: 8px;
+        border-bottom: 2px solid $bg-green-2;
+      }
+      .bill__moviename {
+        color: $cl-green-1;
+        font-size: 1rem;
+        font-weight: 600;
+        padding-left: 12px;
+        padding-top: 0.5rem;
+      }
+      .ticket-type {
+        color: $cl-primary;
+      }
+    }
+  }
+  // step3: completed booking
 }
 .modal__trailer {
   .ant-modal-content {
