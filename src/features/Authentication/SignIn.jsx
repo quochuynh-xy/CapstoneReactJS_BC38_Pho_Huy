@@ -15,9 +15,9 @@ function SignIn() {
       [e.target.name]: e.target.value,
     });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(loginAction(loginInfo)); // gửi thông tin đăng nhập
+    await dispatch(loginAction(loginInfo)); // gửi thông tin đăng nhập
     setLoginInfo({taiKhoan: "", matKhau: "" }) // clear form
     navigate("/") // chuyển về trang chủ
   };

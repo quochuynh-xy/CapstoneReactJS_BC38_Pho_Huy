@@ -23,7 +23,8 @@ export const autoLogin = (userToken) => {
                 type: types.LOGIN,
                 payload: res.data.content
             })
-        } catch (error) {   
+        } catch (error) {
+            localStorage.setItem("cyberfilmToken", "")
             console.log(error);
         }
     }
