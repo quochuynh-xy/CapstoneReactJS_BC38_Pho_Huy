@@ -94,55 +94,6 @@ function Seats() {
             </button>
           </div>
         </section>
-        {/* <section className="content container mx-auto mt-12 flex justify-between">
-          <div className="booking__info">
-            <div className="info__movie flex">
-              <img src={movieInfo?.hinhAnh} alt={movieInfo?.tenPhim} />
-              <div className="detail">
-                <h3 className="detail__name font-semibold">
-                  {movieInfo?.tenPhim}
-                </h3>
-                <p className="detail__theater font-bold">
-                  {movieInfo?.tenCumRap}
-                </p>
-                <p className="detail__address">{movieInfo?.diaChi}</p>
-                <p className="detail__time">
-                  Giờ chiếu: <span>{movieInfo?.gioChieu}</span>
-                </p>
-                <p className="detail__day">
-                  Ngày: <span>{movieInfo?.ngayChieu}</span>
-                </p>
-                <p className="detail__screen">
-                  Thông tin rạp: <span>{movieInfo?.tenRap}</span>
-                </p>
-              </div>
-            </div>
-            <div className="info__warn">
-              <h2 className="text-red-500 font-bold text-2xl ml-4">LƯU Ý:</h2>
-              <ul>
-                <li>
-                  <TfiHandPointRight /> Hãy chọn kỹ loại vé và số lượng vé bạn
-                  muốn mua.
-                </li>
-                <li>
-                  <TfiHandPointRight /> Bạn có thể mua tối đa 10 vé trong một
-                  lần giao dịch.
-                </li>
-                <li>
-                  <TfiHandPointRight />
-                  Để có trải nghiệm mua vé tốt nhất, vui lòng giữ một kết nối
-                  internet ổn định.
-                </li>
-                <li>
-                  <TfiHandPointRight /> Không đổi trả hay hoàn tiền sau khi
-                  thanh toán.
-                </li>
-              </ul>
-            </div>
-            <BookingOrder />
-          </div>
-          <BookingBill />
-        </section> */}
         {/*Trạng thái chọn số lượng vé*/}
         {bookingStep === 0 ? step1 : null}
         {/*Trạng thái chọn chỗ */}
