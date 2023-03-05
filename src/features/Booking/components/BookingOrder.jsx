@@ -12,6 +12,8 @@ const BookingOrder = () => {
   const [orderList, setOrderList] = useState({
     countCommon: 0,
     countVip: 0,
+    vipPrice:0,
+    commonPrice:0
   });
   const [commonPrice, setCommonPrice] = useState(0);
   const [vipPrice, setVipPrice] = useState(0);
@@ -114,7 +116,11 @@ const BookingOrder = () => {
     });
     dispatch({
       type: types.START_SELECT_SEATS,
-      payload: orderList,
+      payload: {
+        ...orderList,
+        vipPrice: vipPrice,
+        commonPrice: commonPrice
+      },
     });
   };
   return (

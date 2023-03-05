@@ -7,7 +7,8 @@ const initState = {
   listOfMovies: [], // Danh sách phim tổng hợp (có thể là tất cả phim || phim theo cụm rạp)
   selectedShow: {}, // Thông tin của phim và rạp được lựa chọn
   cartInfo: {
-    seatsInfo: {}, // Thông tin ghế chọn
+    orderInfo: {}, // Thông tin số lượng ghế khách yêu cầu
+    checkOutInfo: {} // Thông tin đặt ghế sau khi chọn chỗ.
   }, // Thông tin giỏ hàng
   bookingStep: 0, // Chọn số lượng vé - đặt ghế - chọn đồ ăn - Thanh toán: 0 - 1 - 2 - 3
 };
@@ -42,7 +43,14 @@ const booking = (state = initState, action) => {
       case types.START_SELECT_SEATS: {
         draft.cartInfo = {
           ...draft.cartInfo,
-          seatsInfo: payload,
+          orderInfo: payload,
+        };
+        break;
+      }
+      case types.SELECTING_SEATS: {
+        draft.cartInfo = {
+          ...draft.cartInfo,
+          checkOutInfo: payload
         };
         break;
       }

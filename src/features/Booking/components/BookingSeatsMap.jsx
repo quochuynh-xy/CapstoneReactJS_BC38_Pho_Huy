@@ -1,22 +1,48 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import BookingBill from "./BookingBill";
+import {BsFillPersonFill} from "react-icons/bs"
+import { types } from "../const";
 // Đang dính bug khi chưa load xong dữ liệu mà nhấn ngay tới bước này thì sinh lỗi.
 // Bug tự nhảy đến trang chọn ghế mà chưa qua trang chọn số lượng vé
 const BookingSeatsMap = () => {
+  // Lấy danh sách ghế và mã lịch chiếu của phim
   const listOfseats = useSelector(
-    (state) => state.booking.selectedShow.danhSachGhe
+    (state) => state.booking.selectedShow?.danhSachGhe
   );
+  const maLichChieu = useSelector(
+    (state) => state.booking.selectedShow?.thongTinPhim?.maLichChieu
+  );
+  // Lấy thông tin đặt ghế của khách hàng
+  const { orderInfo } = useSelector((state) => state.booking.cartInfo);
+  // Mảng chứa những ghế đang chọn
+  const [danhSachGhe, setDanhSachGhe] = useState([]);
+  // Sơ đồ ghế ngồi
   const [seatingChart, setSeatingChart] = useState([]);
+  const dispatch = useDispatch();
   const CommonSeat = (props) => (
-    <button className="common seat">{props.data?.soGhe}</button>
+    <button
+      className={`common seat ${props?.className ? props.className : ""}`}
+      onClick={() => {
+        handleSelect(props.data);
+      }}
+    >
+      {props.data?.soGhe}
+    </button>
   );
   const VipSeat = (props) => (
-    <button className="vip seat">{props.data?.soGhe}</button>
+    <button
+      className={`vip seat ${props?.className ? props.className : ""}`}
+      onClick={() => {
+        handleSelect(props.data);
+      }}
+    >
+      {props.data?.soGhe}
+    </button>
   );
   const TakenSeat = (props) => (
-    <button className="taken seat cursor-not-allowed">
-      {props.data?.soGhe}
+    <button className="taken seat cursor-not-allowed text-center">
+      <BsFillPersonFill className="mx-auto"/>
     </button>
   );
   const splitRow = (totalSeat, quantity = 16) => {
@@ -26,26 +52,88 @@ const BookingSeatsMap = () => {
     let rowName = 0;
     for (let i = 0; i < totalSeat.length; i += quantity) {
       let item = {
-        index: character[rowName],
+        rowIndex: character[rowName],
         row: totalSeat.slice(i, i + quantity),
       };
-      rowName++;
+      let x = character[rowName];
       item.row = item.row.map((slot, index) => {
-        return { ...slot, soGhe: index + 1 };
+        return {
+          ...slot,
+          soGhe: index + 1,
+          viTri: `${x}${index + 1}`,
+        };
       });
+      rowName++;
       resut.push(item);
     }
     return resut;
   };
-  // console.log(splitRow(listOfseats, 16));
+  const handleSelect = (slot) => {
+    // daDat: false;
+    // giaVe: 96000;
+    // loaiGhe: "Vip";
+    // maGhe: 59010;
+    // maRap: 523;
+    // soGhe: 10;
+    // stt: "90";
+    // taiKhoanNguoiDat: null;
+    // tenGhe: "90";
+    // viTri: "F10";
+    const { countCommon, countVip } = orderInfo;
+    const { viTri, maGhe, giaVe } = slot;
+    let cloneDanhSachGhe = [...danhSachGhe];
+    let index = cloneDanhSachGhe.findIndex((item) => item.maGhe === maGhe);
+    if (index !== -1) {
+      cloneDanhSachGhe.splice(index, 1);
+    } else {
+      cloneDanhSachGhe.push(slot);
+    }
+    const selectedCommon = cloneDanhSachGhe.reduce((init, item) => {
+      if (item.loaiGhe === "Thuong") {
+        return (init += 1);
+      }
+      return init;
+    }, 0);
+    const selectedVip = cloneDanhSachGhe.reduce((init, item) => {
+      if (item.loaiGhe === "Vip") {
+        return (init += 1);
+      }
+      return init;
+    }, 0);
+    if (selectedVip > countVip) {
+      let index = cloneDanhSachGhe.findIndex((item) => item.loaiGhe === "Vip");
+      cloneDanhSachGhe.splice(index, 1);
+    }
+    if (selectedCommon > countCommon) {
+      let index = cloneDanhSachGhe.findIndex(
+        (item) => item.loaiGhe === "Thuong"
+      );
+      cloneDanhSachGhe.splice(index, 1);
+    }
+    dispatch({
+      type: types.SELECTING_SEATS,
+      payload: {
+        maLichChieu: maLichChieu,
+        danhSachGhe: cloneDanhSachGhe,
+      }
+    })
+    setDanhSachGhe(cloneDanhSachGhe);
+  };
   useEffect(() => {
     if (!listOfseats) return;
     setSeatingChart(splitRow(listOfseats, 16));
-  }, [listOfseats]);
+  }, [listOfseats, maLichChieu]);
   // Hiện tại dữ liệu trả về không có sơ đồ bố trí nên mặc định sẽ có 16 ghế/hàng
   return (
     <section className="seatandbill pt-20 flex justify-between container mx-auto">
       <div className="seatsMap basis-8/12">
+        <p className="text-white mb-6">
+          Quý khách vui lòng chọn ghế trong theo sơ đồ phía dưới. Nếu bạn muốn
+          chọn loại ghế khác hoặc thay đổi số lượng vé muốn mua, vui lòng nhấn
+          vào
+          <span className="text-green-500 font-semibold"> "Bước 1: chọn vé" </span>
+          ở thanh công cụ bên trên để quay về màn hình chọn.
+        </p>
         <div className="screen text-center">
           <p className="font-semibold text-white">MÀN HÌNH</p>
         </div>
@@ -53,19 +141,51 @@ const BookingSeatsMap = () => {
           {seatingChart.length &&
             seatingChart.map((singleRow) => {
               return (
-                <div key={singleRow.index} className="flex justify-around">
+                <div
+                  key={singleRow.rowIndex}
+                  className="flex justify-around items-center"
+                >
+                  <span className="text-white row-index">
+                    {singleRow.rowIndex}
+                  </span>
                   {singleRow.row.map((seat) => {
                     if (seat.loaiGhe === "Thuong") {
                       if (seat.daDat) {
                         return <TakenSeat data={seat} key={seat.maGhe} />;
                       } else {
-                        return <CommonSeat data={seat} key={seat.maGhe} />;
+                        return (
+                          <CommonSeat
+                            rowIndex={singleRow.rowIndex}
+                            data={seat}
+                            key={seat.maGhe}
+                            className={
+                              danhSachGhe.find(
+                                (item) => item.maGhe === seat.maGhe
+                              )
+                                ? "selecting"
+                                : ""
+                            }
+                          />
+                        );
                       }
                     } else {
                       if (seat.daDat) {
                         return <TakenSeat data={seat} key={seat.maGhe} />;
                       } else {
-                        return <VipSeat data={seat} key={seat.maGhe} />;
+                        return (
+                          <VipSeat
+                            rowIndex={singleRow.rowIndex}
+                            data={seat}
+                            key={seat.maGhe}
+                            className={
+                              danhSachGhe.find(
+                                (item) => item.maGhe === seat.maGhe
+                              )
+                                ? "selecting"
+                                : ""
+                            }
+                          />
+                        );
                       }
                     }
                   })}
@@ -74,22 +194,75 @@ const BookingSeatsMap = () => {
             })}
           <div className="note flex mt-3 h-fit flex-wrap pb-6">
             <div className="flex mr-4 items-center">
-              <span className="common"></span><p className="text-white ml-4">: Ghế thường.</p>
+              <span className="common"></span>
+              <p className="text-white ml-4">: Ghế thường.</p>
             </div>
             <div className="flex mr-4 items-center">
-            <span className="vip"></span><p className="text-white ml-4">: Ghế VIP.</p>
+              <span className="vip"></span>
+              <p className="text-white ml-4">: Ghế VIP.</p>
             </div>
             <div className="flex mr-4 items-center">
-            <span className="taken"></span><p className="text-white ml-4">: Ghế đã đặt.</p>
+              <span className="taken flex items-center"><BsFillPersonFill className="mx-auto"/></span>
+              <p className="text-white ml-4">: Ghế đã đặt.</p>
             </div>
             <div className="flex mr-4 items-center">
-            <span className="pending"></span><p className="text-white ml-4">: Ghế đang chọn.</p>
+              <span className="pending"></span>
+              <p className="text-white ml-4">: Ghế đang chọn.</p>
             </div>
           </div>
         </div>
       </div>
-      <BookingBill />
+      <div>
+        <BookingBill />
+        <div className="text-end">
+          <button
+            className="bg-red-600 rounded-md mt-4 px-6 py-2 text-white ml-auto"
+          >
+            Xác nhận
+          </button>
+        </div>
+      </div>
     </section>
   );
 };
 export default BookingSeatsMap;
+const number = [1, 2, 3];
+export const TestStupidLv = () => {
+  const [array, setArray] = useState([]);
+  useEffect(() => {
+    setArray(number);
+  }, [number]);
+  const addNumber = () => {
+    let newNumber = Math.floor(Math.random() * 10 + 1);
+    let clone = [...array];
+    clone.push(newNumber);
+    setArray(clone);
+    console.log(clone);
+    console.log(array);
+  };
+  const sentData = () => {
+    console.log("Đây là state được gửi", array);
+  };
+  return (
+    <div className="ml-4">
+      <ul>
+        {array.map((item, index) => {
+          return (
+            <li key={index} className="font-bold text-lg">
+              số {item}
+            </li>
+          );
+        })}
+      </ul>
+      <button
+        className="bg-red-300"
+        onClick={() => {
+          addNumber();
+          sentData();
+        }}
+      >
+        Click
+      </button>
+    </div>
+  );
+};
