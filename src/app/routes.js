@@ -1,3 +1,4 @@
+import React from "react";
 import Home from "../features/Booking/Home";
 import Seats from "../features/Booking/Seats";
 import Detail from "../features/Booking/Detail";
@@ -17,15 +18,11 @@ export const routes = [
     component: Home,
   },
   {
-    path: "/:id",
-    component: Home,
-  },
-  {
-    path: "/Booking/Seats",
+    path: "/Booking/:id",
     component: Seats,
   },
   {
-    path: "/Booking/Detail",
+    path: "/movie/:id",
     component: Detail,
   },
   {
@@ -40,7 +37,6 @@ export const routes = [
 
 ];
 
-
 export const routesAdmin = [
   {
     path: "/admin", component: Admin, children: [
@@ -51,7 +47,7 @@ export const routesAdmin = [
 
       { path: "/admin/add-new", component: AddNews },
       { path: "/admin/show-time", component: ShowTime },
-      { path: "*", element: <Navigate to="user" /> }
+      { path: "*",  element: <Navigate to="user" /> }
 
     ]
   },
