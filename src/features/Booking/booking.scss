@@ -426,6 +426,7 @@
         }
       }
       .table__order {
+        user-select: none;
         padding-bottom: 40px;
         table {
           thead {
@@ -479,6 +480,7 @@
   // step2: select specific seat
   .seatandbill {
     .seatsMap {
+      user-select: none;
       .screen {
         width: 80%;
         margin: 0 auto 120px;
