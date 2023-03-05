@@ -9,8 +9,8 @@ const mapRoutes = routes.map(({ path, component: Component }) => (
 
 const mapRoutesAdmin = routesAdmin.map(({path, component: Component, children})=> {
   return <Route path={path} element={<Component />} key={path}>
-  {children?.map(item=>{
-    return <Route path={item.path} key={item.path} element={<item.component />}/>
+  {children?.map(Item=>{
+    return <Route path={Item.path} key={Item.path} element={<Item.component />}/>
   })}
    </Route>
 })

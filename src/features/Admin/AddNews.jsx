@@ -10,16 +10,37 @@ import {
   Switch,
   TreeSelect,
 } from "antd";
+import {  useFormik } from "formik";
 import { useState } from "react";
 const AddNews = () => {
   const [componentSize, setComponentSize] = useState("default");
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
   };
+
+  const {handleSubmit} = useFormik=({
+    initialValues: {
+      tenPhim: '',
+      trailer: '',
+      moTa: '',
+      ngayKhoiChieu:'',
+      DangChieu: false,
+      DangChieu:false,
+      Hot: false,
+      danhGia: 0,
+      hinhAnh: {
+
+      }
+    },
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  })
   return (
     <div className="p-2">
       <h3 className="font-medium mb-5">Tác vụ: Thêm phim</h3>
       <Form
+      onSubmitCapture={handleSubmit}
         labelCol={{
           span: 4,
         }}
@@ -71,7 +92,7 @@ const AddNews = () => {
           <input type="file" />
         </Form.Item>
         <Form.Item label="Tác vụ">
-          <Button className="bg-blue-600 text-white ">Thêm phim</Button>
+          <button  className="bg-blue-600 text-white ">Thêm phim</button>
         </Form.Item>
       </Form>
     </div>

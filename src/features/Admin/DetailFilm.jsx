@@ -1,84 +1,183 @@
-import React from "react";
+import { SearchOutlined } from "@ant-design/icons";
+import { Button, Input, Space, Table } from "antd";
+import { useRef, useState } from "react";
+import Highlighter from "react-highlight-words";
 import { useSelector } from "react-redux";
-import { AiFillEdit, AiOutlineDelete } from "react-icons/ai";
 import Loading from "./utils/Loading";
+import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 
-const DetailFilm = () => {
-  const filmData = useSelector((state) => state.admin.filmDetail);
+const App = () => {
+  const dataDetailFilm = useSelector((state) => state.admin.filmDetail);
+  console.log(dataDetailFilm);
+  const [searchText, setSearchText] = useState("");
+  const [searchedColumn, setSearchedColumn] = useState("");
+  const searchInput = useRef(null);
 
+  if (!dataDetailFilm || !dataDetailFilm.length)
+    return (
+      <div className="flex justify-center">
+        <Loading />
+      </div>
+    );
 
-  
-
-  return (
-    <div className="h-99">
-      <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400  overscroll-y-auto	">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 sticky  top-0">
-          <tr>
-            <th scope="col" className="px-6 py-3 ">
-              Mã phim
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Hình ảnh
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Tên phim
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Mô tả
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Action
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {filmData.length ? (
-            filmData.map((item, index) => {
-              return (
-                <tr
-                  key={index}
-                  className="bg-white border-b dark:bg-gray-900 dark:border-gray-700"
-                >
-                  <th
-                    scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    {item.maPhim}
-                  </th>
-                  <td class="px-6 py-4">
-                    <img src={item.hinhAnh} alt="film img" width="100px" />
-                  </td>
-                  <td class="px-6 py-4">{item.tenPhim}</td>
-                  <td class="px-6 py-4 ">{item.moTa}</td>
-                  <td class="px-6 py-4">
-                    <div className="flex text-xl">
-                      <button
-                        type="button"
-                        class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-semibold rounded-lg text-base px-5 py-2.5 text-center mr-2 mb-2"
-                      >
-                        <AiFillEdit />
-                      </button>
-                      <button
-                        onClick={() => {
-                          // handleDeleteFilm(findIdFilm)
-                        }}
-                        type="button"
-                        class="text-white  bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-semibold rounded-lg text-base px-5 py-2.5 text-center mr-2 mb-2"
-                      >
-                        <AiOutlineDelete />
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              );
-            })
-          ) : (
-            <Loading />
-          )}
-        </tbody>
-      </table>
-    </div>
-  );
+  const handleSearch = (selectedKeys, confirm, dataIndex) => {
+    confirm();
+    setSearchText(selectedKeys[0]);
+    setSearchedColumn(dataIndex);
+  };
+  const handleReset = (clearFilters) => {
+    clearFilters();
+    setSearchText("");
+  };
+  const getColumnSearchProps = (dataIndex) => ({
+    filterDropdown: ({
+      setSelectedKeys,
+      selectedKeys,
+      confirm,
+      clearFilters,
+      close,
+    }) => (
+      <div
+        style={{
+          padding: 8,
+        }}
+        onKeyDown={(e) => e.stopPropagation()}
+      >
+        <Input
+          ref={searchInput}
+          placeholder={`Search ${dataIndex}`}
+          value={selectedKeys[0]}
+          onChange={(e) =>
+            setSelectedKeys(e.target.value ? [e.target.value] : [])
+          }
+          onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
+          style={{
+            marginBottom: 8,
+            display: "block",
+          }}
+        />
+        <Space>
+          <Button
+            type="primary"
+            onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
+            size="small"
+            style={{
+              width: 90,
+            }}
+            className="flex items-center bg-blue-500"
+          >
+            <SearchOutlined />
+            Search
+          </Button>
+          <Button
+            onClick={() => clearFilters && handleReset(clearFilters)}
+            size="small"
+            style={{
+              width: 90,
+            }}
+          >
+            Reset
+          </Button>
+          <Button
+            type="link"
+            size="small"
+            onClick={() => {
+              confirm({
+                closeDropdown: false,
+              });
+              setSearchText(selectedKeys[0]);
+              setSearchedColumn(dataIndex);
+            }}
+          >
+            Filter
+          </Button>
+          <Button
+            type="link"
+            size="small"
+            onClick={() => {
+              close();
+            }}
+          >
+            close
+          </Button>
+        </Space>
+      </div>
+    ),
+    filterIcon: (filtered) => (
+      <SearchOutlined
+        style={{
+          color: filtered ? "#1890ff" : undefined,
+        }}
+      />
+    ),
+    onFilter: (value, record) =>
+      record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+    onFilterDropdownOpenChange: (visible) => {
+      if (visible) {
+        setTimeout(() => searchInput.current?.select(), 100);
+      }
+    },
+    render: (text) =>
+      searchedColumn === dataIndex ? (
+        <Highlighter
+          highlightStyle={{
+            backgroundColor: "#ffc069",
+            padding: 0,
+          }}
+          searchWords={[searchText]}
+          autoEscape
+          textToHighlight={text ? text.toString() : ""}
+        />
+      ) : (
+        text
+      ),
+  });
+  const columns = [
+    {
+      title: "maPhim",
+      dataIndex: "maPhim",
+      ...getColumnSearchProps("maPhim"),
+      sorter: (a, b) => a.maPhim - b.maPhim,
+      sortDirections: ["descend", "ascend"],
+    },
+    {
+      title: "hinhAnh",
+      dataIndex: "hinhAnh",
+      render: (text, film) => (
+        <img src={film.hinhAnh} alt={film.tenPhim} width={150} height={100} />
+      ),
+    },
+    {
+      title: "tenPhim",
+      dataIndex: "tenPhim",
+      ...getColumnSearchProps("tenPhim"),
+      width: "25%",
+    },
+    {
+      title: "moTa",
+      dataIndex: "moTa",
+    },
+    {
+      title: "Action",
+      dataIndex: "Action",
+      render: (text, film) => (
+        <div className="flex  ">
+          <button
+            type="button"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xl px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          >
+            <AiOutlineEdit />
+          </button>
+          <button
+            type="button"
+            class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-xl px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+          >
+            <AiOutlineDelete />
+          </button>
+        </div>
+      ),
+    },
+  ];
+  return <Table columns={columns} dataSource={dataDetailFilm} />;
 };
-
-export default DetailFilm;
+export default App;

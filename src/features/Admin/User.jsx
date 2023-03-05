@@ -8,7 +8,13 @@ const User = () => {
   const dataUser = useSelector((state) => state.admin.userDetail);
   console.log(dataUser.items);
   const [searchParam, setUseSearchParam] = useSearchParams();
-  if (!dataUser || !dataUser.items) return;
+  if (!dataUser || !dataUser.items)
+    return (
+      <div className="flex justify-center">
+        {" "}
+        <Loading />{" "}
+      </div>
+    );
 
   return (
     <div>
@@ -37,34 +43,30 @@ const User = () => {
             </tr>
           </thead>
           <tbody>
-            {dataUser.items.length ? (
-              dataUser.items.map((item, index) => {
-                return (
-                  <tr
-                    key={index}
-                    className="bg-white border-b dark:bg-gray-900 dark:border-gray-700"
+            {dataUser.items.map((item, index) => {
+              return (
+                <tr
+                  key={index}
+                  className="bg-white border-b dark:bg-gray-900 dark:border-gray-700"
+                >
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                   >
-                    <th
-                      scope="row"
-                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                    >
-                      {item.hoTen}
-                    </th>
-                    <td className="px-6 py-4">{item.taiKhoan}</td>
-                    <td className="px-6 py-4">{item.email}</td>
-                    <td className="px-6 py-4">{item.soDt}</td>
-                    <td className="px-6 py-4">{item.maLoaiNguoiDung}</td>
-                    <td className="px-6 py-4 text-white font-bold cursor-pointer ">
-                      <button className="p-2 rounded-md bg-green-600">
-                        <BsPencilSquare />
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })
-            ) : (
-              <Loading />
-            )}
+                    {item.hoTen}
+                  </th>
+                  <td className="px-6 py-4">{item.taiKhoan}</td>
+                  <td className="px-6 py-4">{item.email}</td>
+                  <td className="px-6 py-4">{item.soDt}</td>
+                  <td className="px-6 py-4">{item.maLoaiNguoiDung}</td>
+                  <td className="px-6 py-4 text-white font-bold cursor-pointer ">
+                    <button className="p-2 rounded-md bg-green-600">
+                      <BsPencilSquare />
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
         <div className="text-center">
