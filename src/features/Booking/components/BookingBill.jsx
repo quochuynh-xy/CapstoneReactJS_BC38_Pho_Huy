@@ -26,7 +26,7 @@ const BookingBill = () => {
           {countCommon}
         </span>
         <span className="basis-3/12 text-orange-400 ml-2 mr-4 text-end">
-          {commonPrice}đ
+          {Math.floor(commonPrice)}đ
         </span>
       </div>
       <div className="flex flex-wrap justify-end items-center">
@@ -36,24 +36,22 @@ const BookingBill = () => {
           {countVip}
         </span>
         <span className="basis-3/12 text-orange-400 ml-2 mr-4 text-end">
-          {vipPrice}đ
+          {Math.floor(vipPrice)}đ
         </span>
       </div>
       <div className="selected pl-3 pt-8 font-bold text-slate-200">
         <p className="seat-name">
           Ghế đã chọn:
-          <span className="text-red-500 ml-4">
-            {checkOutInfo?.danhSachGhe
-              ? checkOutInfo.danhSachGhe.map((item) => item.viTri).join(", ") +
-                "."
-              : " "}
+          <span className="text-green-400 mx-4 ">
+            {checkOutInfo?.danhSachGhe.map((item) => item.viTri).join(" - ")}
+            {checkOutInfo?.danhSachGhe[0] ? "." : ""}
           </span>
         </p>
       </div>
       <div className="mt-8 py-4 flex border-t-2 border-solid border-green-500">
         <p className="text-orange-400 text-lg pl-3">TỔNG CỘNG:</p>
         <span className="font-medium text-lg ml-auto text-orange-400 mr-4">
-          {commonPrice * countCommon + vipPrice * countVip}đ
+          {Math.floor(commonPrice * countCommon + vipPrice * countVip)}đ
         </span>
       </div>
     </div>

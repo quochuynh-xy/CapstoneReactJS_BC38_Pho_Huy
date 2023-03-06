@@ -1,7 +1,7 @@
-export const stringTrimmer = (data) => {
+export const stringTrimmer = (data, length) => {
   let text = data;
-  if (text.length <= 40) return text;
-  return text.slice(0, 40) + "...";
+  if (text.length <= length) return text;
+  return text.slice(0, length) + "...";
 };
 /**
  *

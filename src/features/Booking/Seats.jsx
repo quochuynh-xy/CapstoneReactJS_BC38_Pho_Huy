@@ -1,18 +1,29 @@
 import PageLayout from "../../HOCs/PageLayout";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDataShowId } from "./thunk";
 import BookingOrder from "./components/BookingOrder";
 import BookingSeatsMap from "./components/BookingSeatsMap";
 import { TfiHandPointRight } from "react-icons/tfi";
+import BookingFood from "./components/BookingFood";
+import BookingCompleted from "./components/BookingCompleted";
+import { types } from "./const";
+import { AiOutlineHome } from "react-icons/ai";
 function Seats() {
+  const navigate = useNavigate();
   const param = useParams();
   const dispatch = useDispatch();
   const selectedShowData = useSelector((state) => state.booking.selectedShow);
   const bookingStep = useSelector((state) => state.booking.bookingStep);
   const [movieInfo, setMovieInfo] = useState({});
   let [movieShowId, setMovieShowId] = useState(null);
+  const handleBackToStep0 = () => {
+    // Quay về step 0
+    dispatch({
+      type: types.GETBACK_STEP_0,
+    });
+  };
   useEffect(() => {
     setMovieShowId(param.maLichChieu);
   }, [param.maLichChieu]);
@@ -74,30 +85,56 @@ function Seats() {
   return (
     <PageLayout>
       <div className="booking__checkout">
-        <section className="steps container mx-auto ">
-          <p> Mã lịch chiếu {movieShowId}</p>
-          <div className="border-2 border-solid border-green-400 h-8 text-center flex justify-center">
-            <button className="mx-2 bg-red-400 text-purple-900">
-              Chọn số lượng vé
-            </button>
-            <span>===</span>
-            <button className="mx-2 bg-orange-400 text-purple-900">
-              Chọn ghế
-            </button>
-            <span>===</span>
-            <button className="mx-2 bg-yellow-400 text-purple-900">
-              Chọn đồ ăn
-            </button>
-            <span>===</span>
-            <button className="mx-2 bg-green-400 text-purple-900">
-              Thanh toán
+        <section className="steps container mx-auto pt-8">
+          <div className="flex justify-between head relative">
+            <div
+              className="basis-3/12 step start text-center cursor-pointer"
+              onClick={handleBackToStep0}
+            >
+              <p className="font-semibold text-white">1. Chọn vé.</p>
+            </div>
+            <div
+              className={`basis-3/12 step next text-center ${
+                bookingStep >= 1 ? " active" : ""
+              }`}
+            >
+              <p className="font-semibold text-white cursor-default">
+                2. Chọn ghế.
+              </p>
+            </div>
+            <div
+              className={`basis-3/12 step next text-center ${
+                bookingStep >= 2 ? " active" : ""
+              }`}
+            >
+              <p className="font-semibold text-white cursor-default">
+                3. Chọn đồ ăn.
+              </p>
+            </div>
+            <div
+              className={`basis-3/12 step next text-center ${
+                bookingStep >= 3 ? " active" : ""
+              }`}
+            >
+              <p className="font-semibold text-white cursor-default">
+                4. Xác nhận.
+              </p>
+            </div>
+            <button className="back absolute flex justify-center items-center"
+              onClick={()=> navigate("/")}
+            >
+                <AiOutlineHome/>
             </button>
           </div>
         </section>
-        {/*Trạng thái chọn số lượng vé*/}
+        {/*Trạng thái 0 chọn số lượng vé*/}
         {bookingStep === 0 ? step1 : null}
-        {/*Trạng thái chọn chỗ */}
+        {/*Trạng thái 1 chọn chỗ */}
         {bookingStep === 1 ? <BookingSeatsMap /> : null}
+        {/* Trạng thái 2 chọn đồ ăn */}
+        {bookingStep === 2 ? <BookingFood /> : null}
+        {/* Trạng thái 3 kết thúc */}
+        {bookingStep === 3 ? <BookingCompleted /> : null}
       </div>
     </PageLayout>
   );

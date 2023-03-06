@@ -1,7 +1,6 @@
-import { TestStupidLv } from "../Booking/components/BookingSeatsMap";
 function SignUp() {
   return <div>
-    <TestStupidLv/>
+    heyou
   </div>;
 }
 export default SignUp;

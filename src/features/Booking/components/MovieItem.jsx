@@ -58,8 +58,8 @@ function MovieItem(props) {
           </div>
         }
       >
-        <div className="h-9">
-          <h4 className="text-gray-900 text-base font-bold">{item.tenPhim}</h4>
+        <div className="h-12">
+          <h4 className="text-gray-900 text-base font-bold uppercase">{item.tenPhim}</h4>
         </div>
         <div className="text-center mt-4">
           {!item.sapChieu ? onShow : commingSoon}

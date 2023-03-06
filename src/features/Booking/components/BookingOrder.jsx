@@ -137,7 +137,7 @@ const BookingOrder = () => {
         <tbody>
           <tr>
             <td className="font-semibold text-slate-700">Adult-Stand-2D</td>
-            <td>{commonPrice} đ</td>
+            <td>{Math.floor(commonPrice)} đ</td>
             <td className="flex items-center">
               <FaMinus
                 className="btn--minus font-bold cursor-pointer"
@@ -156,7 +156,7 @@ const BookingOrder = () => {
               />
             </td>
             <td className="tracking-wide text-slate-700 text-end">
-              {orderList.countCommon * commonPrice} đ
+              {orderList.countCommon * Math.floor(commonPrice)} đ
             </td>
           </tr>
           <tr>
@@ -180,7 +180,7 @@ const BookingOrder = () => {
               />
             </td>
             <td className="tracking-wide text-orange-500 text-end">
-              {orderList.countVip * vipPrice} đ
+              {orderList.countVip * Math.floor(vipPrice)} đ
             </td>
           </tr>
           <tr>
@@ -191,8 +191,8 @@ const BookingOrder = () => {
               colSpan={2}
               className="tracking-wide font-semibold text-2xl text-end"
             >
-              {orderList.countVip * vipPrice +
-                orderList.countCommon * commonPrice}{" "}
+              {orderList.countVip * Math.floor(vipPrice) +
+                orderList.countCommon * Math.floor(commonPrice)}
               đ
             </td>
           </tr>

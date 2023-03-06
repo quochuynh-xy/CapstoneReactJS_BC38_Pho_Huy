@@ -4,6 +4,9 @@
 .booking {
   background-color: $bg-dark-1;
   .ant-carousel {
+    .container {
+      max-width: 2000px;
+    }
     .slick-list {
       .backArrow {
         color: #fff;
@@ -26,24 +29,26 @@
     }
     .slick-dots {
       li {
-        width: 24px;
+        width: 28px;
         margin-bottom: 16px;
         button {
-          width: 12px;
-          height: 12px;
-          box-shadow: 0 0 0px 2px #000000;
+          width: 16px;
+          height: 16px;
+          box-shadow: 0 0 0px 2px #fdfcf0;
           background-color: #f7c2c2;
           border-radius: 4px;
           margin: 0 auto;
+          border-radius: 50%;
         }
       }
       li.slick-active {
-        width: 24px;
+        width: 28px;
         button {
-          width: 12px;
-          height: 12px;
-          background-color: green;
+          width: 16px;
+          height: 16px;
+          background-color: red;
           margin: 0 auto;
+          border-radius: 50%;
         }
       }
     }
@@ -53,6 +58,9 @@
       margin-left: -1rem;
       margin-right: -1rem;
       .ant-card-cover {
+        img {
+          border-radius: 0;
+        }
         .play-trailer {
           transition: 0.5s;
           background-color: #50505091;
@@ -74,22 +82,22 @@
     padding-bottom: 80px;
     .ant-pagination-disabled {
       .ant-pagination-item-link {
-        color: #505050;
+        color: $cl-red-3;
       }
     }
     .ant-pagination-item-link {
-      color: $cl-primary;
+      color: $cl-red-1;
     }
     .ant-pagination-item {
       color: #fff;
       margin: 0 8px;
       a {
-        color: $cl-primary;
+        color: $cl-red-1;
         font-weight: 600;
       }
       &:hover {
         a {
-          color: $cl-yellow-2;
+          color: $cl-red-1;
         }
       }
     }
@@ -97,7 +105,7 @@
       background-color: transparent;
       border: none;
       a {
-        color: $cl-yellow-1;
+        color: $cl-red-1;
         text-decoration: underline;
         font-size: 1.2rem;
       }
@@ -111,7 +119,7 @@
       margin-right: 32px;
     }
     .tabs__body {
-      background-color: #fff;
+      background-color: $bg-primary;
       border-radius: 8px;
       padding-top: 1rem;
       .ant-tabs-nav {
@@ -143,7 +151,7 @@
               padding-bottom: 8px;
               transition: 0.3s;
               height: 100px;
-              color: #000000E0;
+              color: #000000e0;
               &:hover {
                 .theater--info {
                   .info__name {
@@ -161,7 +169,7 @@
                     color: #000000;
                   }
                   .info__address {
-                    color: $cl-green-3;
+                    color: $cl-grey-1;
                   }
                 }
               }
@@ -358,7 +366,45 @@
 .booking__checkout {
   background-color: $bg-dark-1;
   .steps {
-    background-color: #f7c2c2;
+    .head {
+      .step {
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center;
+        padding: 12px 0;
+        &.start {
+          margin-left: 0;
+          background-image: url("../../app/assets/img/images/selected_s.png");
+        }
+        &.next {
+          background-image: url("../../app/assets/img/images/unselected_n.png");
+          &.active {
+            background-image: url("../../app/assets/img/images/selected_n.png");
+          }
+        }
+      }
+      .back {
+        font-size: 2rem;
+        width: 60px;
+        color: $cl-primary;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transition: 0.3s;
+        box-shadow: 0 0 0px 40px $bg-orange-1 inset;
+        svg {
+          transition: inherit;
+        }
+        &:hover {
+          color: $cl-yellow-1;
+          background-color: $bg-dark-1;
+          box-shadow: 0 0 2px 2px #ff8c08 inset;
+          svg {
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
   }
   // step 1: select number of seat
   .content {
@@ -501,12 +547,12 @@
         }
       }
       .seats {
-        .row-index{
+        .row-index {
           margin-bottom: 20px;
           padding-right: 1rem;
           font-weight: 700;
           color: $cl-yellow-2;
-          font-family: 'Times New Roman', Times, serif;
+          font-family: "Times New Roman", Times, serif;
         }
         .seat {
           border: 2px solid transparent;
@@ -565,32 +611,32 @@
         }
       }
     }
-    .bill {
-      margin-top: 100px;
-      padding-top: 10px;
-      background-color: $bg-dark-1;
-      max-width: 300px;
-      .title {
-        text-transform: uppercase;
-        font-weight: 600;
-        color: $cl-primary;
-        padding-bottom: 8px;
-        padding-left: 8px;
-        border-bottom: 2px solid $bg-green-2;
-      }
-      .bill__moviename {
-        color: $cl-green-1;
-        font-size: 1rem;
-        font-weight: 600;
-        padding-left: 12px;
-        padding-top: 0.5rem;
-      }
-      .ticket-type {
-        color: $cl-primary;
-      }
+  }
+  // step3: select food
+  .bill {
+    margin-top: 100px;
+    padding-top: 10px;
+    background-color: $bg-dark-1;
+    max-width: 300px;
+    .title {
+      text-transform: uppercase;
+      font-weight: 600;
+      color: $cl-primary;
+      padding-bottom: 8px;
+      padding-left: 8px;
+      border-bottom: 2px solid $bg-green-2;
+    }
+    .bill__moviename {
+      color: $cl-green-1;
+      font-size: 1rem;
+      font-weight: 600;
+      padding-left: 12px;
+      padding-top: 0.5rem;
+    }
+    .ticket-type {
+      color: $cl-primary;
     }
   }
-  // step3: completed booking
 }
 .modal__trailer {
   .ant-modal-content {

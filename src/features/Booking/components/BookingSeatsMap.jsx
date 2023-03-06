@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BookingBill from "./BookingBill";
-import {BsFillPersonFill} from "react-icons/bs"
+import { BsFillPersonFill } from "react-icons/bs";
 import { types } from "../const";
 // Đang dính bug khi chưa load xong dữ liệu mà nhấn ngay tới bước này thì sinh lỗi.
 // Bug tự nhảy đến trang chọn ghế mà chưa qua trang chọn số lượng vé
@@ -15,6 +15,7 @@ const BookingSeatsMap = () => {
   );
   // Lấy thông tin đặt ghế của khách hàng
   const { orderInfo } = useSelector((state) => state.booking.cartInfo);
+  let { countCommon, countVip } = orderInfo;
   // Mảng chứa những ghế đang chọn
   const [danhSachGhe, setDanhSachGhe] = useState([]);
   // Sơ đồ ghế ngồi
@@ -42,7 +43,7 @@ const BookingSeatsMap = () => {
   );
   const TakenSeat = (props) => (
     <button className="taken seat cursor-not-allowed text-center">
-      <BsFillPersonFill className="mx-auto"/>
+      <BsFillPersonFill className="mx-auto" />
     </button>
   );
   const splitRow = (totalSeat, quantity = 16) => {
@@ -79,8 +80,7 @@ const BookingSeatsMap = () => {
     // taiKhoanNguoiDat: null;
     // tenGhe: "90";
     // viTri: "F10";
-    const { countCommon, countVip } = orderInfo;
-    const { viTri, maGhe, giaVe } = slot;
+    const {maGhe} = slot;
     let cloneDanhSachGhe = [...danhSachGhe];
     let index = cloneDanhSachGhe.findIndex((item) => item.maGhe === maGhe);
     if (index !== -1) {
@@ -115,8 +115,8 @@ const BookingSeatsMap = () => {
       payload: {
         maLichChieu: maLichChieu,
         danhSachGhe: cloneDanhSachGhe,
-      }
-    })
+      },
+    });
     setDanhSachGhe(cloneDanhSachGhe);
   };
   useEffect(() => {
@@ -127,11 +127,14 @@ const BookingSeatsMap = () => {
   return (
     <section className="seatandbill pt-20 flex justify-between container mx-auto">
       <div className="seatsMap basis-8/12">
-        <p className="text-white mb-6">
+        <p className="text-white mb-6 indent-1">
           Quý khách vui lòng chọn ghế trong theo sơ đồ phía dưới. Nếu bạn muốn
           chọn loại ghế khác hoặc thay đổi số lượng vé muốn mua, vui lòng nhấn
           vào
-          <span className="text-green-500 font-semibold"> "Bước 1: chọn vé" </span>
+          <span className="text-green-500 font-semibold">
+            {" "}
+            "Bước 1: chọn vé"{" "}
+          </span>
           ở thanh công cụ bên trên để quay về màn hình chọn.
         </p>
         <div className="screen text-center">
@@ -202,7 +205,9 @@ const BookingSeatsMap = () => {
               <p className="text-white ml-4">: Ghế VIP.</p>
             </div>
             <div className="flex mr-4 items-center">
-              <span className="taken flex items-center"><BsFillPersonFill className="mx-auto"/></span>
+              <span className="taken flex items-center">
+                <BsFillPersonFill className="mx-auto" />
+              </span>
               <p className="text-white ml-4">: Ghế đã đặt.</p>
             </div>
             <div className="flex mr-4 items-center">
@@ -216,7 +221,18 @@ const BookingSeatsMap = () => {
         <BookingBill />
         <div className="text-end">
           <button
-            className="bg-red-600 rounded-md mt-4 px-6 py-2 text-white ml-auto"
+            className={countCommon + countVip === danhSachGhe?.length ? "bg-red-600 rounded-md mt-4 px-6 py-2 text-white ml-auto": "bg-slate-600 rounded-md mt-4 px-6 py-2 text-white ml-auto"}
+            onClick={() => {
+              let selected = danhSachGhe.length;
+              if (countCommon + countVip !== selected) {
+                return;
+              } else {
+                dispatch({
+                  type: types.SET_BOOKING_STEP,
+                  payload: 2,
+                });
+              }
+            }}
           >
             Xác nhận
           </button>
@@ -226,43 +242,3 @@ const BookingSeatsMap = () => {
   );
 };
 export default BookingSeatsMap;
-const number = [1, 2, 3];
-export const TestStupidLv = () => {
-  const [array, setArray] = useState([]);
-  useEffect(() => {
-    setArray(number);
-  }, [number]);
-  const addNumber = () => {
-    let newNumber = Math.floor(Math.random() * 10 + 1);
-    let clone = [...array];
-    clone.push(newNumber);
-    setArray(clone);
-    console.log(clone);
-    console.log(array);
-  };
-  const sentData = () => {
-    console.log("Đây là state được gửi", array);
-  };
-  return (
-    <div className="ml-4">
-      <ul>
-        {array.map((item, index) => {
-          return (
-            <li key={index} className="font-bold text-lg">
-              số {item}
-            </li>
-          );
-        })}
-      </ul>
-      <button
-        className="bg-red-300"
-        onClick={() => {
-          addNumber();
-          sentData();
-        }}
-      >
-        Click
-      </button>
-    </div>
-  );
-};

@@ -6,5 +6,6 @@ export const types = {
     GET_DATA_OF_SHOW_ID: "booking/GET_DATA_OF_SHOW_ID",
     START_SELECT_SEATS: "booking/START_SELECT_SEATS",
     SELECTING_SEATS: "booking/SELECTING_SEATS",
+    GETBACK_STEP_0 : "booking/GETBACK_STEP_0",
     SET_BOOKING_STEP:"booking/SET_BOOKING_STEP"
 }
