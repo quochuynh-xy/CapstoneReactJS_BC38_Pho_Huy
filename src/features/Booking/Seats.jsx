@@ -24,6 +24,13 @@ function Seats() {
       type: types.GETBACK_STEP_0,
     });
   };
+  const hanleBackToHomePage = () => {
+    dispatch({
+      type: types.SET_BOOKING_STEP,
+      payload:0
+    })
+    navigate("/")
+  }
   useEffect(() => {
     setMovieShowId(param.maLichChieu);
   }, [param.maLichChieu]);
@@ -121,7 +128,7 @@ function Seats() {
               </p>
             </div>
             <button className="back absolute flex justify-center items-center"
-              onClick={()=> navigate("/")}
+              onClick={hanleBackToHomePage}
             >
                 <AiOutlineHome/>
             </button>
