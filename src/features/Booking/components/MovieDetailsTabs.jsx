@@ -95,7 +95,7 @@ const MovieDetailsTabs = (props) => {
                                   )
                                 }
                               >
-                                {moment(rap.ngayChieuGioChieu).format("hh:mm")}{" "}
+                                {moment(rap.ngayChieuGioChieu).format("hh:mm a")}{" "}
                                 -
                                 <span className="">
                                   {moment(rap.ngayChieuGioChieu).format(

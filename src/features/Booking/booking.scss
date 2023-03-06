@@ -1,11 +1,186 @@
 @import "../../sass/const.scss";
 // Nơi quản lý css của booking feature
+header.nav-bar {
+  background-color: $bg-dark-1;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  box-shadow: 0 4px 4px 0 #818181;
+  height: 70px;
+  .home {
+  }
+  nav {
+    .nav-item {
+      color: $cl-primary;
+      position: relative;
+      font-weight: 600;
+      transition: 0.5s;
+      &::after {
+        transition: inherit;
+        position: absolute;
+        content: "";
+        width: 0%;
+        height: 2px;
+        background-color: $cl-red-2;
+        bottom: -2px;
+        left: 0;
+      }
+      &:hover {
+        color: $cl-red-2;
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+    .nav-item.active {
+      color: $cl-red-2;
+    }
+  }
+  .action {
+    .auth {
+      color: $cl-red-3;
+      transition: 0.3s;
+      &:hover {
+        color: $cl-primary;
+        text-decoration: underline;
+      }
+    }
+    .user {
+      .avatar {
+        width: 30px;
+        height: 30px;
+        background-color: #7e5f5f;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+      .user__mng {
+        color: $cl-primary;
+        .user__action {
+          display: none;
+          transition: 0.5s;
+          background-color: $bg-dark-3;
+          color: $cl-grey-1;
+          min-width: 130px;
+          border-radius: 4px;
+          right: 0;
+          top: 100%;
+          overflow: hidden;
+          li {
+            font-size: 0.8rem;
+            line-height: 2;
+            padding: 4px 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+            &:hover {
+              background-color: $bg-dark-2;
+              color: #000000;
+            }
+          }
+        }
+        &:hover {
+          .user__action {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+footer.footer {
+  background-color: $bg-dark-1;
+  box-shadow: 0 -2px 4px  #fff;
+  padding-top: 40px;
+  margin-top: 80px;
+  color: $cl-grey-4;
+  .footer__top {
+    padding-bottom: 60px;
+    .col {
+      .logo {
+        font-size: 80px;
+        color: $cl-red-1;
+      }
+      .name {
+        color: $cl-red-1;
+        font-size: 2rem;
+      }
+      h3 {
+        padding-left: 12px;
+        margin-bottom: 12px;
+        font-weight: bold;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          height: 100%;
+          left: 0;
+          width: 3px;
+          background-color: $cl-red-2;
+        }
+      }
+      .col-content {
+        ul {
+          li {
+            line-height: 2.2;
+            a {
+              font-size: 0.8rem;
+              transition: 0.3s;
+              &:hover {
+                color: $cl-primary;
+              }
+              svg {
+                color: $cl-green-2;
+              }
+            }
+          }
+        }
+      }
+      .social {
+        display: flex;
+        .social__item {
+          font-size: 2rem;
+          margin-right: 12px;
+          transition: 0.3s;
+          &:hover {
+            color: $cl-primary;
+          }
+        }
+      }
+      .mobile-app {
+        display: flex;
+        justify-content: start;
+        flex-direction: column;
+        .app__item {
+          font-size: 3.5rem;
+          margin-left: 8px;
+          margin-right: 8px;
+          display: flex;
+          align-items: center;
+          transition: 0.3s;
+          &:hover {
+            color: $cl-primary;
+          }
+        }
+      }
+    }
+  }
+  .footer__bot {
+    border-top: 1px solid $cl-grey-1;
+    padding: 32px 0;
+    font-size: 1.1rem;
+  }
+}
 // Home page
 .booking {
-  background-color: $bg-dark-1;
+  background-color: $bg-dark-4;
   .ant-carousel {
+    margin-top: 70px;
+    background: radial-gradient(circle, #000000 0%, #a0a0a0 100%);
     .container {
       max-width: 2000px;
+      &:active {
+        cursor: grab;
+      }
     }
     .slick-list {
       .backArrow {
@@ -121,7 +296,8 @@
     .tabs__body {
       background-color: $bg-primary;
       border-radius: 8px;
-      padding-top: 1rem;
+      // padding-top: 1rem;
+      padding-bottom: 1rem;
       .ant-tabs-nav {
         // Danh sách rạp chiếu
         position: sticky;
@@ -181,6 +357,9 @@
             }
           }
         }
+        .ant-tabs-nav-operations {
+          display: none;
+        }
       }
       .ant-tabs-content-holder {
         max-height: 800px;
@@ -211,6 +390,7 @@
 // Detail page
 .movie__detail {
   background-color: $bg-dark-1;
+  margin-top: 70px;
   .detail__info {
     .container.info {
       padding: 68px 0;

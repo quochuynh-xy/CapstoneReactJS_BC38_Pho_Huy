@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import ModalClips from "./components/ModalClip";
 import "./booking.scss"
 import MovieDetailsTabs from "./components/MovieDetailsTabs";
+import Footer from "../../components/Footer"; 
 function Detail() {
   const params = useParams(); // {maPhim: <number>}
   return (
@@ -13,6 +14,7 @@ function Detail() {
         <Header/>
         <MovieInfo maPhim={params.maPhim}/>
         <MovieDetailsTabs maPhim={params.maPhim}/>
+        <Footer/>
         <ModalClips/>
       </PageLayout>
     </div>

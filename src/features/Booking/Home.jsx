@@ -9,6 +9,7 @@ import "./booking.scss";
 import ModalClip from "./components/ModalClip";
 import PageLayout from "../../HOCs/PageLayout";
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 function Home() {
   const dispatch = useDispatch();
   const [paramsUrl, setParamsUrl] = useSearchParams();
@@ -25,6 +26,7 @@ function Home() {
         <BookingCarousel />
         <MoviesList />
         <MoviesTab />
+        <Footer/>
         <ModalClip />
       </PageLayout>
     </section>

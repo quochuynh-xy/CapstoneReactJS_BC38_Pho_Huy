@@ -85,7 +85,7 @@ function MoviesTab() {
                               onClick={() => navigate(`/Booking/TicketRoom/${time.maLichChieu}`)}
                               >
                               {moment(time.ngayChieuGioChieu).format(
-                                "hh:mm"
+                                "hh:mm a"
                               )} - 
                               {moment(time.ngayChieuGioChieu).format(
                                 " DD/MM/YY"
