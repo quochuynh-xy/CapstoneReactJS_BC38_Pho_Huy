@@ -26,7 +26,7 @@ function SignIn() {
   }, [isLogin, navigate]);
   return (
     <PageLayout>
-      <div className="login__bgcover">
+      <div className="signInPage">
         <div className="login container mx-auto flex items-center justify-center">
           <form
             action=""
@@ -34,7 +34,7 @@ function SignIn() {
           >
             <div className="form__header text-center">
               <div className="text-center">
-                <button className="logo">
+                <button className="logo" onClick={() => navigate("/")}>
                   <MdMovieFilter className="inline-block" />
                   <span>tixket box</span>
                 </button>
@@ -64,7 +64,7 @@ function SignIn() {
                   className="tracking-wider mt-1 pl-2 py-1 text-red-600 font-semibold border-yellow-700 border-2 border-solid rounded-md"
                   id="password"
                   type="password"
-                  placeholder="Tài khoản"
+                  placeholder="Mật khẩu"
                   name="matKhau"
                   onChange={handleChange}
                   value={loginInfo.matKhau}
@@ -80,17 +80,19 @@ function SignIn() {
               </div>
             </div>
             <div className="login__footer mt-4">
-              <p>Chưa có tài khoản Tix?
-              <span
-                className="cursor-pointer ml-1"
-                onClick={() => navigate("/Authentication/SignUp")}
-              >
-                Đăng ký ngay
-              </span>
+              <p>
+                Chưa có tài khoản Tix?
+                <span
+                  className="cursor-pointer ml-1"
+                  onClick={() => navigate("/Authentication/SignUp")}
+                >
+                  Đăng ký ngay
+                </span>
               </p>
             </div>
           </form>
         </div>
+        <div className="login__bgcover"></div>
       </div>
     </PageLayout>
   );
