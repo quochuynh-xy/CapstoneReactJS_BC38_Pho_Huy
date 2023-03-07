@@ -850,14 +850,8 @@ footer.footer {
   }
 }
 // Signin page
-.login__bgcover {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-image: url("../../app/assets/img/images/bg_1.jpg");
-  background-size: 100% 100%;
+.signInPage {
+  overflow-y: scroll;
   .login {
     height: 100vh;
     .login__form {
@@ -883,10 +877,10 @@ footer.footer {
           }
         }
         .signin-btn {
-          transition: .4s;
+          transition: 0.4s;
           box-shadow: 0 0 40px 40px $cl-red-1 inset;
           &:hover {
-            box-shadow:  0 0 0px 2px $cl-red-1 inset;
+            box-shadow: 0 0 0px 2px $cl-red-1 inset;
             color: $cl-red-1;
           }
         }
@@ -906,16 +900,20 @@ footer.footer {
       }
     }
   }
+  .login__bgcover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: url("../../app/assets/img/images/bg_1.jpg");
+    background-size: 100% 100%;
+    z-index: -1;
+  }
 }
 // SignUp page
-.signup__bgcover {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-image: url("../../app/assets/img/images/bg_1.jpg");
-  background-size: 100% 100%;
+.signUpPage {
+  overflow-y: scroll;
   .signup {
     height: 100vh;
     .signup__form {
@@ -935,16 +933,19 @@ footer.footer {
         }
       }
       .form__body {
+        .input-error {
+          color: $cl-red-2;
+        }
         input {
           &:focus-visible {
             outline: none;
           }
         }
         .signin-btn {
-          transition: .4s;
+          transition: 0.4s;
           box-shadow: 0 0 40px 40px $cl-red-1 inset;
           &:hover {
-            box-shadow:  0 0 0px 2px $cl-red-1 inset;
+            box-shadow: 0 0 0px 2px $cl-red-1 inset;
             color: $cl-red-1;
           }
         }
@@ -963,5 +964,15 @@ footer.footer {
         }
       }
     }
+  }
+  .signup__bgcover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: url("../../app/assets/img/images/bg_1.jpg");
+    background-size: 100% 100%;
+    z-index: -1;
   }
 }
