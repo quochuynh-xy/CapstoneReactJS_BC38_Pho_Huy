@@ -2,16 +2,19 @@ import { useNavigate } from "react-router-dom";
 import PageLayout from "../../HOCs/PageLayout";
 import { MdMovieFilter } from "react-icons/md";
 import { useReducer, useState } from "react";
-import { Dropdown, Space } from "antd";
+import { Dropdown } from "antd";
+// import types from "./const";
+// import { authServices } from "./Services/AuthServices";
+import ResultPop from "./components/ResultPop";
 function SignUp() {
   const navigate = useNavigate();
   const [registerInfo, setRegisterInfo] = useState({
-    taiKhoan: "",
-    matKhau: "_",
-    email: "",
-    soDt: "",
-    maNhom: "",
-    hoTen: "",
+    taiKhoan: "cocain",
+    matKhau: "Cocain@343",
+    email: "cocain@gmail.com",
+    soDt: "9992229991",
+    maNhom: "GP10",
+    hoTen: "Châu Chấu",
   });
   const listGroups = [
     "GP01",
@@ -30,7 +33,7 @@ function SignUp() {
     const regexTaiKhoan = /^[a-zA-Z0-9._]+$/;
     const regexMatKhau =
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,20}$/;
-    const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    const regexEmail = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
     const regexPhone = /^[0-9]{10}$/;
     const regexHoTen =
       /^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*(?:[ ][A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*)*$/;
@@ -165,6 +168,7 @@ function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
     let acceptSentData = true;
+    let result = true;
     for (let key in errorMessenger) {
       if (errorMessenger[key]) {
         acceptSentData = false;
@@ -179,7 +183,17 @@ function SignUp() {
         });
       }
     }
-    console.log(acceptSentData);
+    if (!acceptSentData) {
+      result = false;
+      alert("Sai điều kiện");
+      return;
+    } else {
+      // authServices
+      //   .signUp(registerInfo)
+      //   .then((res) => console.log(res))
+      //   .catch((err) => console.log(err));
+      
+    }
   };
   return (
     <PageLayout>
@@ -337,6 +351,7 @@ function SignUp() {
         </div>
         <div className="signup__bgcover"></div>
       </div>
+      <ResultPop/>
     </PageLayout>
   );
 }

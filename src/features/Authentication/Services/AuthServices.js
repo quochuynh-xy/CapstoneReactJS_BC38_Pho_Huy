@@ -7,5 +7,8 @@ export const authServices = {
                 Authorization: "Bearer " + token
             }
         })
-     }
+     },
+    signUp: (signUpData) => {
+       return https.post("/api/QuanLyNguoiDung/DangKy", signUpData)
+    }
 }

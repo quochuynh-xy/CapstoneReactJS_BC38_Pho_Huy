@@ -2,6 +2,7 @@ import produce from "immer";
 import types from "./const";
 const initState = {
   userLogin: null,
+  userSignUpData: {}
 };
 const authentication = (state = initState, action) => {
   const { type, payload } = action;
@@ -13,6 +14,10 @@ const authentication = (state = initState, action) => {
       }
       case types.LOGOUT: {
         draft.userLogin = payload;
+        break
+      }
+      case types.ADD_USER: {
+        draft.userSignUpData = payload;
         break
       }
       default:
