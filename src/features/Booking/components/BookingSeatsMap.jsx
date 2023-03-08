@@ -114,7 +114,7 @@ const BookingSeatsMap = () => {
       type: types.SELECTING_SEATS,
       payload: {
         maLichChieu: maLichChieu,
-        danhSachGhe: cloneDanhSachGhe,
+        danhSachVe: cloneDanhSachGhe,
       },
     });
     setDanhSachGhe(cloneDanhSachGhe);

@@ -548,6 +548,8 @@ footer.footer {
 // Seats page
 .booking__checkout {
   background-color: $bg-dark-1;
+  padding-bottom: 80px;
+  min-height: 100vh;
   .steps {
     .head {
       .step {
@@ -730,25 +732,28 @@ footer.footer {
         }
       }
       .seats {
+        margin-right: 20px;
         .row-index {
           margin-bottom: 20px;
           padding-right: 1rem;
           font-weight: 700;
           color: $cl-yellow-2;
           font-family: "Times New Roman", Times, serif;
+          width: 20px;
+          height: 20px;
         }
         .seat {
           border: 2px solid transparent;
           font-size: 0.8rem;
-          width: 40px;
-          margin-bottom: 20px;
-          border-radius: 8px;
           padding: 4px;
+          width: 40px;
+          height: 30px;
+          margin-bottom: 16px;
+          border-radius: 8px;
           text-align: center;
           font-weight: 700;
           color: $cl-primary;
           transition: 0.3s;
-          min-height: 30px;
           &.selecting {
             background-color: $bg-green-1;
           }

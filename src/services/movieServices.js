@@ -35,4 +35,10 @@ export const movieServices = {
         MaLichChieu: MaLichChieu,
       },
     }),
+    fetchAccessToken: (data) => https.post("api/QuanLyNguoiDung/DangNhap", data),
+    sendCheckOutTikets: (data, token) => https.post("api/QuanLyDatVe/DatVe", data, {
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    })
 };

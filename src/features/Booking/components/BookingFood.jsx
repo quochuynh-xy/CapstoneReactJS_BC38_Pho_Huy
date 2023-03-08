@@ -108,7 +108,7 @@ const BookingFood = () => {
               })
             }
           >
-            Xác nhận
+            Tiếp theo
           </button>
         </div>
       </div>

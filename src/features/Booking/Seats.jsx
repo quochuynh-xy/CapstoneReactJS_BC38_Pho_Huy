@@ -124,7 +124,7 @@ function Seats() {
               }`}
             >
               <p className="font-semibold text-white cursor-default">
-                4. Xác nhận.
+                4. Thanh toán.
               </p>
             </div>
             <button className="back absolute flex justify-center items-center"

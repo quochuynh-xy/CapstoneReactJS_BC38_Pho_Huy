@@ -10,7 +10,7 @@ const initState = {
     orderInfo: {}, // Thông tin số lượng ghế khách yêu cầu
     checkOutInfo: {
       maLichChieu: 0,
-      danhSachGhe: [],
+      danhSachVe: [],
     }, // Thông tin đặt ghế sau khi chọn chỗ.
   }, // Thông tin giỏ hàng
   bookingStep: 0, // Chọn số lượng vé - đặt ghế - chọn đồ ăn - Thanh toán: 0 - 1 - 2 - 3
@@ -59,7 +59,7 @@ const booking = (state = initState, action) => {
       }
       case types.GETBACK_STEP_0: {
         draft.bookingStep = 0;
-        draft.cartInfo.checkOutInfo.danhSachGhe = [];
+        draft.cartInfo.checkOutInfo.danhSachVe = [];
         break;
       }
       default:

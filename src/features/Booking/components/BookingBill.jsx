@@ -43,8 +43,8 @@ const BookingBill = () => {
         <p className="seat-name">
           Ghế đã chọn:
           <span className="text-green-400 mx-4 ">
-            {checkOutInfo?.danhSachGhe.map((item) => item.viTri).join(" - ")}
-            {checkOutInfo?.danhSachGhe[0] ? "." : ""}
+            {checkOutInfo?.danhSachVe.map((item) => item.viTri).join(" - ")}
+            {checkOutInfo?.danhSachVe[0] ? "." : ""}
           </span>
         </p>
       </div>
