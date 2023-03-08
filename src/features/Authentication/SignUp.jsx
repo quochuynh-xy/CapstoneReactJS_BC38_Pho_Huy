@@ -3,18 +3,22 @@ import PageLayout from "../../HOCs/PageLayout";
 import { MdMovieFilter } from "react-icons/md";
 import { useReducer, useState } from "react";
 import { Dropdown } from "antd";
-// import types from "./const";
-// import { authServices } from "./Services/AuthServices";
+import { authServices } from "./Services/AuthServices";
 import ResultPop from "./components/ResultPop";
+import { useDispatch } from "react-redux";
+import types from "./const";
 function SignUp() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [registerStatus, setRegisterStatus] = useState("");
+  const [registerMessage, setRegisterMessage] = useState("");
   const [registerInfo, setRegisterInfo] = useState({
-    taiKhoan: "cocain",
-    matKhau: "Cocain@343",
-    email: "cocain@gmail.com",
-    soDt: "9992229991",
-    maNhom: "GP10",
-    hoTen: "Châu Chấu",
+    taiKhoan: "",
+    matKhau: "",
+    email: "",
+    soDt: "",
+    maNhom: "",
+    hoTen: "",
   });
   const listGroups = [
     "GP01",
@@ -80,11 +84,11 @@ function SignUp() {
         // từ 8 đến 20 ký tự
         // Không được để trống
         // Chữ thường chữ hoa ký tự đặc biệt
-        if (!lengthCheck(payload, 8, 20)) {
-          messenger = "*Từ 8 đến 20 ký tự.";
-        }
         if (!pattenCheck(payload, regexMatKhau)) {
           messenger = "*Bao gồm chữ in hoa, số và ký tự đặc biệt.";
+        }
+        if (!lengthCheck(payload, 8, 20)) {
+          messenger = "*Từ 8 đến 20 ký tự.";
         }
         if (!requiredCheck(payload)) {
           messenger = "*Không được để trống.";
@@ -168,7 +172,6 @@ function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
     let acceptSentData = true;
-    let result = true;
     for (let key in errorMessenger) {
       if (errorMessenger[key]) {
         acceptSentData = false;
@@ -184,15 +187,25 @@ function SignUp() {
       }
     }
     if (!acceptSentData) {
-      result = false;
-      alert("Sai điều kiện");
       return;
     } else {
-      // authServices
-      //   .signUp(registerInfo)
-      //   .then((res) => console.log(res))
-      //   .catch((err) => console.log(err));
-      
+      authServices
+        .signUp(registerInfo)
+        .then((res) => {
+          dispatch({ type: types.SHOW_MODAL, payload: true });
+          setRegisterMessage(
+            `"Chúc mừng ${res.data.content.hoTen} đăng ký thành công!`
+          );
+          setRegisterStatus(res.data.statusCode);
+        })
+        .catch((err) => {
+          dispatch({
+            type: types.SHOW_MODAL,
+            payload: true,
+          });
+          setRegisterMessage(err.response.data.content);
+          setRegisterStatus(err.response.status);
+        });
     }
   };
   return (
@@ -351,7 +364,7 @@ function SignUp() {
         </div>
         <div className="signup__bgcover"></div>
       </div>
-      <ResultPop/>
+      <ResultPop requestCode={registerStatus} title={registerMessage} />
     </PageLayout>
   );
 }
