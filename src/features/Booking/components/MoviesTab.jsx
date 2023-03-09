@@ -1,6 +1,6 @@
 import { Tabs, Collapse } from "antd";
 import { useState, useEffect } from "react";
-import { movieServices } from "../../../services/movieServices";
+import { movieServices } from "../Services/movieServices";
 import moment from "moment/moment";
 import { getStandFor } from "../utilities/utilities";
 import { useNavigate } from "react-router-dom";

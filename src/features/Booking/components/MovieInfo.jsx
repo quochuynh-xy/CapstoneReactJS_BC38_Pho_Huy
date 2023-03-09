@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { movieServices } from "../../../services/movieServices";
+import { movieServices } from "../Services/movieServices";
 import { useState } from "react";
 import { showRating } from "../utilities/utilities";
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";

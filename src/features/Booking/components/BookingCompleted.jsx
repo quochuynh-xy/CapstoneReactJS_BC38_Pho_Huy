@@ -1,7 +1,7 @@
 // import BookingBill from "./BookingBill";
 import { useDispatch, useSelector } from "react-redux";
 import { getStandFor } from "../utilities/utilities";
-import { movieServices } from "../../../services/movieServices";
+import { movieServices } from "../Services/movieServices"; 
 import { useEffect, useState } from "react";
 import { Modal } from "antd";
 import {types} from "../const";

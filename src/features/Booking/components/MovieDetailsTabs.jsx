@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { movieServices } from "../../../services/movieServices";
+import { movieServices } from "../Services/movieServices";
 import { useState } from "react";
 import { Tabs, Collapse } from "antd";
 import moment from "moment/moment";

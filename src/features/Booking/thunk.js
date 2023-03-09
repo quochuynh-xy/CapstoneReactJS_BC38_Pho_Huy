@@ -1,5 +1,5 @@
 import { types } from "./const"; // token cybersoft, type của action
-import { movieServices } from "../../services/movieServices";
+import { movieServices } from "./Services/movieServices";
 /**
  * Đây là 1 thunk function, thunkfunction nhận vào 2 tham số:
  * + Tham số thứ nhất đại diện cho dispatch, nó là một hàm để gửi action lên store.
