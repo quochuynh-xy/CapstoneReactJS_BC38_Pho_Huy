@@ -6,6 +6,7 @@ import { Dropdown } from "antd";
 import { authServices } from "./Services/AuthServices";
 import ResultPop from "./components/ResultPop";
 import { useDispatch } from "react-redux";
+import "./authentication.scss"
 import types from "./const";
 function SignUp() {
   const navigate = useNavigate();

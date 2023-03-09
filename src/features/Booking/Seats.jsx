@@ -10,6 +10,7 @@ import BookingFood from "./components/BookingFood";
 import BookingCompleted from "./components/BookingCompleted";
 import { types } from "./const";
 import { AiOutlineHome } from "react-icons/ai";
+import "./booking.scss";
 function Seats() {
   const navigate = useNavigate();
   const param = useParams();

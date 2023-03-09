@@ -4,6 +4,7 @@ import { loginAction } from "./thunk";
 import PageLayout from "../../HOCs/PageLayout";
 import { useNavigate } from "react-router-dom";
 import { MdMovieFilter } from "react-icons/md";
+import "./authentication.scss"
 function SignIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
