@@ -887,10 +887,11 @@ footer.footer {
 }
 // Signin page
 .signInPage {
-  overflow-y: scroll;
   .login {
-    height: 100vh;
+    min-height: 100vh;
     .login__form {
+      margin-top: 40px;
+      margin-bottom: 40px;
       padding-top: 40px;
       padding-left: 50px;
       padding-right: 50px;
@@ -949,10 +950,11 @@ footer.footer {
 }
 // SignUp page
 .signUpPage {
-  overflow-y: scroll;
   .signup {
-    height: 100vh;
+    min-height: 100vh;
     .signup__form {
+      margin-top: 40px;
+      margin-bottom: 40px;
       padding-top: 20px;
       padding-left: 50px;
       padding-right: 50px;

@@ -85,7 +85,7 @@ function SignUp() {
         // Không được để trống
         // Chữ thường chữ hoa ký tự đặc biệt
         if (!pattenCheck(payload, regexMatKhau)) {
-          messenger = "*Bao gồm chữ in hoa, số và ký tự đặc biệt.";
+          messenger = "*Chữ in hoa, số và ký tự đặc biệt.";
         }
         if (!lengthCheck(payload, 8, 20)) {
           messenger = "*Từ 8 đến 20 ký tự.";
@@ -230,9 +230,9 @@ function SignUp() {
               </h2>
             </div>
             <div className="form__body">
-              <div>
+              <div className="relative">
                 <label htmlFor="hoTen">Họ & tên</label>
-                <span className="input-error ml-2 text-xs">
+                <span className="input-error ml-2 text-xs absolute top-1 w-72">
                   {errorMessenger.hoTen}
                 </span>
                 <br />
@@ -246,9 +246,9 @@ function SignUp() {
                   onBlur={(e) => dispatchInput(e.target)}
                 />
               </div>
-              <div className="mt-2">
+              <div className="mt-2 relative">
                 <label htmlFor="taiKhoan">Tài khoản</label>
-                <span className="input-error ml-2 text-xs">
+                <span className="input-error ml-2 text-xs absolute top-1 w-72">
                   {errorMessenger.taiKhoan}
                 </span>
                 <br />
@@ -262,9 +262,9 @@ function SignUp() {
                   onBlur={(e) => dispatchInput(e.target)}
                 />
               </div>
-              <div className="mt-2">
+              <div className="mt-2 relative">
                 <label htmlFor="matKhau">Mật khẩu</label>
-                <span className="input-error ml-2 text-xs">
+                <span className="input-error ml-2 text-xs absolute top-1 w-72">
                   {errorMessenger.matKhau}
                 </span>
                 <br />
@@ -278,9 +278,9 @@ function SignUp() {
                   onBlur={(e) => dispatchInput(e.target)}
                 />
               </div>
-              <div className="mt-2">
+              <div className="mt-2 relative">
                 <label htmlFor="email">Email</label>
-                <span className="input-error ml-2 text-xs">
+                <span className="input-error ml-2 text-xs absolute top-1 w-72">
                   {errorMessenger.email}
                 </span>
                 <br />
@@ -295,9 +295,9 @@ function SignUp() {
                   autoComplete="false"
                 />
               </div>
-              <div className="mt-2">
+              <div className="mt-2 relative">
                 <label htmlFor="soDt">Số điện thoại</label>
-                <span className="input-error ml-2 text-xs">
+                <span className="input-error ml-2 text-xs absolute top-1 w-72">
                   {errorMessenger.soDt}
                 </span>
                 <br />
@@ -311,9 +311,9 @@ function SignUp() {
                   onBlur={(e) => dispatchInput(e.target)}
                 />
               </div>
-              <div className="mt-2">
+              <div className="mt-2 relative">
                 <label htmlFor="maNhom">Mã nhóm</label>
-                <span className="input-error ml-2 text-xs">
+                <span className="input-error ml-2 text-xs absolute top-1 w-72">
                   {errorMessenger.maNhom}
                 </span>
                 <br />
