@@ -802,28 +802,59 @@ footer.footer {
   }
   // step3: select food
   .bill {
-    margin-top: 100px;
-    padding-top: 10px;
-    background-color: $bg-dark-1;
-    max-width: 300px;
-    .title {
-      text-transform: uppercase;
+    border-bottom: 0;
+    border-radius: 4px 4px 0 0;
+    padding-top: 16px;
+    padding-left: 12px;
+    padding-right: 12px;
+    background-color: #3131318e;
+    box-shadow: 0 0 4px 0 #cccccc69;
+    color: $cl-primary;
+    .movie-name {
+      color: $cl-green-3;
+      font-size: 1.2rem;
+      padding-bottom: 12px;
       font-weight: 600;
-      color: $cl-primary;
+      font-style: italic;
+      border-bottom: 1px dotted #99999956;
+    }
+    .data-time {
+      padding-top: 8px;
       padding-bottom: 8px;
-      padding-left: 8px;
-      border-bottom: 2px solid $bg-green-2;
+      border-bottom: 1px dotted #99999956;
     }
-    .bill__moviename {
-      color: $cl-green-1;
-      font-size: 1rem;
-      font-weight: 600;
-      padding-left: 12px;
-      padding-top: 0.5rem;
+    .data-theater {
+      @extend .data-time;
     }
-    .ticket-type {
-      color: $cl-primary;
+    .data-room {
+      @extend .data-time;
     }
+    .common-ticket {
+      @extend .data-time;
+      .qty {
+        color: $cl-green-3;
+        font-weight: 500;
+      }
+    }
+    .vip-ticket {
+      @extend .data-time;
+      .qty {
+        color: $cl-green-3;
+        font-weight: 500;
+      }
+    }
+    .selected-seat {
+      @extend .data-time;
+    }
+    .total-cash {
+      @extend .data-time;
+      padding-bottom: 20px;
+      border-bottom: none;
+    }
+  }
+  .btn-next {
+    box-shadow: 0 0 4px 0px #cccccc69;
+    font-weight: 600;
   }
 }
 .modal__trailer {

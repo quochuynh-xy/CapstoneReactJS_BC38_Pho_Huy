@@ -86,7 +86,6 @@ function Seats() {
         </div>
         <BookingOrder />
       </div>
-      {/* <BookingBill /> */}
     </section>
   );
   return (

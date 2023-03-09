@@ -125,7 +125,7 @@ const BookingSeatsMap = () => {
   }, [listOfseats, maLichChieu]);
   // Hiện tại dữ liệu trả về không có sơ đồ bố trí nên mặc định sẽ có 16 ghế/hàng
   return (
-    <section className="seatandbill pt-20 flex justify-between container mx-auto">
+    <section className="seatandbill pt-20 flex justify-between items-center container mx-auto">
       <div className="seatsMap basis-8/12">
         <p className="text-white mb-6 indent-1">
           Quý khách vui lòng chọn ghế trong theo sơ đồ phía dưới. Nếu bạn muốn
@@ -217,11 +217,11 @@ const BookingSeatsMap = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className="basis-3/12">
         <BookingBill />
-        <div className="text-end">
+        <div className="text-end next-step">
           <button
-            className={countCommon + countVip === danhSachGhe?.length ? "bg-red-600 rounded-md mt-4 px-6 py-2 text-white ml-auto": "bg-slate-600 rounded-md mt-4 px-6 py-2 text-white ml-auto"}
+            className={countCommon + countVip === danhSachGhe?.length ? "btn-next bg-red-700 hover:bg-red-800 duration-300 w-full py-4 rounded-b-sm text-white": "btn-next bg-slate-600 rounded-b-sm w-full py-4 text-white"}
             onClick={() => {
               let selected = danhSachGhe.length;
               if (countCommon + countVip !== selected) {

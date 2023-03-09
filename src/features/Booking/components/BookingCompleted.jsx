@@ -122,7 +122,7 @@ const BookingCompleted = () => {
           </div>
           <div className="checkout text-end">
             <button
-              className="px-8 py-2 bg-red-600 font-semibold hover:bg-red-700 duration-300 rounded-md mt-8"
+              className="px-8 py-2 bg-red-700 font-semibold hover:bg-red-800 duration-300 rounded-sm mt-8"
               onClick={handleBooking}
             >
               Thanh toán

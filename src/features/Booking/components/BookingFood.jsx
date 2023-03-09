@@ -100,7 +100,7 @@ const BookingFood = () => {
         <BookingBill />
         <div className="text-end">
           <button
-            className="bg-red-600 rounded-md mt-4 px-6 py-2 text-white ml-auto"
+            className="btn-next bg-red-700 hover:bg-red-800 duration-300 w-full py-4 rounded-b-sm text-white"
             onClick={() =>
               dispatch({
                 type: types.SET_BOOKING_STEP,
