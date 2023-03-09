@@ -24,7 +24,7 @@ function Header() {
     return (
       <div className="user flex items-center">
         <div className="avatar">
-          <img src="https://picsum.photos/100" alt="avatar" />
+          <img src="https://picsum.photos/id/40/100" alt="avatar" />
         </div>
         <div className="user__mng ml-2 relative">
           <h3 className="user__name cursor-pointer text-sm">
