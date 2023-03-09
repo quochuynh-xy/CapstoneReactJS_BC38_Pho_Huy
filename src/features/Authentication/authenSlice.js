@@ -2,7 +2,8 @@ import produce from "immer";
 import types from "./const";
 const initState = {
   userLogin: null,
-  modalPopUpStatus: false
+  modalPopUpStatus: false,
+  loginMessage: ""
 };
 const authentication = (state = initState, action) => {
   const { type, payload } = action;
@@ -14,6 +15,10 @@ const authentication = (state = initState, action) => {
       }
       case types.LOGOUT: {
         draft.userLogin = payload;
+        break
+      }
+      case types.LOGIN_FAIL: {
+        draft.loginMessage = payload;
         break
       }
       case types.SHOW_MODAL: {

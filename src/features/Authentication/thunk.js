@@ -8,9 +8,16 @@ export const loginAction = (data) => {
                 type: types.LOGIN,
                 payload: res.data.content
             })
+            dispatch({
+                type: types.LOGIN_FAIL,
+                payload: ""
+            })
             localStorage.setItem("cyberfilmToken", res.data.content.accessToken)
         } catch (error) {
-            console.log(error);
+            dispatch({
+                type: types.LOGIN_FAIL,
+                payload: "Sai thông tin đăng nhập."
+            })
         }
     }
 }
@@ -22,6 +29,10 @@ export const autoLogin = (userToken) => {
             dispatch({
                 type: types.LOGIN,
                 payload: res.data.content
+            })
+            dispatch({
+                type: types.LOGIN_FAIL,
+                payload: ""
             })
         } catch (error) {
             localStorage.setItem("cyberfilmToken", "")

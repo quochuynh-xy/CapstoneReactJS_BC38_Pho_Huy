@@ -8,6 +8,7 @@ function SignIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLogin = useSelector((state) => state.auth.userLogin);
+  const loginMessage = useSelector(state => state.auth.loginMessage);
   const [loginInfo, setLoginInfo] = useState({ taiKhoan: "", matKhau: "" });
   const handleChange = (e) => {
     setLoginInfo({
@@ -19,7 +20,6 @@ function SignIn() {
     e.preventDefault();
     await dispatch(loginAction(loginInfo)); // gửi thông tin đăng nhập
     setLoginInfo({ taiKhoan: "", matKhau: "" }); // clear form
-    navigate("/"); // chuyển về trang chủ
   };
   useEffect(() => {
     !isLogin ? navigate("/Authentication/SignIn") : navigate("/");
@@ -71,8 +71,9 @@ function SignIn() {
                 />
               </div>
               <div className="text-end">
+              <p className="my-2 text-start text-amber-500">{loginMessage}</p>
                 <button
-                  className="signin-btn py-2 px-4 mt-4 rounded-lg text-white font-semibold"
+                  className="signin-btn py-2 px-4 mt-2 rounded-lg text-white font-semibold"
                   onClick={handleSubmit}
                 >
                   Đăng Nhập
