@@ -96,7 +96,7 @@ const BookingFood = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className="basis-3/12">
         <BookingBill />
         <div className="text-end">
           <button
