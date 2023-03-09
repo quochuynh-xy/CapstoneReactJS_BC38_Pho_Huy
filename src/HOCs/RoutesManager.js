@@ -3,11 +3,10 @@ import { useSelector } from "react-redux";
 const RoutesManagers = (props) => {
   const { isPublic, isAuth, Component, redirectPatch } = props;
   const logged = useSelector(state => state.auth.userLogin);
-  const localToken = localStorage.getItem("cyberfilmToken");
-  // Nếu đã đăng nhập thì không được phép dừng tại trang này.
-  if(localToken) {
-    // Không được vào trang đăng ký và đăng nhập
-    return isAuth ? <Navigate to="/"/> : <Component/>;
+  // Không được vào trang đăng ký và đăng nhập
+  if(isAuth) {
+    // Nếu đã đăng nhập vui lòng về Home, chưa thì ở lại
+    return logged ? <Navigate to="/"/> : <Component/>;
   }
   // Trang này không thể được vào nếu chưa đăng nhập
   if(!isPublic) {
