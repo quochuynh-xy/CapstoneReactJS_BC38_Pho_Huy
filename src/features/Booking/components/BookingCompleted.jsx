@@ -147,7 +147,7 @@ const BookingCompleted = () => {
               onClick={() => {
                 setModalOpen(false);
                 dispatch({
-                  type: types.SET_BOOKING_STEP,
+                  type: types.GETBACK_STEP_0,
                   payload:0
                 })
                 navigate("/")
