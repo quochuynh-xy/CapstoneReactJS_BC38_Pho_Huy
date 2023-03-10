@@ -48,7 +48,6 @@ function Header() {
       type: types.LOGOUT,
       payload: null,
     });
-    localStorage.setItem("cyberfilmToken", "");
   };
   const userLogin = useSelector((state) => state.auth.userLogin);
   return (

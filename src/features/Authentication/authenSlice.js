@@ -15,6 +15,7 @@ const authentication = (state = initState, action) => {
       }
       case types.LOGOUT: {
         draft.userLogin = payload;
+        localStorage.setItem("cyberfilmToken", "");
         break
       }
       case types.LOGIN_FAIL: {
