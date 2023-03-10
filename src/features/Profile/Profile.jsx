@@ -6,8 +6,11 @@ import "./profile.scss";
 import { actionFetchUserData } from "./thunk";
 import { Table, Space, Spin } from "antd";
 import moment from "moment/moment";
+import { useNavigate } from "react-router-dom";
+import AuthenTypes from "../Authentication/const";
 const Profile = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { userData, userBookingHistory, loginStatus } = useSelector(
     (state) => state.profile
   );
@@ -21,6 +24,15 @@ const Profile = () => {
     const token = localStorage.getItem("cyberfilmToken");
     dispatch(actionFetchUserData(token));
   }, [dispatch]);
+  useEffect(() => {
+    if (loginStatus === "error") {
+      dispatch({
+        type: AuthenTypes.LOGOUT,
+        payload: null,
+      });
+      navigate("/");
+    }
+  }, [loginStatus, navigate, dispatch]);
   const columns = [
     {
       title: "STT",
