@@ -17,6 +17,7 @@ function Seats() {
   const dispatch = useDispatch();
   const selectedShowData = useSelector((state) => state.booking.selectedShow);
   const bookingStep = useSelector((state) => state.booking.bookingStep);
+  const userLogin = useSelector((state) => state.auth.userLogin);
   const [movieInfo, setMovieInfo] = useState({});
   let [movieShowId, setMovieShowId] = useState(null);
   const handleBackToStep0 = () => {
@@ -32,6 +33,11 @@ function Seats() {
     })
     navigate("/")
   }
+  useEffect(()=> {
+    if(!userLogin?.accessToken) {
+      navigate("/")
+    }
+  }, [userLogin, navigate])
   useEffect(() => {
     setMovieShowId(param.maLichChieu);
   }, [param.maLichChieu]);
