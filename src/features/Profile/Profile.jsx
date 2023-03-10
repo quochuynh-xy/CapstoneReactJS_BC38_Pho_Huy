@@ -8,6 +8,7 @@ import { Table, Space, Spin } from "antd";
 import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
 import AuthenTypes from "../Authentication/const";
+import { formatCurrency } from "../../utilities/utilities";
 const Profile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -86,7 +87,7 @@ const Profile = () => {
                 <p>
                   Hi,{" "}
                   <span className="text-blue-700 font-semibold">
-                    {userData.taiKhoan || ""}
+                    {userData.taiKhoan}
                   </span>
                   , Từ bảng thông tin tài khoản, bạn có thể xem bản sao các hoạt
                   động của tài khoản bạn trong thời gian gần đây và cập nhật
@@ -116,7 +117,7 @@ const Profile = () => {
                     </li>
                     <li className="flex justify-between">
                       Tổng chi tiêu
-                      <span className="text-blue-600">{totalSpent}đ</span>
+                      <span className="text-blue-600">{formatCurrency(totalSpent)} đ</span>
                     </li>
                     <li className="flex justify-between">
                       Hạng thành viên
@@ -218,7 +219,7 @@ const Profile = () => {
                   time: moment(row.ngayDat).format("hh:mm a"),
                   ticketNo: row.maVe,
                   movieName: row.tenPhim,
-                  bill: row.danhSachGhe.length * row.giaVe,
+                  bill: formatCurrency(row.danhSachGhe.length * row.giaVe) + " đ",
                   cinemaName: row.danhSachGhe[0].tenHeThongRap,
                   seats: row.danhSachGhe.length,
                 };

@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import { types } from "../const";
+import { formatCurrency } from "../../../utilities/utilities";
 const BookingOrder = () => {
   // Danh sách ghế của rạp
   const seatList = useSelector(
@@ -137,7 +138,7 @@ const BookingOrder = () => {
         <tbody>
           <tr>
             <td className="font-semibold text-slate-700">Adult-Stand-2D</td>
-            <td>{Math.floor(commonPrice)} đ</td>
+            <td>{formatCurrency(Math.floor(commonPrice))} đ</td>
             <td className="flex items-center">
               <FaMinus
                 className="btn--minus font-bold cursor-pointer"
@@ -156,12 +157,12 @@ const BookingOrder = () => {
               />
             </td>
             <td className="tracking-wide text-slate-700 text-end">
-              {orderList.countCommon * Math.floor(commonPrice)} đ
+              {formatCurrency(orderList.countCommon * Math.floor(commonPrice))} đ
             </td>
           </tr>
           <tr>
             <td className="font-semibold text-orange-500">Adult-VIP-2D</td>
-            <td>{vipPrice} đ</td>
+            <td>{formatCurrency(Math.floor(vipPrice))} đ</td>
             <td className="flex items-center">
               <FaMinus
                 className="btn--minus font-bold cursor-pointer"
@@ -180,7 +181,7 @@ const BookingOrder = () => {
               />
             </td>
             <td className="tracking-wide text-orange-500 text-end">
-              {orderList.countVip * Math.floor(vipPrice)} đ
+              {formatCurrency(orderList.countVip * Math.floor(vipPrice))} đ
             </td>
           </tr>
           <tr>
@@ -191,8 +192,8 @@ const BookingOrder = () => {
               colSpan={2}
               className="tracking-wide font-semibold text-2xl text-end"
             >
-              {orderList.countVip * Math.floor(vipPrice) +
-                orderList.countCommon * Math.floor(commonPrice)}
+              {formatCurrency(orderList.countVip * Math.floor(vipPrice) +
+                orderList.countCommon * Math.floor(commonPrice))}
               đ
             </td>
           </tr>

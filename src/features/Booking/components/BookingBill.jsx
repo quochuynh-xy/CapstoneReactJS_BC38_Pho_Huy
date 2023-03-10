@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-
+import { formatCurrency } from "../../../utilities/utilities";
 const BookingBill = (props) => {
   // Thông tin số lượng ghế khách đặt
   const orderInfo = useSelector((state) => state.booking.cartInfo.orderInfo);
@@ -34,18 +34,26 @@ const BookingBill = (props) => {
         <div className="common-ticket">
           <p className="tiket__title text-start flex justify-between">
             Adult-Standar-2D:
-            <span className="price"> {Math.floor(commonPrice)}đ</span>
+            <span className="price">
+              {" "}
+              {formatCurrency(Math.floor(commonPrice))} đ
+            </span>
           </p>
           <p className="qty text-end">
-            Số lượng: <span className="font-semibold ml-4 mr-8">{countCommon}</span>
+            Số lượng:{" "}
+            <span className="font-semibold ml-4 mr-8">{countCommon}</span>
           </p>
         </div>
         <div className="vip-ticket">
           <p className="tiket__title text-start flex justify-between">
-            Adult-VIP-2D <span className="price">{Math.floor(vipPrice)}đ</span>
+            Adult-VIP-2D{" "}
+            <span className="price">
+              {formatCurrency(Math.floor(vipPrice))} đ
+            </span>
           </p>
           <p className="qty text-end">
-            Số lượng: <span className="font-semibold ml-4 mr-8">{countVip}</span>
+            Số lượng:{" "}
+            <span className="font-semibold ml-4 mr-8">{countVip}</span>
           </p>
         </div>
         <div className="selected-seat">
@@ -59,7 +67,12 @@ const BookingBill = (props) => {
         </div>
         <div className="total-cash flex justify-between mt-2">
           <p>Tổng cộng</p>
-          <p>{Math.floor(commonPrice * countCommon + vipPrice * countVip)}đ</p>
+          <p>
+            {formatCurrency(
+              Math.floor(commonPrice * countCommon + vipPrice * countVip)
+            )}{" "}
+            đ
+          </p>
         </div>
       </div>
     </>

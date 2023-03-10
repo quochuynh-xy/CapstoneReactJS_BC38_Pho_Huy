@@ -24,7 +24,7 @@ const ProfileHeader = () => {
           </NavLink>
         </nav>
         <p className="user-name flex items-center select-none text-white">
-          {userData.hoTen || "Đang xác thực"}
+          {userData.taiKhoan || "Đang xác thực"}
           <button
             className="lg-out-btn px-2 text-blue-200 duration-300 relative hover:text-orange-400"
             onClick={() =>

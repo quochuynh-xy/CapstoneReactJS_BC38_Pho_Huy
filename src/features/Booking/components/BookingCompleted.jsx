@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { Modal } from "antd";
 import {types} from "../const";
 import { useNavigate } from "react-router-dom";
+import img_200 from "../../../app/assets/img/images/request_ok.jpg"
+import img_400 from "../../../app/assets/img/images/request_fail.jpg"
 const BookingCompleted = () => {
   const thongTinPhim = useSelector(
     (state) => state.booking.selectedShow.thongTinPhim
@@ -20,11 +22,10 @@ const BookingCompleted = () => {
   const [modalContent, setModalContent] = useState({
     title: "",
     mess: "",
-    imgUrl:
-      "https://png.pngtree.com/png-vector/20221107/ourmid/pngtree-pop-corn-line-art-illustration-png-image_6427458.png",
+    imgUrl: img_200,
     status: 200,
   });
-  const { taiKhoan, matKhau } = userLogin;
+  // const { taiKhoan, matKhau } = userLogin;
   const [totalCash, setTotalCash] = useState(0);
   useEffect(() => {
     if (!checkOutInfo.danhSachVe) {
@@ -40,12 +41,13 @@ const BookingCompleted = () => {
     try {
       // Đăng nhập để lấy cái accessToken, không lấy trực tiếp từ localStorage
       // Lý do: sợ user hãm tài.
-      const promise_1 = await movieServices.fetchAccessToken({
-        taiKhoan,
-        matKhau,
-      });
-      let accessToken = promise_1.data.content.accessToken;
-      // Dùng token đã lấy được sau khi đăng nhập để book vé
+      // const promise_1 = await movieServices.fetchAccessToken({
+      //   taiKhoan,
+      //   matKhau,
+      // });
+      // let accessToken = promise_1.data.content.accessToken;
+      // Dùng token đã lấy được sau khi đăng nhập để book vé => fail do thông tin auto đăng nhập và tự đăng nhập là khác nhau.
+      const accessToken = localStorage.getItem("cyberfilmToken");
       const promise_2 = await movieServices.sendCheckOutTikets(
         checkOutInfo,
         accessToken
@@ -55,8 +57,7 @@ const BookingCompleted = () => {
         status: 200,
         title: "Đặt vé thành công",
         mess: "Chúc bạn xem phim vui vẻ",
-        imgUrl:
-          "https://png.pngtree.com/png-vector/20221107/ourmid/pngtree-pop-corn-line-art-illustration-png-image_6427458.png",
+        imgUrl: img_200,
       });
     } catch (error) {
       setModalContent({
@@ -64,7 +65,7 @@ const BookingCompleted = () => {
         title: "Có lỗi xảy ra với yêu cầu của bạn",
         mess: "Click để thử lại",
         imgUrl:
-          "https://image.spreadshirtmedia.net/image-server/v1/products/T1459A839PA4459PT28D150039830W10000H9847/views/1,width=550,height=550,appearanceId=839,backgroundColor=F2F2F2/400-bad-request-error-code-sticker.jpg",
+          img_400,
       });
       console.log(error);
     }

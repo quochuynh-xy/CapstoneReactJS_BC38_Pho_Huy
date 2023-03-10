@@ -34,7 +34,7 @@ function Seats() {
     navigate("/")
   }
   useEffect(()=> {
-    if(!userLogin?.accessToken) {
+    if(!userLogin) {
       navigate("/")
     }
   }, [userLogin, navigate])
