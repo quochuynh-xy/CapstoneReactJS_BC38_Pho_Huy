@@ -1,0 +1,109 @@
+@import "../../sass/const.scss";
+header.header {
+  background: linear-gradient(0deg, #696969b9 0%, #494949 100%);
+  .container {
+    nav {
+      .nav-item {
+        color: $cl-primary;
+        position: relative;
+        font-weight: 600;
+        transition: 0.5s;
+        &::after {
+          transition: inherit;
+          position: absolute;
+          content: "";
+          width: 0%;
+          height: 2px;
+          background-color: $cl-red-2;
+          bottom: -2px;
+          left: 0;
+        }
+        &:hover {
+          color: $cl-red-2;
+          &::after {
+            width: 100%;
+          }
+        }
+        &.active {
+          font-size: 1.1rem;
+          &::after {
+            width: 100%;
+            height: 3px;
+          }
+        }
+      }
+    }
+    .user-name {
+      .lg-out-btn {
+        &:hover {
+          &::after {
+            position: absolute;
+            content: "đăng xuất";
+            font-size: 12px;
+            width: 60px;
+            top: -6px;
+            left: 24px;
+          }
+        }
+      }
+    }
+  }
+}
+.profile-data {
+}
+.activities {
+  .activity {
+    .ant-table-wrapper {
+      background-color: $bg-dark-4;
+      .ant-table-thead > tr > th {
+        background-color: $bg-dark-4;
+        color: $cl-red-1;
+      }
+      .ant-table-tbody > tr > td:first-child {
+        text-align: center;
+      }
+      .ant-table-tbody > tr > td:nth-child(7) {
+        text-align: end;
+      }
+      .ant-table-tbody > tr > td:last-child {
+        text-align: center;
+        font-weight: 600;
+      }
+      .ant-pagination {
+        .ant-pagination-item {
+          color: $cl-grey-1;
+        }
+        .ant-pagination-item-active {
+          border-color: $cl-grey-3;
+          a {
+            color: $cl-red-1;
+          }
+        }
+      }
+    }
+  }
+}
+.bg {
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("../../app/assets/img/images/bg_1.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+.loading {
+  .ant-spin {
+    .ant-spin-dot-item {
+      background-color: $cl-primary;
+    }
+    .ant-spin-text {
+      font-size: 1.3rem;
+      color: $cl-primary;
+      letter-spacing: 1.5px;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { MdMovieFilter } from "react-icons/md";
 import types from "../features/Authentication/const";
 import { IoMdArrowDropdown } from "react-icons/io";
@@ -7,6 +7,7 @@ import { stringTrimmer } from "../features/Authentication/utilities/utilities";
 // THIS IS SITE HEADER
 function Header() {
   const headerMenu = "mx-3 nav-item";
+  const navigate = useNavigate();
   const NotLogin = () => {
     return (
       <>
@@ -32,7 +33,9 @@ function Header() {
             <IoMdArrowDropdown className="inline ml-2 text-orange-400" />
           </h3>
           <ul className="user__action absolute">
-            <li>Tài khoản</li>
+            <li 
+              onClick={()=> navigate("/Profile")}
+            >Tài khoản</li>
             <li onClick={handleLogOut}>Đăng xuất</li>
           </ul>
         </div>

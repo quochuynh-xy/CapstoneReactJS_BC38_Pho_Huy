@@ -3,6 +3,7 @@ import Seats from "../features/Booking/Seats";
 import Detail from "../features/Booking/Detail";
 import SignIn from "../features/Authentication/SignIn";
 import SignUp from "../features/Authentication/SignUp";
+import Profile from "../features/Profile/Profile";
 import NotFound404 from "../components/NotFound404";
 export const routes = [
   {
@@ -46,6 +47,13 @@ export const routes = [
     isPublic: true,
     isAuth: true,
     redirectPatch: "/",
+  },
+  {
+    path: "/Profile",
+    component: Profile,
+    isPublic: false,
+    isAuth: false,
+    redirectPatch: "/Authentication/SignIn",
   },
   {
     path: "*",
