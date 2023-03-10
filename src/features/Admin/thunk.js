@@ -37,3 +37,13 @@ export const deleteFilm = (idFilm) => async (dispatch) => {
     console.log(err)
   }
 }
+
+export const addNewFilm = (formData) => async (dispatch) => {
+  try {
+    const res = await adminServices.adminAddNewFilm(formData)
+    alert('thêm thành công')
+    console.log(res.data.content)
+  }catch(err) {
+    console.log(err)
+  }
+}
