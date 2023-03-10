@@ -16,7 +16,8 @@ const profileReducer = (state = initState, action) => {
       };
     }
     case types.GET_USER_DATA_ERR: {
-      return initState;
+      localStorage.setItem("cyberfilmToken","")
+      return {...initState, loginStatus: "error"};
     }
     default:
       return state;

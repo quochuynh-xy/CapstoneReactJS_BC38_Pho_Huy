@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BiLogIn } from "react-icons/bi";
+import AuthenTypes from "../../Authentication/const";
 const ProfileHeader = () => {
   const { userData } = useSelector((state) => state.profile);
+  const dispatch = useDispatch();
   return (
     <header className="header">
       <div className="container mx-auto flex items-center justify-between py-4">
@@ -23,7 +25,15 @@ const ProfileHeader = () => {
         </nav>
         <p className="user-name flex items-center select-none text-white">
           {userData.hoTen || "Đang xác thực"}
-          <button className="lg-out-btn px-2 text-blue-200 duration-300 relative hover:text-orange-400">
+          <button
+            className="lg-out-btn px-2 text-blue-200 duration-300 relative hover:text-orange-400"
+            onClick={() =>
+              dispatch({
+                type: AuthenTypes.LOGOUT,
+                payload: null,
+              })
+            }
+          >
             <BiLogIn />
           </button>
         </p>

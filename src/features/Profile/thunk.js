@@ -22,7 +22,7 @@ export const actionFetchUserData =
         console.log(error);
       return dispatch({
         type: types.GET_USER_DATA_ERR,
-        payload: "Đăng nhập lỗi",
+        payload: "error",
       });
     }
   };

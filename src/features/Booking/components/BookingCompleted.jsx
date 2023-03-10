@@ -158,43 +158,7 @@ const BookingCompleted = () => {
           </div>
         </div>
       </Modal>
-      {/* <div className="food basis-8/12 flex flex-wrap justify-start">
-        .
-      </div>
-      <div>
-        <BookingBill />
-        <div className="text-end">
-          <button
-            className="bg-red-600 rounded-md mt-4 px-6 py-2 text-white ml-auto"
-            onClick={() =>
-              dispatch({
-                type: types.SET_BOOKING_STEP,
-                payload: 4,
-              })
-            }
-          >
-            Hoàn tất
-          </button>
-        </div>
-      </div> */}
     </div>
   );
 };
 export default BookingCompleted;
-// const Test = () => {
-//   const dispatch = useDispatch();
-//   const handleSubmit = async ()=>{
-//     try {
-//       let promiseA = await promise(data);
-//       let ketQua = promiseA.data.content;
-//       let promiseB = await promise(ketQua);
-//       console.log(promiseB);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//     dispatch({
-//       type: "huhu"
-//     })
-//   }
-//   return <button onClick={handleSubmit}> click </button>
-// }
