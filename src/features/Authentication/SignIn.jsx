@@ -88,9 +88,10 @@ function SignIn() {
                   className="cursor-pointer ml-1"
                   onClick={() => navigate("/Authentication/SignUp")}
                 >
-                  Đăng ký ngay
+                  Đăng ký ngay.
                 </span>
               </p>
+              <p className="text-start pt-4 cursor-pointer"><span>Quên mật khẩu?</span></p>
             </div>
           </form>
         </div>
