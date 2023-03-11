@@ -22,6 +22,9 @@ const ProfileHeader = () => {
           <NavLink to="/tin tức" className="nav-item mx-3">
             Tin Tức
           </NavLink>
+          {userData?.maLoaiNguoiDung !== "KhachHang" ?<NavLink to="/Admin" className="nav-item mx-3">
+            Quản lý
+          </NavLink> : null}
         </nav>
         <p className="user-name flex items-center select-none text-white">
           {userData.taiKhoan || "Đang xác thực"}
