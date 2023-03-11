@@ -1,10 +1,11 @@
 import { https } from "../../../services/config";
+import { maNhom as GROUP_NAME } from "../../../services/config";
 export const movieServices = {
   fetchBanner: () => https.get("api/QuanLyPhim/LayDanhSachBanner"),
   fetchMovies: (pageSize = 8, pageIndex) =>
     https.get("api/QuanLyPhim/LayDanhSachPhimPhanTrang", {
       params: {
-        maNhom: "GP03",
+        maNhom: GROUP_NAME,
         soTrang: pageIndex,
         soPhanTuTrenTrang: pageSize,
       },
@@ -12,7 +13,7 @@ export const movieServices = {
   getShowScheduleByTheater: (theaterId) =>
     https.get("/api/QuanLyRap/LayThongTinLichChieuHeThongRap", {
       params: {
-        maNhom: "GP01",
+        maNhom: GROUP_NAME,
         maHeThongRap: theaterId,
       },
     }),
