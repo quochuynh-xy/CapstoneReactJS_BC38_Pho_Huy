@@ -4,7 +4,7 @@ const initState = {
   banner: [], // Thông tin banner
   pageMovies: {}, // Danh sách phim phân trang
   srcTrailer: null, // URL xem trước trailer
-  listOfMovies: [], // Danh sách phim tổng hợp (có thể là tất cả phim || phim theo cụm rạp)
+  lookingMovies: [], // Danh sách phim người dùng tìm kiếm
   selectedShow: {}, // Thông tin của phim và rạp được lựa chọn
   cartInfo: {
     orderInfo: {}, // Thông tin số lượng ghế khách yêu cầu
@@ -31,8 +31,8 @@ const booking = (state = initState, action) => {
         draft.srcTrailer = payload.split("/").pop();
         break;
       }
-      case types.GET_MOVIES_LIST: {
-        draft.listOfMovies = payload;
+      case types.RECEIVED_MOVIES_SEARCH_RESULT: {
+        draft.lookingMovies = payload;
         break;
       }
       case types.GET_DATA_OF_SHOW_ID: {
