@@ -4,30 +4,16 @@ import { BsStarFill, BsStarHalf, BsStar, BsPlayCircle } from "react-icons/bs";
 import { showRating } from "../utilities/utilities";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { stringTrimmer } from "../utilities/utilities";
 function MovieItem(props) {
   const item = props.item;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const onShow = (
-    <button
-      className="bg-red-700 text-white text-lg w-32 py-2 rounded-md"
-      onClick={() => navigate("/Booking/Detail/"+ item.maPhim)}
-    >
-      Mua vé
-    </button>
-  );
-  const commingSoon = (
-    <button
-      className="bg-yellow-600 text-white text-lg w-32 py-2 rounded-md"
-      onClick={() => navigate("/Booking/Detail/"+ item.maPhim)}
-    >
-      Sắp ra mắt
-    </button>
-  );
   return (
     <div className="basis-1/4 px-4 mb-8">
       <Card
         className="bg-slate-50 relative cursor-default"
+        bordered={false}
         hoverable
         cover={
           <div className="h-72 relative">
@@ -52,17 +38,24 @@ function MovieItem(props) {
                   })
                 }
               />
-              <p className="text-center text-base">Xem trailer</p>
+              <p className="text-center text-xl mt-3">Xem trailer</p>
             </div>
             <img src={item.hinhAnh} className="h-full w-full" alt="img" />
           </div>
         }
       >
-        <div className="h-12">
-          <h4 className="text-gray-900 text-base font-bold uppercase">{item.tenPhim}</h4>
+        <div className="movie-title flex justify-center items-center">
+          <h4 className="text-lime-800 text-base font-bold uppercase text-center">
+            {stringTrimmer(item.tenPhim, 48)}
+          </h4>
         </div>
-        <div className="text-center mt-4">
-          {!item.sapChieu ? onShow : commingSoon}
+        <div className="buy-btn text-center h-full flex items-center justify-center">
+          <button
+            className="bg-red-700 text-white text-lg py-3 w-full uppercase rounded-sm"
+            onClick={() => navigate("/Booking/Detail/" + item.maPhim)}
+          >
+            Chi tiết
+          </button>
         </div>
       </Card>
     </div>

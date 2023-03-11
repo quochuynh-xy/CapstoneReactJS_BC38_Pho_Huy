@@ -251,7 +251,52 @@ footer.footer {
         }
       }
       .ant-card-body {
-        padding-top: 1rem;
+        padding-top: .75rem;
+        padding-left:0;
+        padding-right: 0;
+        border-radius: 0 0 4px 4px;
+        background-color: $bg-dark-4;
+        overflow: hidden;
+        height: 80px;
+        position: relative;
+        border: 1px solid $cl-grey-4;
+        .movie-title {
+          position: absolute;
+          width: calc(100% - 48px);
+          left: 24px;
+          z-index: 2;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        .buy-btn {
+          position: relative;
+          z-index: 3;
+          width: 100%;
+          opacity: 0;
+          transition: .4s;
+          padding-top: .5rem;
+        }
+        &:hover {
+          .movie-title {
+            animation-name: GetDown;
+            animation-duration: .5s;
+            animation-timing-function: ease-out;
+            animation-fill-mode: forwards;
+          }
+          .buy-btn {
+            opacity: 1;
+          }
+        }
+      }
+    }
+    @keyframes GetDown  {
+      from {
+        transform: translateY(0) scale(100% 100%);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(130px) scaleX(300% 0%);
+        opacity: 0;
       }
     }
   }
