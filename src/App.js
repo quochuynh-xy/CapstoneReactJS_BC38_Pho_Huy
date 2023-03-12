@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {  routes, routesAdmin } from "./app/routes";
+import {  routes } from "./app/routes";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { autoLogin } from "./features/Authentication/thunk";
@@ -21,13 +21,13 @@ const mapRoutes = routes.map((page, index) => {
     />
   );
 });
-const mapRoutesAdmin = routesAdmin.map(({path, component: Component, children})=> {
-  return <Route path={path} element={<Component />} key={path}>
-  {children?.map(Item=>{
-    return <Route path={Item.path} key={Item.path} element={<Item.component />}/>
-  })}
-   </Route>
-})
+// const mapRoutesAdmin = routesAdmin.map(({path, component: Component, children})=> {
+//   return <Route path={path} element={<Component />} key={path}>
+//   {children?.map(Item=>{
+//     return <Route path={Item.path} key={Item.path} element={<Item.component />}/>
+//   })}
+//    </Route>
+// })
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -38,7 +38,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         {mapRoutes}
-        {mapRoutesAdmin}
+        {/* {mapRoutesAdmin} */}
       </Routes>
     </BrowserRouter>
   );
