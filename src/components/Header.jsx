@@ -94,7 +94,7 @@ function Header() {
           </nav>
         </div>
         <div className="action">{!userLogin ? <NotLogin /> : <Logged />}</div>
-      </div>
+      </div></div>
     </header>
   );
 }

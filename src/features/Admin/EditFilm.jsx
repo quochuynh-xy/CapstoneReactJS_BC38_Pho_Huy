@@ -1,41 +1,46 @@
-import { DatePicker, Form, Input, InputNumber, Radio, Switch } from "antd";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import {
+  Button,
+  DatePicker,
+  Form,
+  Input,
+  InputNumber,
+  Radio,
+  Switch,
+} from "antd";
 import { useFormik } from "formik";
 import { object, string } from "yup";
+import { useSelector } from "react-redux";
 import moment from "moment";
-import { useDispatch } from "react-redux";
-import { addNewFilm } from "./thunk";
-const AddNews = () => {
-  const [componentSize, setComponentSize] = useState("default");
-  const onFormLayoutChange = ({ size }) => {
-    setComponentSize(size);
-  };
 
-  const dispatch = useDispatch();
+const EditFilm = () => {
+  const dataFillForm = useSelector((state) => state.admin.filmDetailForUpdate);
+  console.log(dataFillForm);
+  const [imgSrc, setImgSrc] = useState(null);
+
   const userSchema = object({
     tenPhim: string().required("*Vui lòng nhập tên phim"),
     trailer: string().required("*Vui lòng nhập đường dẫn "),
     moTa: string().required("*Vui lòng nhập mô tả"),
   });
-  const [imgSrc, setImgSrc] = useState(null);
   const { handleSubmit, setFieldValue, handleChange, errors, touched } =
     useFormik({
+      enableReinitialize: true,
       initialValues: {
-        tenPhim: "",
-        trailer: "",
-        moTa: "",
-        ngayKhoiChieu: "",
-        dangChieu: false,
-        sapChieu: false,
-        hot: false,
-        danhGia: 0,
-        hinhAnh: {},
+        tenPhim: dataFillForm.tenPhim,
+        trailer: dataFillForm.trailer,
+        moTa: dataFillForm.moTa,
+        ngayKhoiChieu: dataFillForm.ngayKhoiChieu,
+        dangChieu: dataFillForm.dangChieu,
+        sapChieu: dataFillForm.sapChieu,
+        hot: dataFillForm.hot,
+        danhGia: dataFillForm.danhGia,
+        hinhAnh: null,
       },
       onSubmit: (values) => {
         console.log(values);
 
-
-        // create dataForm 
+        // create dataForm
         values.maNhom = "GP01";
         let formData = new FormData();
         for (let key in values) {
@@ -45,8 +50,6 @@ const AddNews = () => {
             formData.append("File", values.hinhAnh, values.hinhAnh.name);
           }
         }
-        // call api
-        dispatch(addNewFilm(formData));
       },
       validationSchema: userSchema,
       validateOnBlur: false,
@@ -84,11 +87,16 @@ const AddNews = () => {
       setFieldValue("hinhAnh", file);
     }
   };
+  const [componentSize, setComponentSize] = useState("default");
+  const onFormLayoutChange = ({ size }) => {
+    setComponentSize(size);
+  };
   return (
     <div className="p-2">
-      <h3 className="font-medium mb-5">Tác vụ: Thêm phim</h3>
+      <h2 className="font-medium ml-2 mb-2">
+        Tác vụ: Chỉnh sửa thông tin phim
+      </h2>
       <Form
-        onSubmitCapture={handleSubmit}
         labelCol={{
           span: 4,
         }}
@@ -104,6 +112,7 @@ const AddNews = () => {
         style={{
           maxWidth: 600,
         }}
+        onSubmitCapture={handleSubmit}
       >
         <Form.Item label="Form Size" name="size">
           <Radio.Group>
@@ -114,23 +123,15 @@ const AddNews = () => {
         </Form.Item>
         <Form.Item label="Tên phim">
           <Input name="tenPhim" onChange={handleChange} />
-          {errors.tenPhim && touched.tenPhim && (
-            <span className="text-red-500">{errors.tenPhim}</span>
-          )}
-        </Form.Item>
-        <Form.Item label="Trailer">
-          <Input name="trailer" onChange={handleChange} />
-          {errors.trailer && touched.trailer && (
-            <span className="text-red-500">{errors.trailer}</span>
-          )}
         </Form.Item>
         <Form.Item label="Mô tả">
-          <Input name="moTa" onChange={handleChange} />
-          {errors.moTa && touched.moTa && (
-            <span className="text-red-500">{errors.moTa}</span>
-          )}
+          <Input />
         </Form.Item>
-        <Form.Item label="DatePicker">
+        <Form.Item label="Trailer">
+          <Input />
+        </Form.Item>
+
+        <Form.Item label="Ngày chiếu: ">
           <DatePicker
             format={"DD/MM/YYYY"}
             onChange={(value) => {
@@ -140,48 +141,27 @@ const AddNews = () => {
           />
         </Form.Item>
         <Form.Item label="Số sao">
-          <InputNumber
-            onChange={handleChangeInputNumber("danhGia")}
-            min={1}
-            max={5}
-          />
+          <InputNumber onChange={handleChangeInputNumber} />
         </Form.Item>
-
         <Form.Item label="Đang chiếu" valuePropName="checked">
-          <Switch
-            className="bg-slate-400"
-            onChange={handleSwitchChange("dangChieu")}
-          />
+          <Switch onChange={handleSwitchChange} className="bg-slate-400" />
         </Form.Item>
         <Form.Item label="Sắp chiếu" valuePropName="checked">
-          <Switch
-            className="bg-slate-400"
-            onChange={handleSwitchChange("sapChieu")}
-          />
+          <Switch onChange={handleSwitchChange} className="bg-slate-400" />
         </Form.Item>
         <Form.Item label="Hot" valuePropName="checked">
-          <Switch
-            className="bg-slate-400"
-            onChange={handleSwitchChange("hot")}
-          />
+          <Switch onChange={handleSwitchChange} className="bg-slate-400" />
         </Form.Item>
-        <Form.Item label="Hình ảnh ">
-          <input
-            type="file"
-            onChange={handleChangeFile}
-            accept="image/png, image/jpeg, image/gif"
-          />
-          <br />
-          <img src={imgSrc} alt="img film" width="200px" height="150px" />
+        <Form.Item label="Hình ảnh: ">
+          <input type="file" onChange={handleChangeFile} />
         </Form.Item>
-        <Form.Item label="Tác vụ">
-          <button className="bg-blue-600 text-white p-1 rounded-md ">
-            Thêm phim
-          </button>
+        <Form.Item label="Tác vụ: ">
+          <Button className="bg-blue-500 text-white">Xác nhận</Button>
+          <Button className="ml-3 bg-green-500 text-white">Hủy</Button>
         </Form.Item>
       </Form>
     </div>
   );
 };
 
-export default AddNews;
+export default EditFilm;
