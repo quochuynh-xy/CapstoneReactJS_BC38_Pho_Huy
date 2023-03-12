@@ -10,6 +10,7 @@ import ModalClip from "./components/ModalClip";
 import PageLayout from "../../HOCs/PageLayout";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import QuickSearch from "./components/QuickSearch";
 function Home() {
   const dispatch = useDispatch();
   const [paramsUrl, setParamsUrl] = useSearchParams();
@@ -22,11 +23,12 @@ function Home() {
   return (
     <section className="booking">
       <PageLayout>
-        <Header/>
+        <Header />
         <BookingCarousel />
+        <QuickSearch/>
         <MoviesList />
         <MoviesTab />
-        <Footer/>
+        <Footer />
         <ModalClip />
       </PageLayout>
     </section>

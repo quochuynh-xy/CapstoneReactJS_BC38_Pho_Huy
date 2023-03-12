@@ -32,17 +32,17 @@ export const fetchMovies = (page) => async (dispatch, getState) => {
   }
 };
 // Lấy danh sách phim theo rạp
-export const fetchListMovies = (theaterId) => async (dispatch, getState) => {
-  try {
-    const promise = await movieServices.getShowScheduleByTheater(theaterId);
-    dispatch({
-      type: types.GET_MOVIES_LIST,
-      payload: promise.data.content,
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
+// export const fetchListMovies = (theaterId) => async (dispatch, getState) => {
+//   try {
+//     const promise = await movieServices.getShowScheduleByTheater(theaterId);
+//     dispatch({
+//       type: types.GET_MOVIES_LIST,
+//       payload: promise.data.content,
+//     });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 // Lấy thông tin rạp chiếu từ mã lịch chiếu
 export const fetchDataShowId = (showId) => (dispatch) => {
   let promise = movieServices.fetchShowById(showId);
@@ -55,3 +55,15 @@ export const fetchDataShowId = (showId) => (dispatch) => {
     )
     .catch((err) => console.log(err));
 };
+// Lấy thông tin phim người dùng tìm kiếm
+export const actionFetchLookingMovies = (movieName) => async (dispatch) => {
+  try {
+    const promise = await movieServices.fetchListMoviesLooking(movieName);
+    dispatch({
+      type: types.RECEIVED_MOVIES_SEARCH_RESULT,
+      payload: promise.data.content
+    })
+  } catch (error) {
+    console.log(error);
+  }
+}
