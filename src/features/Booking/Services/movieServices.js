@@ -36,10 +36,21 @@ export const movieServices = {
         MaLichChieu: MaLichChieu,
       },
     }),
-    fetchAccessToken: (data) => https.post("api/QuanLyNguoiDung/DangNhap", data),
-    sendCheckOutTikets: (data, token) => https.post("api/QuanLyDatVe/DatVe", data, {
+  fetchAccessToken: (data) => https.post("api/QuanLyNguoiDung/DangNhap", data),
+  sendCheckOutTikets: (data, token) =>
+    https.post("api/QuanLyDatVe/DatVe", data, {
       headers: {
-        Authorization: "Bearer " + token
-      }
-    })
+        Authorization: "Bearer " + token,
+      },
+    }),
+  fetchListMoviesLooking: (keyword) => {
+
+      return https.get("api/QuanLyPhim/LayDanhSachPhim", {
+        params: {
+          maNhom: GROUP_NAME,
+          tenPhim: keyword,
+        },
+      });
+    
+  },
 };
