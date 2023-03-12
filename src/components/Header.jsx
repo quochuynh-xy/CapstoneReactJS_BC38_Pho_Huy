@@ -66,6 +66,17 @@ function Header() {
           >
             Đăng ký
           </NavLink>
+          <span className=" text-orange-800 text-sm mx-2 cursor-default">--</span>
+          <NavLink
+            to="/admin"
+            className={(params) =>
+              params.isActive
+                ? "mx-1 text-stone-800 italic"
+                : "mx-1 text-stone-800 italic underline"
+            }
+          >
+            Admin
+          </NavLink>
         </div>
       </div>
     </header>
