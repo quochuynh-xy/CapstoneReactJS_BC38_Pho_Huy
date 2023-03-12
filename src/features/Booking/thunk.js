@@ -46,7 +46,6 @@ export const fetchMovies = (page) => async (dispatch, getState) => {
 // Lấy thông tin rạp chiếu từ mã lịch chiếu
 export const fetchDataShowId = (showId) => (dispatch) => {
   let promise = movieServices.fetchShowById(showId);
-  console.log(showId);
   promise
     .then((res) =>
       dispatch({
