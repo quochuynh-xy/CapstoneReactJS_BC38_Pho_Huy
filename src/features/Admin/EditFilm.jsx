@@ -23,7 +23,7 @@ const EditFilm = () => {
     trailer: string().required("*Vui lòng nhập đường dẫn "),
     moTa: string().required("*Vui lòng nhập mô tả"),
   });
-  const { handleSubmit, setFieldValue, handleChange, errors, touched } =
+  const { handleSubmit, setFieldValue, handleChange, touched } =
     useFormik({
       enableReinitialize: true,
       initialValues: {
@@ -68,6 +68,7 @@ const EditFilm = () => {
     };
   };
   const handleChangeFile = (e) => {
+    console.log(imgSrc);
     // lấy ra file từ event
     let file = e.target.files[0];
     // tạo đối tượng để đọc file

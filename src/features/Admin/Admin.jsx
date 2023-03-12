@@ -1,22 +1,22 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, } from "react-redux";
 import { fetchMovieDetail, fetchUserDetail } from "./thunk";
 import { Outlet, useSearchParams } from "react-router-dom";
 import NavTab from "./components/NavTab";
 const Admin = () => {
   const dispatch = useDispatch();
 
-  const [searchParam, setUseSearchParam] = useSearchParams();
+  const [searchParam] = useSearchParams()[0];
   
 
   useEffect(() => {
     dispatch(fetchMovieDetail);
     dispatch(fetchUserDetail(searchParam.get("page")));
-  }, [dispatch]);
+  }, [dispatch, searchParam]);
   // giữ trạng current page khi admin tìm kím user
   useEffect(() => {
     dispatch(fetchUserDetail(searchParam.get("page")));
-  }, [searchParam.get("page")]);
+  }, [searchParam, dispatch]);
   return (
     <div
       className=" container mx-auto"
