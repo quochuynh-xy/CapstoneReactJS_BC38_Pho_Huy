@@ -7,7 +7,8 @@ module.exports = {
         },
         height: {
           100: "800px",
-        },
+          99 :  "680px"
+         },
         container: {
           screens: {
             'sm': '100%',

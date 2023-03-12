@@ -8,5 +8,6 @@ export const https = axios.create({
   // timeout: 7000,
   headers: {
     TokenCybersoft: token,
+    // Authorization: "Bearer " + token
   },
 });

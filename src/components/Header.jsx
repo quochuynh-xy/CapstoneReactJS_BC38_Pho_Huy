@@ -94,7 +94,6 @@ function Header() {
               Ứng dụng
             </NavLink>
           </nav>
-        </div>
         <div className="action">{!userLogin ? <NotLogin /> : <Logged />}</div>
       </div>
     </header>
