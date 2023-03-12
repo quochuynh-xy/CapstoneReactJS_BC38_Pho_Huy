@@ -1,6 +1,7 @@
 import { adminTypes } from "./utils/const";
 
 import { adminServices } from "./services/adminServices";
+import Swal from "sweetalert2";
 
 export const fetchMovieDetail = async (dispatch) => {
   try {
@@ -8,8 +9,7 @@ export const fetchMovieDetail = async (dispatch) => {
     dispatch({
       type: adminTypes.FETCH_MOVIE_DETAIL,
       payload: res.data.content,
-    }); 
-    
+    });
   } catch (err) {
     console.log(err);
   }
@@ -29,14 +29,29 @@ export const fetchUserDetail = (soTrang) => async (dispatch) => {
 
 export const deleteFilm = (idFilm) => async (dispatch, getState) => {
   try {
-    const res = await adminServices.adminDeleteFilm(idFilm);
-    alert('Xóa thành công')
-    const {admin} = getState()
-
-    dispatch({
-      type: adminTypes.FETCH_MOVIE_DETAIL,
-      payload: [...admin.filmDetail, res.data.content],
+    const result = await Swal.fire({
+      title: "Bạn có muốn xóa phim này không?",
+      text: "Bạn không thể khôi phục sau khi xóa!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Có, tôi muốn xóa phim này!",
     });
+
+    if (result.isConfirmed) {
+      const res = await adminServices.adminDeleteFilm(idFilm);
+      console.log(res.data.content);
+      Swal.fire("Xóa thành công!", "success");
+      const { admin } = getState();
+      const updatedFilmDetail = admin.filmDetail.filter(
+        (film) => film.id !== idFilm
+      );
+      dispatch({
+        type: adminTypes.FETCH_MOVIE_DETAIL,
+        payload: updatedFilmDetail,
+      });
+    }
   } catch (err) {
     console.log(err);
   }
@@ -82,3 +97,24 @@ export const updateDetailFilm = (id) => async (dispatch) => {
     console.log(err);
   }
 };
+
+
+// export const updateDetailFilm = (id) => async (dispatch, getState) => {
+//   try {
+//     const res = await adminServices.adminEditedDetailFilm(id);
+//     alert("Cập nhật thành công");
+//     console.log(res.data.content);
+
+//     // Cập nhật thông tin phim trong danh sách phim hiện tại
+//     const { admin } = getState();
+//     const updatedMovies = admin.movies.map((movie) =>
+//       movie.id === res.data.content.id ? res.data.content : movie
+//     );
+//     dispatch({
+//       type: adminTypes.FETCH_MOVIE_DETAIL,
+//       payload: updatedMovies,
+//     });
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };

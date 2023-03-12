@@ -6,16 +6,15 @@ import { BsPencilSquare } from "react-icons/bs";
 import Loading from "./utils/Loading";
 const User = () => {
   const dataUser = useSelector((state) => state.admin.userDetail);
-  console.log(dataUser.items);
   const [searchParam, setUseSearchParam] = useSearchParams();
-  if (!dataUser || !dataUser.items)
+  if (!dataUser || !dataUser.items) {
     return (
       <div className="flex justify-center">
-        {" "}
-        <Loading />{" "}
+        <Loading />
       </div>
     );
-
+  }
+console.log(dataUser.items)
   return (
     <div>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">

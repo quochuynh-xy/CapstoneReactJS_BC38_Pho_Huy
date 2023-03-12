@@ -1,5 +1,4 @@
 import { https } from "../../../services/config";
-import { adminToken } from "../utils/const";
 
 export const adminServices = {
     fetchMovieDetail : () => https.get('api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01'),
@@ -18,7 +17,7 @@ export const adminServices = {
                 MaPhim: idFilm
             },
             headers: {
-                Authorization:"Bearer " + adminToken
+                Authorization:"Bearer " + localStorage.getItem('cyberfilmToken')
             }
         })
     },

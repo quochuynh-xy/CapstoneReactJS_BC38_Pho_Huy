@@ -7,8 +7,8 @@ const Admin = () => {
   const dispatch = useDispatch();
 
   const [searchParam, setUseSearchParam] = useSearchParams();
+  const dataFilm = useSelector(state => state.admin.filmDetail)
   
-
   useEffect(() => {
     dispatch(fetchMovieDetail);
     dispatch(fetchUserDetail(searchParam.get("page")));

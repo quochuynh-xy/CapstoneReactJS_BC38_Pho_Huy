@@ -10,7 +10,6 @@ import { NavLink } from "react-router-dom";
 import { deleteFilm, getDetailFilm } from "./thunk";
 const App = () => {
   const dataDetailFilm = useSelector((state) => state.admin.filmDetail);
-  console.log(dataDetailFilm);
   const dispatch = useDispatch();
 
   // xử lý form
