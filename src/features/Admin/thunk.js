@@ -8,7 +8,8 @@ export const fetchMovieDetail = async (dispatch) => {
     dispatch({
       type: adminTypes.FETCH_MOVIE_DETAIL,
       payload: res.data.content,
-    });
+    }); 
+    
   } catch (err) {
     console.log(err);
   }
@@ -26,23 +27,32 @@ export const fetchUserDetail = (soTrang) => async (dispatch) => {
   }
 };
 
-export const deleteFilm = (idFilm) => async (dispatch) => {
+export const deleteFilm = (idFilm) => async (dispatch, getState) => {
   try {
     const res = await adminServices.adminDeleteFilm(idFilm);
+    alert('Xóa thành công')
+    const {admin} = getState()
+
     dispatch({
-      type: adminTypes.DELETE_FILM,
-      payload: res.data.content,
+      type: adminTypes.FETCH_MOVIE_DETAIL,
+      payload: [...admin.filmDetail, res.data.content],
     });
   } catch (err) {
     console.log(err);
   }
 };
 
-export const addNewFilm = (formData) => async (dispatch) => {
+export const addNewFilm = (formData) => async (dispatch, getState) => {
   try {
     const res = await adminServices.adminAddNewFilm(formData);
     alert("thêm thành công");
     console.log(res.data.content);
+
+    const { admin } = getState();
+    dispatch({
+      type: adminTypes.FETCH_MOVIE_DETAIL,
+      payload: [...admin.filmDetail, res.data.content],
+    });
   } catch (err) {
     console.log(err);
   }

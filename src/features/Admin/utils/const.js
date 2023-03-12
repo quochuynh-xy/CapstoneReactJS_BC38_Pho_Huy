@@ -3,8 +3,7 @@ export const adminTypes = {
     FETCH_USER_PAGINATION: 'admin/FETCH_USER',
     DELETE_FILM: 'admin/DELETE_FILM',
     UPDATE_DETAIL_FILM: 'admin/UPDATE_DETAIL_FILM',
-    GET_DETAIL_FILM: 'admin/GET_DETAIL_FILM '
-
+    GET_DETAIL_FILM: 'admin/GET_DETAIL_FILM ',
 }
 
 export const adminToken = {

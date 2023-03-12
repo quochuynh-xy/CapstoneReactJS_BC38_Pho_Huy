@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchMovieDetail, fetchUserDetail } from "./thunk";
 import { Outlet, useSearchParams } from "react-router-dom";
 import NavTab from "./components/NavTab";
 const Admin = () => {
   const dispatch = useDispatch();
+
   const [searchParam, setUseSearchParam] = useSearchParams();
+  
+
   useEffect(() => {
     dispatch(fetchMovieDetail);
     dispatch(fetchUserDetail(searchParam.get("page")));

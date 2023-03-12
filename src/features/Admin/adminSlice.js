@@ -19,6 +19,7 @@ const reducer = (state = initState , {payload, type}) => {
         if(type === adminTypes.GET_DETAIL_FILM) {
            draft.filmDetailForUpdate = payload
         }
+     
     })
 }
 
