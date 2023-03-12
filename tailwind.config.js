@@ -20,7 +20,10 @@ module.exports = {
         }
       },
     },
-    plugins: [],
+    plugins: [
+      
+    ],
+    
     // corePlugins: {
     //   preflight: false,
     // }, // Tránh đè css

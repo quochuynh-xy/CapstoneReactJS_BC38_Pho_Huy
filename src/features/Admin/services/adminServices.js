@@ -21,5 +21,19 @@ export const adminServices = {
                 Authorization:"Bearer " + adminToken
             }
         })
+    },
+
+    adminAddNewFilm : (formData) => {
+        return https.post('api/QuanLyPhim/ThemPhimUploadHinh',formData)
+    },
+    adminEditedDetailFilm: (id) => {
+        return https.post('api/QuanLyPhim/CapNhatPhimUpload',id)
+    },
+    adminGetDetailFilm: (id) => {
+        return https.get('api/QuanLyPhim/LayThongTinPhim',{
+            params: {
+                MaPhim: id
+            }
+        })
     }
 }
