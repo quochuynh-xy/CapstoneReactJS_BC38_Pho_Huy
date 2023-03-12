@@ -42,7 +42,7 @@ export const routesAdmin = [
   {
     path: "/admin", component: Admin, children: [
       { path: '/admin', component: User },
-      { path: 'edit-film/:id', component: EditFilm },
+      { path: 'detail-films/edit-film/:id', component: EditFilm },
       { path: '/admin/user', component: User },
       { path: "/admin/detail-films", component: DetailFilm },
       { path: "/admin/add-new", component: AddNews },
