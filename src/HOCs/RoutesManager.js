@@ -4,7 +4,7 @@ const RoutesManagers = (props) => {
   const { isPublic, isAuth, Component, redirectPatch } = props;
   const logged = useSelector((state) => state.auth.userLogin);
   let localToken = localStorage.getItem("cyberfilmToken");
-  if (localToken.length < 300) {
+  if (localToken && localToken.length < 300) {
     localToken = "";
     localStorage.setItem("cyberfilmToken", "");
   }
