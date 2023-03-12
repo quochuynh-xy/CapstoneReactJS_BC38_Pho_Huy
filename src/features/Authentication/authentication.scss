@@ -1,0 +1,131 @@
+@import "../../sass/const.scss";
+// Signin page
+.signInPage {
+    .login {
+      min-height: 100vh;
+      .login__form {
+        margin-top: 40px;
+        margin-bottom: 40px;
+        padding-top: 40px;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-bottom: 80px;
+        background-color: $bg-dark-4;
+        box-shadow: 0 0 4px 2px $cl-grey-3;
+        .form__header {
+          .logo {
+            user-select: none;
+            color: $cl-red-1;
+            font-size: 58px;
+            cursor: pointer;
+            transition: 0.5s;
+          }
+        }
+        .form__body {
+          input {
+            &:focus-visible {
+              outline: none;
+            }
+          }
+          .signin-btn {
+            transition: 0.4s;
+            box-shadow: 0 0 40px 40px $cl-red-1 inset;
+            &:hover {
+              box-shadow: 0 0 0px 2px $cl-red-1 inset;
+              color: $cl-red-1;
+            }
+          }
+        }
+        .login__footer {
+          line-height: 1;
+          p {
+            font-size: 0.75rem;
+          }
+          span {
+            font-size: 0.75rem;
+            color: $cl-red-2;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+    .login__bgcover {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-image: url("../../app/assets/img/images/bg_1.jpg");
+      background-size: 100% 100%;
+      z-index: -1;
+    }
+  }
+  // SignUp page
+  .signUpPage {
+    .signup {
+      min-height: 100vh;
+      .signup__form {
+        margin-top: 40px;
+        margin-bottom: 40px;
+        padding-top: 20px;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-bottom: 40px;
+        background-color: $bg-dark-4;
+        box-shadow: 0 0 4px 2px $cl-grey-3;
+        .form__header {
+          .logo {
+            user-select: none;
+            color: $cl-red-1;
+            font-size: 58px;
+            cursor: pointer;
+            transition: 0.5s;
+          }
+        }
+        .form__body {
+          .input-error {
+            color: $cl-red-2;
+          }
+          input {
+            &:focus-visible {
+              outline: none;
+            }
+          }
+          .signin-btn {
+            transition: 0.4s;
+            box-shadow: 0 0 40px 40px $cl-red-1 inset;
+            &:hover {
+              box-shadow: 0 0 0px 2px $cl-red-1 inset;
+              color: $cl-red-1;
+            }
+          }
+        }
+        .signup__footer {
+          line-height: 1;
+          p {
+            font-size: 0.75rem;
+          }
+          span {
+            font-size: 0.75rem;
+            color: $cl-red-2;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+    .signup__bgcover {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-image: url("../../app/assets/img/images/bg_1.jpg");
+      background-size: 100% 100%;
+      z-index: -1;
+    }
+  }
+  

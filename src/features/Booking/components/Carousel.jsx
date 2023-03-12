@@ -9,7 +9,7 @@ function BookingCarousel() {
     return (
       <div className="h-100" key={item.maBanner}>
         <img src={item.hinhAnh} alt="900" className="w-full object-cover h-100" />
-        <span className="text-6xl backArrow" onClick={()=>Target.current.next()}><BsChevronLeft/></span>
+        <span className="text-6xl backArrow" onClick={()=>Target.current.prev()}><BsChevronLeft/></span>
         <span className="text-6xl nextArrow" onClick={()=>Target.current.next()}><BsChevronRight/></span>
       </div>
     );

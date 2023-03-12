@@ -1,1 +1,4 @@
 @import "./sass/app.scss";
+svg {
+    font-size: unset;
+}
