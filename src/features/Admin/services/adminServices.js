@@ -25,5 +25,8 @@ export const adminServices = {
 
     adminAddNewFilm : (formData) => {
         return https.post('api/QuanLyPhim/ThemPhimUploadHinh',formData)
+    },
+    adminEditedDetailFilm: () => {
+        return https.post('api/QuanLyPhim/CapNhatPhimUpload',)
     }
 }

@@ -47,3 +47,14 @@ export const addNewFilm = (formData) => async (dispatch) => {
     console.log(err)
   }
 }
+
+export const updateDetailFilm =() => async (dispatch) => {
+  try {
+    const res = await adminServices.adminEditedDetailFilm()
+    alert('Cập nhật thành công')
+    console.log(res.data.content)
+
+  }catch(err) {
+    console.log(err)
+  }
+}

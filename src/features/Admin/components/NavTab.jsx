@@ -11,6 +11,9 @@ const NavTab = () => {
         <NavLink to="/admin/detail-films"> Detail Films</NavLink>
       </div>
       <div>
+        <NavLink to='admin/edit-film/:id'>Edit</NavLink>
+      </div>
+      <div>
         <NavLink to="/admin/add-new">Add new film</NavLink>
       </div>
       <div>

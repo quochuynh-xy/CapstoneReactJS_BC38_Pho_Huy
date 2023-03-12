@@ -20,6 +20,7 @@ const AddNews = () => {
   const [imgSrc, setImgSrc] = useState(null);
   const { handleSubmit, setFieldValue, handleChange, errors, touched } =
     useFormik({
+      enableReinitialize: true,
       initialValues: {
         tenPhim: "",
         trailer: "",
