@@ -4,6 +4,7 @@ import Seats from "../features/Booking/Seats";
 import Detail from "../features/Booking/Detail";
 import SignIn from "../features/Authentication/SignIn";
 import SignUp from "../features/Authentication/SignUp";
+import Profile from "../features/Profile/Profile";
 import NotFound404 from "../components/NotFound404";
 import Admin from "../features/Admin/Admin";
 import User from "../features/Admin/User";
@@ -16,25 +17,58 @@ export const routes = [
   {
     path: "/",
     component: Home,
+    isPublic: true,
+    isAuth: false,
+    redirectPatch: "/",
   },
   {
-    path: "/Booking/:id",
+    path: "/:id",
+    component: Home,
+    isPublic: true,
+    isAuth: false,
+    redirectPatch: "/",
+  },
+  {
+    path: "/Booking/TicketRoom/:maLichChieu",
     component: Seats,
+    isPublic: false,
+    isAuth: false,
+    redirectPatch: "/Authentication/SignIn",
   },
   {
-    path: "/movie/:id",
+    path: "/Booking/Detail/:maPhim",
     component: Detail,
+    isPublic: true,
+    isAuth: false,
+    redirectPatch: "/Authentication/SignIn",
   },
   {
     path: "/Authentication/SignIn",
     component: SignIn,
+    isPublic: true,
+    isAuth: true,
+    redirectPatch: "",
   },
   {
     path: "/Authentication/SignUp",
     component: SignUp,
+    isPublic: true,
+    isAuth: true,
+    redirectPatch: "/",
   },
-  { path: "*", component: NotFound404 },
-
+  {
+    path: "/Profile",
+    component: Profile,
+    isPublic: false,
+    isAuth: false,
+    redirectPatch: "/Authentication/SignIn",
+  },
+  {
+    path: "*",
+    component: NotFound404,
+    isPublic: true,
+    isAuth: false,
+    redirectPatch: "/",  },
 ];
 
 export const routesAdmin = [

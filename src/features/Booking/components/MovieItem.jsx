@@ -3,23 +3,17 @@ import { types } from "../const";
 import { BsStarFill, BsStarHalf, BsStar, BsPlayCircle } from "react-icons/bs";
 import { showRating } from "../utilities/utilities";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { stringTrimmer } from "../utilities/utilities";
 function MovieItem(props) {
   const item = props.item;
   const dispatch = useDispatch();
-  const onShow = (
-    <button className="bg-green-700 text-white text-lg w-32 py-2 rounded-lg">
-      Mua vé
-    </button>
-  );
-  const commingSoon = (
-    <button className="bg-yellow-600 text-white text-lg w-32 py-2 rounded-lg">
-      Sắp ra mắt
-    </button>
-  );
+  const navigate = useNavigate();
   return (
     <div className="basis-1/4 px-4 mb-8">
       <Card
         className="bg-slate-50 relative cursor-default"
+        bordered={false}
         hoverable
         cover={
           <div className="h-72 relative">
@@ -35,23 +29,33 @@ function MovieItem(props) {
               </div>
             </div>
             <div className="play-trailer absolute top-0 right-0 left-0 bottom-0 opacity-5 hover:opacity-100 text-slate-200 text-8xl flex justify-center items-center rounded-md flex-col">
-              <BsPlayCircle className="cursor-pointer rounded-full hover:text-yellow-400 duration-300" 
-                onClick={()=> dispatch({
-                  type: types.SENDING_TRAILER_URL,
-                  payload: item.trailer
-                })}
-                />
-                <p className="text-center text-base">Xem trailer</p>
+              <BsPlayCircle
+                className="cursor-pointer rounded-full hover:text-yellow-400 duration-300"
+                onClick={() =>
+                  dispatch({
+                    type: types.SENDING_TRAILER_URL,
+                    payload: item.trailer,
+                  })
+                }
+              />
+              <p className="text-center text-xl mt-3">Xem trailer</p>
             </div>
             <img src={item.hinhAnh} className="h-full w-full" alt="img" />
           </div>
         }
       >
-        <div className="h-9">
-          <h4 className="text-gray-900 text-base font-bold">{item.tenPhim}</h4>
+        <div className="movie-title flex justify-center items-center">
+          <h4 className="text-lime-800 text-base font-bold uppercase text-center">
+            {stringTrimmer(item.tenPhim, 48)}
+          </h4>
         </div>
-        <div className="text-center mt-4">
-          {!item.sapChieu ? onShow : commingSoon}
+        <div className="buy-btn text-center h-full flex items-center justify-center">
+          <button
+            className="bg-red-700 text-white text-lg py-3 w-full uppercase rounded-sm"
+            onClick={() => navigate("/Booking/Detail/" + item.maPhim)}
+          >
+            Chi tiết
+          </button>
         </div>
       </Card>
     </div>
