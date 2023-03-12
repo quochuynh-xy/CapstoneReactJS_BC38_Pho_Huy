@@ -33,9 +33,7 @@ function Header() {
             <IoMdArrowDropdown className="inline ml-2 text-orange-400" />
           </h3>
           <ul className="user__action absolute">
-            <li 
-              onClick={()=> navigate("/Profile")}
-            >Tài khoản</li>
+            <li onClick={() => navigate("/Profile")}>Tài khoản</li>
             <li onClick={handleLogOut}>Đăng xuất</li>
           </ul>
         </div>
@@ -94,6 +92,7 @@ function Header() {
               Ứng dụng
             </NavLink>
           </nav>
+        </div>
         <div className="action">{!userLogin ? <NotLogin /> : <Logged />}</div>
       </div>
     </header>
