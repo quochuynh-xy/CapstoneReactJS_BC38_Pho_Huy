@@ -247,11 +247,11 @@ const QuickSearch = () => {
   };
   return (
     <>
-      <div className="container mx-auto bg-slate-500 pb-4">
-        <h3 className="py-2 ml-4 tracking-wider italic text-red-600">Mua vé nhanh</h3>
+      <div className="quick-search container mx-auto pb-4">
+        <h3 className="search__title text-orange-600 ml-4 tracking-wider italic">Mua vé nhanh</h3>
         <form
           action=""
-          className="quick-search flex justify-around items-center"
+          className="search__form flex justify-around items-center"
         >
           <div className="basis-1/5 px-4 movie-name">
             <Dropdown
@@ -266,7 +266,7 @@ const QuickSearch = () => {
               }}
             >
               <input
-                className="w-full bg-slate-100 outline-none pl-2 py-1 font-semibold italic rounded-sm"
+                className="w-full search-item outline-none pl-2 py-1 font-semibold italic rounded-sm"
                 placeholder="Tên phim"
                 type="text"
                 value={movieName}
@@ -288,7 +288,7 @@ const QuickSearch = () => {
                 items: listOfCinemas(),
               }}
             >
-              <p className="w-full cursor-pointer bg-slate-100 px-2 py-1 font-semibold italic rounded-sm overflow-hidden">
+              <p className="w-full search-item cursor-pointer px-2 py-1 font-semibold italic rounded-sm overflow-hidden">
                 {cinemaName}
               </p>
             </Dropdown>
@@ -305,7 +305,7 @@ const QuickSearch = () => {
                 items: listOfDays(),
               }}
             >
-              <p className="w-full cursor-pointer bg-slate-100 px-2 py-1 text-center font-semibold italic rounded-sm overflow-hidden">
+              <p className="w-full search-item cursor-pointer px-2 py-1 text-center font-semibold italic rounded-sm overflow-hidden">
                 {selectedDay}
               </p>
             </Dropdown>
@@ -322,14 +322,14 @@ const QuickSearch = () => {
                 items: listOfShows(),
               }}
             >
-              <p className="w-full cursor-pointer bg-slate-100 px-2 py-1 text-center font-semibold italic rounded-sm overflow-hidden">
+              <p className="w-full search-item cursor-pointer px-2 py-1 text-center font-semibold italic rounded-sm overflow-hidden">
                 {selectedShowInfo}
               </p>
             </Dropdown>
           </div>
           <div className="basis-1/5 px-4 buy-ticket">
             <button
-              className={selectedShowId? "bg-red-700 hover:bg-red-800 duration-300 text-white py-1 w-full rounded font-semibold tracking-wider shadow-sm " : "bg-stone-500 shadow-sm py-1 w-full text-white rounded font-semibold tracking-wider"}
+              className={selectedShowId? "bg-red-600 hover:bg-red-700 duration-300 text-white py-1 w-full rounded font-semibold tracking-wider shadow-sm " : "bg-stone-500 shadow-sm py-1 w-full text-white rounded font-semibold tracking-wider"}
               type="button"
               onClick={() => {
                 if (selectedShowId) {

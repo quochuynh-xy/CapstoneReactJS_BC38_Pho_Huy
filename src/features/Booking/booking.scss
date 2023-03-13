@@ -231,6 +231,24 @@ footer.footer {
       }
     }
   }
+  .quick-search {
+    background-color: $bg-dark-4;
+    box-shadow: 0 2px 4px 2px $bg-dark-2;
+    border-radius: 0 0 8px 8px;
+    .search__title {
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-size: 18px;
+      padding-bottom: 0;
+      padding-top: 8px;
+    }
+    .search__form {
+      .search-item {
+        height: 2rem;
+        border-bottom: 1px solid $cl-green-3;
+        background-color: #fff;
+      }
+    }
+  }
   .booking__card {
     .cards__list {
       margin-left: -1rem;
