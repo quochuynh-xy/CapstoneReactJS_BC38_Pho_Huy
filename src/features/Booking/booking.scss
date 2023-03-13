@@ -251,8 +251,8 @@ footer.footer {
         }
       }
       .ant-card-body {
-        padding-top: .75rem;
-        padding-left:0;
+        padding-top: 0.75rem;
+        padding-left: 0;
         padding-right: 0;
         border-radius: 0 0 4px 4px;
         background-color: $bg-dark-4;
@@ -273,13 +273,13 @@ footer.footer {
           z-index: 3;
           width: 100%;
           opacity: 0;
-          transition: .4s;
-          padding-top: .5rem;
+          transition: 0.4s;
+          padding-top: 0.5rem;
         }
         &:hover {
           .movie-title {
             animation-name: GetDown;
-            animation-duration: .5s;
+            animation-duration: 0.5s;
             animation-timing-function: ease-out;
             animation-fill-mode: forwards;
           }
@@ -289,7 +289,7 @@ footer.footer {
         }
       }
     }
-    @keyframes GetDown  {
+    @keyframes GetDown {
       from {
         transform: translateY(0) scale(100% 100%);
         opacity: 1;
@@ -432,6 +432,78 @@ footer.footer {
     .ant-tabs-ink-bar {
       background-color: red;
       height: 4px;
+    }
+  }
+  .booking__news {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    .news__content {
+      .ant-tabs-ink-bar {
+        display: none;
+      }
+      .ant-tabs-nav {
+        .ant-tabs-nav-wrap {
+          .ant-tabs-nav-list {
+            .ant-tabs-tab {
+              .ant-tabs-tab-btn {
+                text-transform: uppercase;
+                font-weight: 700;
+                font-size: 1.2rem;
+                &:hover {
+                color: $cl-red-2;
+                transform: scale(1.1 1.1);
+                }
+              }
+            }
+            .ant-tabs-tab.ant-tabs-tab-active {
+              .ant-tabs-tab-btn {
+                color: $cl-red-2;
+                transform: scale(1.2 1.2);
+              }
+            }
+          }
+        }
+      }
+      .top-item {
+        padding-bottom: 1rem;
+        .card-image {
+          height: 250px;
+          object-fit: center;
+        }
+        .card-text {
+          height: 90px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          .card-title {
+            font-size: 1.15rem;
+            line-height: 1rem;
+          }
+        }
+      }
+      .bot-item {
+        padding-bottom: 1rem;
+        .card-image {
+          height: 180px;
+          object-fit: center;
+        }
+        .card-title {
+          font-size: 1rem;
+          line-height: 1.2rem;
+        }
+        .card-text {
+          height: 90px;
+          overflow: hidden;
+        }
+        .bot-list {
+          img {
+            height: 60px;
+            width: 60px;
+          }
+          h4 {
+            font-size: 1rem;
+          }
+        }
+      }
     }
   }
 }
