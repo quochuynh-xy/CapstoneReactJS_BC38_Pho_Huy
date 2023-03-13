@@ -207,11 +207,11 @@ footer.footer {
     }
     .slick-dots {
       li {
-        width: 28px;
-        margin-bottom: 16px;
+        width: 20px;
+        padding-bottom: 26px;
         button {
-          width: 16px;
-          height: 16px;
+          width: 14px;
+          height: 14px;
           box-shadow: 0 0 0px 2px #fdfcf0;
           background-color: #f7c2c2;
           border-radius: 4px;
@@ -220,10 +220,10 @@ footer.footer {
         }
       }
       li.slick-active {
-        width: 28px;
+        width: 20px;
         button {
-          width: 16px;
-          height: 16px;
+          width: 14px;
+          height: 14px;
           background-color: red;
           margin: 0 auto;
           border-radius: 50%;
