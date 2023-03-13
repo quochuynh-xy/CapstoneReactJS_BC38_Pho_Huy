@@ -441,24 +441,49 @@ footer.footer {
       .ant-tabs-ink-bar {
         display: none;
       }
+      .ant-tabs-nav-list {
+        .ant-tabs-tab {
+          padding-right: 0.5rem;
+          padding-left: 0.5rem;
+          .parent__tab {
+            transition: 0.5s;
+            color: $cl-primary;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            &:hover {
+              transform: scale(1.2, 1.2);
+              color: $cl-red-2;
+            }
+          }
+          &.ant-tabs-tab-active {
+            .parent__tab {
+              color: $cl-red-1;
+            }
+          }
+        }
+      }
       .ant-tabs-nav {
         .ant-tabs-nav-wrap {
           .ant-tabs-nav-list {
             .ant-tabs-tab {
-              .ant-tabs-tab-btn {
-                text-transform: uppercase;
-                font-weight: 700;
+              padding-right: 0.5rem;
+              padding-left: 0.5rem;
+              .parent__tab {
+                transition: 0.5s;
+                color: $cl-grey-1;
                 font-size: 1.2rem;
+                text-transform: uppercase;
+                font-weight: 600;
                 &:hover {
-                color: $cl-red-2;
-                transform: scale(1.1 1.1);
+                  transform: scale(1.2, 1.2);
+                  color: $cl-red-2;
                 }
               }
-            }
-            .ant-tabs-tab.ant-tabs-tab-active {
-              .ant-tabs-tab-btn {
-                color: $cl-red-2;
-                transform: scale(1.2 1.2);
+              &.ant-tabs-tab-active {
+                .parent__tab {
+                  color: $cl-red-1;
+                }
               }
             }
           }

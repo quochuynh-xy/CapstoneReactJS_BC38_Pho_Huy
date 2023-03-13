@@ -226,7 +226,7 @@ const QuickNews = () => {
     );
   };
   const content_1 = {
-    label: <h3>Điện ảnh 24h</h3>,
+    label: <h3 className="parent__tab">Điện ảnh 24h</h3>,
     key: 1,
     children: (
       <div className="flex flex-wrap">
@@ -244,7 +244,7 @@ const QuickNews = () => {
     ),
   };
   const content_2 = {
-    label: <h3>Review</h3>,
+    label: <h3 className="parent__tab">Review</h3>,
     key: 2,
     children: (
       <div className="flex flex-wrap">
@@ -262,7 +262,7 @@ const QuickNews = () => {
     ),
   };
   const content_3 = {
-    label: <h3>Khuyến mãi</h3>,
+    label: <h3 className="parent__tab">Khuyến mãi</h3>,
     key: 3,
     children: (
         <div className="flex flex-wrap">
