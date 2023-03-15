@@ -733,6 +733,9 @@ footer.footer {
                 transform: scale(1.2, 1.2);
                 color: $cl-red-2;
               }
+              @media screen and (max-width: 640px) {
+                font-size: 14px;
+              }
             }
             &.ant-tabs-tab-active {
               .parent__tab {

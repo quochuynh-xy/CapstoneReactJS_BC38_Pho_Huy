@@ -136,7 +136,7 @@ const QuickSearch = () => {
           key: index,
           label: (
             <p
-              className="hover:text-red-500 duration-300 font-semibold"
+              className="hover:text-red-500 duration-300 text-sm font-semibold"
               key={index}
               onClick={() => handleSelectMovie(item.tenPhim, item.maPhim)}
             >
