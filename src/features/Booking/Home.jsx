@@ -11,6 +11,7 @@ import PageLayout from "../../HOCs/PageLayout";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import QuickSearch from "./components/QuickSearch";
+import QuickNews from "./components/QuickNews";
 function Home() {
   const dispatch = useDispatch();
   const [paramsUrl, setParamsUrl] = useSearchParams();
@@ -28,6 +29,7 @@ function Home() {
         <QuickSearch/>
         <MoviesList />
         <MoviesTab />
+        <QuickNews />
         <Footer />
         <ModalClip />
       </PageLayout>

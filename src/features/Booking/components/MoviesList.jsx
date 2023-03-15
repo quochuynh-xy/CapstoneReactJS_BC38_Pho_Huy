@@ -11,7 +11,8 @@ function MoviesList() {
   const [paramsUrl, setParamsUrl] = useSearchParams();
   const dispatch = useDispatch();
   return (
-    <div className="booking__card container mx-auto pt-16">
+    <div className="booking__card container mx-auto pt-6">
+      <h2 className="uppercase text-xl font-bold pb-2 text-orange-600">Danh sách phim</h2>
       <div className="cards__list flex flex-row flex-wrap">
         {MovieList.items?.map((item, index) => (
           <MovieItem item={item} key={index} />
