@@ -844,6 +844,10 @@ footer.footer {
         left: 0;
         transition: 0.3s;
         box-shadow: 0 0 0px 40px $bg-orange-1 inset;
+        @media screen and (max-width: 768px) {
+          height: 48px;
+          width: 48px;
+        }
         svg {
           transition: inherit;
         }
@@ -869,7 +873,6 @@ footer.footer {
           border-radius: 8px;
         }
         .detail {
-          margin-left: 24px;
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
@@ -879,10 +882,17 @@ footer.footer {
             font-size: 1.75rem;
             font-weight: bold;
             margin-bottom: 1rem;
+            @media screen and (max-width: 640px) {
+              font-size: 1.3rem;
+              margin-bottom: 0.3rem;
+            }
           }
           .detail__theater {
             color: $cl-primary;
             font-size: 1.2rem;
+            @media screen and (max-width: 640px) {
+              font-size: 1.1rem;
+            }
           }
           .detail__address {
             color: $cl-grey-3;
@@ -905,6 +915,9 @@ footer.footer {
           .detail__screen {
             @extend .detail__time;
           }
+        }
+        @media screen and (max-width: 640px) {
+          padding-bottom: 20px;
         }
       }
       .info__warn {
@@ -937,12 +950,12 @@ footer.footer {
           td {
             padding: 16px 40px;
             input {
+              height: 40px;
+              font-size: 1.2rem;
+              font-weight: 700;
+              color: $cl-red-1;
               border-top: 1px solid grey;
               border-bottom: 1px solid grey;
-              color: $cl-red-1;
-              font-size: 1.2rem;
-              height: 40px;
-              font-weight: 700;
               &:focus-visible {
                 outline: 1px solid grey;
               }
@@ -954,8 +967,8 @@ footer.footer {
             }
             .btn--minus,
             .btn--plus {
-              width: 40px;
               height: 40px;
+              width: 40px;
               padding: 8px;
               color: $cl-grey-1;
               transition: 0.3s;
@@ -965,6 +978,31 @@ footer.footer {
               }
               &:active {
                 background-color: transparent;
+              }
+            }
+            @media screen and (max-width: 768px) {
+              padding: 8px 12px;
+              @media screen and (max-width: 640px) {
+                width: 100%;
+                padding: 4px 12px;
+                input {
+                  border-top: 1px solid grey;
+                  border-bottom: 1px solid grey;
+                  color: $cl-red-1;
+                  font-size: 1.2rem;
+                  height: 40px;
+                  font-weight: 400;
+                  &:focus-visible {
+                    outline: 1px solid grey;
+                  }
+                }
+                .btn--minus,
+                .btn--plus {
+                  height: 40px;
+                  width: 40px;
+                  padding: 0;
+                  padding: 8px;
+                }
               }
             }
           }
@@ -984,6 +1022,8 @@ footer.footer {
         margin: 0 auto 120px;
         background-color: darkkhaki;
         border-radius: 12px 12px 0 0;
+        position: relative;
+        left: 10px;
         p {
           letter-spacing: 4px;
           position: relative;
@@ -996,6 +1036,9 @@ footer.footer {
             left: 0;
             top: 22px;
           }
+        }
+        @media screen and (max-width: 768px) {
+          margin-bottom: 80px;
         }
       }
       .seats {
@@ -1062,6 +1105,36 @@ footer.footer {
           }
           .pending {
             background-color: $bg-green-1;
+          }
+        }
+        @media screen and (max-width: 768px) {
+          margin-right: 0;
+          .row-index {
+            margin-bottom: 12px;
+            padding-right: 1rem;
+            width: 20px;
+            height: 20px;
+            color: $cl-yellow-2;
+            font-family: "Times New Roman", Times, serif;
+          }
+          .seat {
+            border: 2px solid transparent;
+            font-size: 0.8rem;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            font-size: 14px;
+            padding: 0;
+            margin-bottom: 12px;
+            border-radius: 2px;
+            font-weight: 500;
+          }
+          .note {
+            span {
+              width: 20px;
+              height: 20px;
+              border-radius: 4px;
+            }
           }
         }
       }

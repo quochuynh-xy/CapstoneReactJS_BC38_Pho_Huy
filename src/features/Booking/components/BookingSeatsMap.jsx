@@ -70,16 +70,6 @@ const BookingSeatsMap = () => {
     return resut;
   };
   const handleSelect = (slot) => {
-    // daDat: false;
-    // giaVe: 96000;
-    // loaiGhe: "Vip";
-    // maGhe: 59010;
-    // maRap: 523;
-    // soGhe: 10;
-    // stt: "90";
-    // taiKhoanNguoiDat: null;
-    // tenGhe: "90";
-    // viTri: "F10";
     const {maGhe} = slot;
     let cloneDanhSachGhe = [...danhSachGhe];
     let index = cloneDanhSachGhe.findIndex((item) => item.maGhe === maGhe);
@@ -125,8 +115,8 @@ const BookingSeatsMap = () => {
   }, [listOfseats, maLichChieu]);
   // Hiện tại dữ liệu trả về không có sơ đồ bố trí nên mặc định sẽ có 16 ghế/hàng
   return (
-    <section className="seatandbill pt-20 flex justify-between items-center container mx-auto">
-      <div className="seatsMap basis-8/12">
+    <section className="seatandbill pt-20 flex flex-wrap justify-between items-center container mx-auto">
+      <div className="seatsMap basis-full lg:basis-8/12">
         <p className="text-white mb-6 indent-1">
           Quý khách vui lòng chọn ghế trong theo sơ đồ phía dưới. Nếu bạn muốn
           chọn loại ghế khác hoặc thay đổi số lượng vé muốn mua, vui lòng nhấn
@@ -195,29 +185,29 @@ const BookingSeatsMap = () => {
                 </div>
               );
             })}
-          <div className="note flex mt-3 h-fit flex-wrap pb-6">
-            <div className="flex mr-4 items-center">
+          <div className="note flex mt-3 flex-wrap pb-6 h-fit">
+            <div className="basis-6/12 pl-4 lg:basis-3/12 flex items-center">
               <span className="common"></span>
               <p className="text-white ml-4">: Ghế thường.</p>
             </div>
-            <div className="flex mr-4 items-center">
+            <div className="basis-6/12 pl-4 lg:basis-3/12 flex items-center">
               <span className="vip"></span>
               <p className="text-white ml-4">: Ghế VIP.</p>
             </div>
-            <div className="flex mr-4 items-center">
+            <div className="basis-6/12 pl-4 lg:basis-3/12 flex items-center">
               <span className="taken flex items-center">
                 <BsFillPersonFill className="mx-auto" />
               </span>
               <p className="text-white ml-4">: Ghế đã đặt.</p>
             </div>
-            <div className="flex mr-4 items-center">
+            <div className="basis-6/12 pl-4 lg:basis-3/12 flex items-center">
               <span className="pending"></span>
               <p className="text-white ml-4">: Ghế đang chọn.</p>
             </div>
           </div>
         </div>
       </div>
-      <div className="basis-3/12">
+      <div className="basis-full px-12 lg:basis-3/12 lg:px-0">
         <BookingBill />
         <div className="text-end next-step">
           <button
