@@ -10,7 +10,7 @@ function MovieItem(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
-    <div className="basis-1/4 px-4 mb-8">
+    <div className="basis-full px-28 sm:basis-6/12 sm:px-8 lg:basis-1/4 lg:px-4 mb-8">
       <Card
         className="bg-slate-50 relative cursor-default"
         bordered={false}

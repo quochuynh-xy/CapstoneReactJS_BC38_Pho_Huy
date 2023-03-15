@@ -27,7 +27,7 @@ function BookingCarousel() {
   }
   const mapCarousel = carouselData.map((item) => {
     return (
-      <div className="h-100" key={item.maBanner}>
+      <div className="h-100 carousel-item" key={item.maBanner}>
         <img src={item.hinhAnh} alt="900" className="w-full object-cover h-100" />
         <span className="text-6xl backArrow" onClick={()=>Target.current.prev()}><BsChevronLeft/></span>
         <span className="text-6xl nextArrow" onClick={()=>Target.current.next()}><BsChevronRight/></span>

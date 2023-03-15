@@ -251,9 +251,9 @@ const QuickSearch = () => {
         <h3 className="search__title text-orange-600 ml-4 tracking-wider italic">Mua vé nhanh</h3>
         <form
           action=""
-          className="search__form flex justify-around items-center"
+          className="search__form flex flex-wrap justify-around items-center"
         >
-          <div className="basis-1/5 px-4 movie-name">
+          <div className="basis-full lg:basis-1/5 pb-2 lg:px-4 movie-name">
             <Dropdown
               overlayStyle={{
                 backgroundColor: "#fff",
@@ -266,7 +266,7 @@ const QuickSearch = () => {
               }}
             >
               <input
-                className="w-full search-item outline-none pl-2 py-1 font-semibold italic rounded-sm"
+                className="w-full text-center lg:text-left search-item text-sm outline-none pl-2 py-1 font-semibold italic rounded-lg lg:rounded-sm"
                 placeholder="Tên phim"
                 type="text"
                 value={movieName}
@@ -276,7 +276,7 @@ const QuickSearch = () => {
               />
             </Dropdown>
           </div>
-          <div className="basis-1/5 px-4 list-cinemas">
+          <div className="basis-full lg:basis-1/5 pb-2 lg:px-4 list-cinemas">
             <Dropdown
               overlayStyle={{
                 backgroundColor: "#fff",
@@ -288,12 +288,12 @@ const QuickSearch = () => {
                 items: listOfCinemas(),
               }}
             >
-              <p className="w-full search-item cursor-pointer px-2 py-1 font-semibold italic rounded-sm overflow-hidden">
+              <p className="w-full text-center lg:text-left search-item text-sm cursor-pointer px-2 py-1 font-semibold italic rounded-lg lg:rounded-sm overflow-hidden">
                 {cinemaName}
               </p>
             </Dropdown>
           </div>
-          <div className="basis-1/5 px-4 specific-cinema">
+          <div className="basis-full lg:basis-1/5 pb-2 lg:px-4 specific-cinema">
             <Dropdown
               overlayStyle={{
                 backgroundColor: "#fff",
@@ -305,12 +305,12 @@ const QuickSearch = () => {
                 items: listOfDays(),
               }}
             >
-              <p className="w-full search-item cursor-pointer px-2 py-1 text-center font-semibold italic rounded-sm overflow-hidden">
+              <p className="w-full search-item text-sm cursor-pointer px-2 py-1 text-center font-semibold italic rounded-lg lg:rounded-sm overflow-hidden">
                 {selectedDay}
               </p>
             </Dropdown>
           </div>
-          <div className="basis-1/5 px-4 show-day">
+          <div className="basis-full lg:basis-1/5 pb-2 lg:px-4 show-day">
             <Dropdown
               overlayStyle={{
                 backgroundColor: "#fff",
@@ -322,14 +322,14 @@ const QuickSearch = () => {
                 items: listOfShows(),
               }}
             >
-              <p className="w-full search-item cursor-pointer px-2 py-1 text-center font-semibold italic rounded-sm overflow-hidden">
+              <p className="w-full search-item text-sm cursor-pointer px-2 py-1 text-center font-semibold italic rounded-lg lg:rounded-sm overflow-hidden">
                 {selectedShowInfo}
               </p>
             </Dropdown>
           </div>
-          <div className="basis-1/5 px-4 buy-ticket">
+          <div className="basis-full mt-2 lg:mt-0 lg:basis-1/5 pb-2 lg:px-4 buy-ticket">
             <button
-              className={selectedShowId? "bg-red-600 hover:bg-red-700 duration-300 text-white py-1 w-full rounded font-semibold tracking-wider shadow-sm " : "bg-stone-500 shadow-sm py-1 w-full text-white rounded font-semibold tracking-wider"}
+              className={selectedShowId? "bg-red-600 hover:bg-red-700 duration-300 text-white py-2 lg:py-1 w-full rounded-lg lg:rounded-sm font-semibold tracking-wider shadow-sm" : "bg-stone-500 shadow-sm py-2 lg:py-1 w-full text-white rounded-lg lg:rounded-sm font-semibold tracking-wider"}
               type="button"
               onClick={() => {
                 if (selectedShowId) {

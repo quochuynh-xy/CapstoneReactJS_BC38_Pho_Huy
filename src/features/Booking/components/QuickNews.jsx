@@ -6,7 +6,7 @@ const Movie24h = [
       "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/9/4/800500-3-16623101089011137657104.jpg",
     title: "Cù lao xác sống là phim hay nhất 2022",
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis voluptatum consequatur blanditiis, voluptatibus ex asperiores, sed omnis quaerat est vel quas dolor ut illum dolore, esse veniam reprehenderit incidunt sunt sit consequuntur.!",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet, veritatis voluptatum...",
     like: "100",
     cmt: "9",
   },
@@ -15,7 +15,7 @@ const Movie24h = [
       "https://kenh14cdn.com/203336854389633024/2023/1/11/photo-28-1673458596481184203390.jpg",
     title: "'Nhà Bà Nữ' đạt doanh thu khủng tại Mỹ",
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis voluptatum consequatur blanditiis, voluptatibus ex asperiores, sed omnis quaerat est vel quas dolor ut illum dolore, esse veniam reprehenderit incidunt sunt sit consequuntur.!",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet, veritatis voluptatum...",
     like: "10",
     cmt: "9",
   },
@@ -24,7 +24,7 @@ const Movie24h = [
       "https://kenh14cdn.com/203336854389633024/2022/11/29/photo-1-1669703513656638600292.jpg",
     title: "Huyền Sử Vua Đinh Cán mốc doanh thu 100 tỷ",
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis voluptatum consequatur blanditiis, voluptatibus ex asperiores, sed omnis quaerat est vel quas dolor ut illum dolore, esse veniam reprehenderit incidunt sunt sit consequuntur.!",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis voluptatum...",
     like: "90",
     cmt: "9",
   },
@@ -33,7 +33,7 @@ const Movie24h = [
       "https://kenh14cdn.com/crop/640_360/2019/12/12/ngang-6-1576158019787670926824-crop-1576158037641838389241.png",
     title: "Chị Chị Em Em gây thất vọng vì không có cảnh nóng",
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis voluptatum consequatur blanditiis, voluptatibus ex asperiores, sed omnis quaerat est vel quas dolor ut illum dolore, esse veniam reprehenderit incidunt sunt sit consequuntur.!",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis voluptatum...",
     like: "999",
     cmt: "1299",
   },
@@ -42,7 +42,7 @@ const Movie24h = [
       "https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2021/3/19/890756/Bo-Gia-Tran-Thanh10.jpg",
     title: "Bố già là phim Việt hot nhất 2023",
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis voluptatum consequatur blanditiis, voluptatibus ex asperiores, sed omnis quaerat est vel quas dolor ut illum dolore, esse veniam reprehenderit incidunt sunt sit consequuntur.!",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis voluptatum...",
     like: "1",
     cmt: "4",
   },
@@ -51,7 +51,7 @@ const Movie24h = [
       "https://znews-photo.zingcdn.me/w660/Uploaded/qfssu/2022_11_10/1.jpg",
     title: "Hít drama mới với Seo Ye Ji",
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis voluptatum consequatur blanditiis, voluptatibus ex asperiores, sed omnis quaerat est vel quas dolor ut illum dolore, esse veniam reprehenderit incidunt sunt sit consequuntur.!",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis voluptatum...",
     like: "0",
     cmt: "0",
   },
@@ -59,7 +59,7 @@ const Movie24h = [
     image: "http://hanoimoi.com.vn/Uploads/images/phananh/2021/11/04/phim.jpg",
     title: "Tiếng khóc trong cô đơn của Ngạn",
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis voluptatum consequatur blanditiis, voluptatibus ex asperiores, sed omnis quaerat est vel quas dolor ut illum dolore, esse veniam reprehenderit incidunt sunt sit consequuntur.!",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis voluptatum...",
     like: "0",
     cmt: "19",
   },
@@ -68,7 +68,7 @@ const Movie24h = [
       "https://kenh14cdn.com/thumb_w/660/2019/6/2/photo-1-1559482096777205273862.png",
     title: 'Thông điệp mới của "Về nhà đi con"',
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis voluptatum consequatur blanditiis, voluptatibus ex asperiores, sed omnis quaerat est vel quas dolor ut illum dolore, esse veniam reprehenderit incidunt sunt sit consequuntur.!",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis voluptatum...",
     like: "9",
     cmt: "12",
   },
@@ -179,10 +179,10 @@ const QuickNews = () => {
           alt="img"
         />
         <div className="card-text">
-          <h3 className="card-title text-red-700 font-bold pb-2 cursor-pointer hover:text-slate-800 duration-300">
+          <h3 className="card-title text-red-700 font-bold pb-2 cursor-pointer text-sm md:text-base hover:text-slate-800 duration-300">
             {title}
           </h3>
-          <p className="card-sub-title text-neutral-600 text-sm pb-3 indent-2 h-20 overflow-hidden">
+          <p className="card-sub-title text-neutral-600 text-xs md:text-sm pb-3 indent-2 h-20 overflow-hidden">
             {content}
           </p>
         </div>
@@ -226,19 +226,19 @@ const QuickNews = () => {
     );
   };
   const content_1 = {
-    label: <h3 className="parent__tab">Điện ảnh 24h</h3>,
+    label: <h3 className="parent__tab lg:text-">Điện ảnh 24h</h3>,
     key: 1,
     children: (
       <div className="flex flex-wrap">
         <Banner className="top-item basis-6/12 px-4" content={Movie24h[0]} />
         <Banner className="top-item basis-6/12 px-4" content={Movie24h[1]} />
-        <Banner className="bot-item basis-4/12 px-4" content={Movie24h[2]} />
-        <Banner className="bot-item basis-4/12 px-4" content={Movie24h[3]} />
-        <div className="bot-item basis-4/12 px-4 flex flex-wrap">
-          <SmallBanner className="bot-list basis-full" content={Movie24h[4]} />
-          <SmallBanner className="bot-list basis-full" content={Movie24h[5]} />
-          <SmallBanner className="bot-list basis-full" content={Movie24h[6]} />
-          <SmallBanner className="bot-list basis-full" content={Movie24h[7]} />
+        <Banner className="bot-item basis-6/12 lg:basis-4/12 px-4" content={Movie24h[2]} />
+        <Banner className="bot-item basis-6/12 lg:basis-4/12 px-4" content={Movie24h[3]} />
+        <div className="bot-item flex justify-around flex-wrap basis-full lg:basis-4/12 px-4">
+          <SmallBanner className="bot-list basis-5/12 lg:basis-full" content={Movie24h[4]} />
+          <SmallBanner className="bot-list basis-5/12 lg:basis-full" content={Movie24h[5]} />
+          <SmallBanner className="bot-list basis-5/12 lg:basis-full" content={Movie24h[6]} />
+          <SmallBanner className="bot-list basis-5/12 lg:basis-full" content={Movie24h[7]} />
         </div>
       </div>
     ),
@@ -283,7 +283,7 @@ const QuickNews = () => {
     <div className="booking__news container mx-auto">
       <Tabs
         animated
-        className="news__content w-4/5 mx-auto"
+        className="news__content w-full lg:w-4/5 mx-auto"
         defaultActiveKey="1"
         centered
         items={[content_1, content_2, content_3]}

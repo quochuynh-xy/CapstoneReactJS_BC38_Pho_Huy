@@ -9,12 +9,16 @@ module.exports = {
           100: "800px",
         },
         container: {
+          width: "100%",
+          padding: {
+            DEFAULT: "10px",
+          },
           screens: {
-            'sm': '100%',
-            'md': '100%',
-            'lg': '960px',
-            'xl': '1140px',
-            'xxl': '1200px',
+            "xs": "576px",
+            'sm': '640px',
+            'md': '768px',
+            'lg': '1024px',
+            'xl': '1280px',
           }
         }
       },
