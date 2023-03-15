@@ -22,7 +22,7 @@ function Home() {
     dispatch(fetchMovies(paramsUrl.get("page")));
   }, [dispatch, paramsUrl]);
   return (
-    <section className="booking">
+    <section className="booking mx-auto">
       <PageLayout>
         <Header />
         <BookingCarousel />
