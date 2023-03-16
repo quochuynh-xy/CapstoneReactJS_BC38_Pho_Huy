@@ -1,4 +1,4 @@
-import { MdMovieFilter, MdKeyboardArrowRight } from "react-icons/md";
+import { MdPerson, MdKeyboardArrowRight } from "react-icons/md";
 import {
   FaFacebookSquare,
   FaYoutubeSquare,
@@ -6,18 +6,15 @@ import {
   FaInstagramSquare,
   FaAppStore,
   FaAndroid,
-  FaCopyright,
+  FaInfoCircle,
 } from "react-icons/fa";
+import "./sass/footer.scss";
 import { NavLink } from "react-router-dom";
 function Footer() {
   return (
     <footer className="footer">
-      <div className="container mx-auto flex footer__top">
-        <div className="basis-1/5 col flex flex-col items-start">
-          <MdMovieFilter className="logo" />
-          <h2 className="name">Tixket box</h2>
-        </div>
-        <div className="basis-1/5 col uppercase">
+      <div className="footer__top container mx-auto flex flex-wrap">
+        <div className="basis-full px-6 pt-4 sm:basis-6/12 md:px-0 lg:basis-1/5 col uppercase">
           <h3 className="relative">Giới thiệu</h3>
           <div className="col-content">
             <ul>
@@ -48,7 +45,7 @@ function Footer() {
             </ul>
           </div>
         </div>
-        <div className="basis-1/5 col uppercase">
+        <div className="basis-full px-6 pt-4 sm:basis-6/12 md:px-0 lg:basis-1/5 col uppercase">
           <h3 className="relative">Hỗ trợ</h3>
           <div className="col-content">
             <ul>
@@ -79,41 +76,78 @@ function Footer() {
             </ul>
           </div>
         </div>
-        <div className="basis-1/5 col uppercase">
-          <h3 className="relative">Kết nối</h3>
-          <div className="social">
-            <a className="social__item" href="#url">
-              <FaFacebookSquare />
-            </a>
-            <a className="social__item" href="#url">
-              <FaYoutubeSquare />
-            </a>
-            <a className="social__item" href="#url">
-              <FaTwitterSquare />
-            </a>
-            <a className="social__item" href="#url">
-              <FaInstagramSquare />
-            </a>
+        <div className="basis-full px-6 pt-4 sm:basis-6/12 md:px-0 lg:basis-1/5 col uppercase">
+          <h3 className="relative">Library used</h3>
+          <div className="col-content">
+            <ul>
+              <li>
+                <NavLink>
+                  <MdKeyboardArrowRight className="inline-block align-middle" />
+                  ReactJS & redux-thunk
+                </NavLink>
+              </li>
+              <li>
+                <NavLink>
+                  <MdKeyboardArrowRight className="inline-block align-middle" />
+                  React-router-dom
+                </NavLink>
+              </li>
+              <li>
+                <NavLink>
+                  <MdKeyboardArrowRight className="inline-block align-middle" />
+                  Sass, ANT-DESIGN, Tailwind
+                </NavLink>
+              </li>
+              <li>
+                <NavLink>
+                  <MdKeyboardArrowRight className="inline-block align-middle" />
+                  Axios, immer, moment...
+                </NavLink>
+              </li>
+            </ul>
           </div>
         </div>
-        <div className="basis-1/5 col uppercase">
+        <div className="basis-full px-6 pt-4 sm:basis-6/12 md:px-0 lg:basis-1/5 col uppercase">
           <h3 className="relative">Download app</h3>
           <div className="mobile-app">
             <a className="app__item" href="#url">
-              <FaAppStore className="inline pr-3"/> <span>IOS</span>
+              <FaAppStore className="inline pr-3" /> <span>IOS</span>
             </a>
             <a className="app__item" href="#url">
-              <FaAndroid className="inline pr-3"/> <span>Android</span>
+              <FaAndroid className="inline pr-3" /> <span>Android</span>
             </a>
+          </div>
+        </div>
+        <div className="basis-full px-6 pt-4 sm:basis-6/12 md:px-0 lg:basis-1/5 col uppercase">
+          <h3 className="relative">Kết nối & thông tin</h3>
+          <div className="social flex">
+            <a className="social__item mx-1" href="#url">
+              <FaFacebookSquare />
+            </a>
+            <a className="social__item mx-1" href="#url">
+              <FaYoutubeSquare />
+            </a>
+            <a className="social__item mx-1" href="#url">
+              <FaTwitterSquare />
+            </a>
+            <a className="social__item mx-1" href="#url">
+              <FaInstagramSquare />
+            </a>
+          </div>
+          <div className="members">
+            <h4 className="normal-case text-sm pb-1 pt-2">Triển khai dự án:</h4>
+            <ul className="capitalize text-xs">
+              <li className="leading-5 flex items-center tracking-wide"><MdPerson className="inline-block mr-1 text-green-600" /> Huỳnh Quốc Phô</li>
+              <li className="leading-5 flex items-center tracking-wide"><MdPerson className="inline-block mr-1 text-green-600" /> Lê Nam Bảo Huy</li>
+            </ul>
           </div>
         </div>
       </div>
       <div className="footer__bot text-center">
         <p>
-          <FaCopyright className="inline-block mr-3 align-middle" />
+          <FaInfoCircle className="inline-block mr-3 align-middle" />
           <span className="align-middle">
-            Copyright info Lorem ipsum dolor sit, amet consectetur adipisicing
-            elit. Recusandae, nam?
+            Cybersoft, BC38 Front End: 09/2022 ~ 03/2023
           </span>
         </p>
       </div>
