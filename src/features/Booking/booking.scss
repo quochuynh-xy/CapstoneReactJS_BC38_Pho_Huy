@@ -88,91 +88,6 @@ header.nav-bar {
     }
   }
 }
-footer.footer {
-  background-color: $bg-dark-1;
-  box-shadow: 0 -2px 4px #fff;
-  padding-top: 40px;
-  margin-top: 80px;
-  color: $cl-grey-4;
-  .footer__top {
-    padding-bottom: 60px;
-    .col {
-      .logo {
-        font-size: 80px;
-        color: $cl-red-1;
-      }
-      .name {
-        color: $cl-red-1;
-        font-size: 2rem;
-      }
-      h3 {
-        padding-left: 12px;
-        margin-bottom: 12px;
-        font-weight: bold;
-        &::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          height: 100%;
-          left: 0;
-          width: 3px;
-          background-color: $cl-red-2;
-        }
-      }
-      .col-content {
-        ul {
-          li {
-            line-height: 2.2;
-            a {
-              font-size: 0.8rem;
-              transition: 0.3s;
-              display: flex;
-              align-items: center;
-              &:hover {
-                color: $cl-primary;
-              }
-              svg {
-                color: $cl-green-2;
-              }
-            }
-          }
-        }
-      }
-      .social {
-        display: flex;
-        .social__item {
-          font-size: 2rem;
-          margin-right: 12px;
-          transition: 0.3s;
-          &:hover {
-            color: $cl-primary;
-          }
-        }
-      }
-      .mobile-app {
-        display: flex;
-        justify-content: flex-start;
-        flex-direction: column;
-        .app__item {
-          font-size: 3.5rem;
-          margin-left: 8px;
-          margin-right: 8px;
-          display: flex;
-          align-items: center;
-          transition: 0.3s;
-          &:hover {
-            color: $cl-primary;
-          }
-        }
-      }
-    }
-  }
-  .footer__bot {
-    border-top: 1px solid $cl-grey-1;
-    padding: 32px 0;
-    font-size: 1.1rem;
-  }
-}
 // Home page
 .booking {
   background-color: $bg-dark-4;
@@ -332,6 +247,14 @@ footer.footer {
             animation-duration: 0.5s;
             animation-timing-function: ease-out;
             animation-fill-mode: forwards;
+          }
+          .buy-btn {
+            opacity: 1;
+          }
+        }
+        @media screen and (max-width: 1024px) {
+          .movie-title {
+            display: none;
           }
           .buy-btn {
             opacity: 1;
@@ -1200,7 +1123,9 @@ footer.footer {
 .modal__trailer {
   .ant-modal-content {
     width: 800px;
+    max-width: 80vw;
     height: 535px;
+    max-height: 60vh;
     padding: 4px;
     background-color: #505050;
     .ant-modal-close {
@@ -1214,6 +1139,9 @@ footer.footer {
       height: 3rem;
       .ant-modal-close-x {
         color: #ffff;
+      }
+      @media screen and (max-width: 1024px) {
+        display: none;
       }
     }
     .ant-modal-body {
