@@ -1,0 +1,95 @@
+@import "../../sass/const.scss";
+footer.footer {
+  background-color: $bg-dark-1;
+  box-shadow: 0 -2px 4px #fff;
+  padding-top: 40px;
+  margin-top: 80px;
+  color: $cl-grey-4;
+  .footer__top {
+    padding-bottom: 60px;
+    .col {
+      h3 {
+        padding-left: 12px;
+        margin-bottom: 12px;
+        font-weight: bold;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          height: 100%;
+          left: 0;
+          width: 3px;
+          background-color: $cl-red-2;
+        }
+      }
+      .col-content {
+        ul {
+          li {
+            line-height: 2.2;
+            a {
+              font-size: 0.8rem;
+              transition: 0.3s;
+              display: flex;
+              align-items: center;
+              &:hover {
+                color: $cl-primary;
+              }
+              svg {
+                color: $cl-green-2;
+              }
+            }
+          }
+        }
+      }
+      .social {
+        display: flex;
+        .social__item {
+          font-size: 2rem;
+          margin-right: 12px;
+          transition: 0.3s;
+          &:hover {
+            color: $cl-primary;
+          }
+        }
+      }
+      .mobile-app {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        .app__item {
+          font-size: 3.5rem;
+          margin-left: 8px;
+          margin-right: 8px;
+          display: flex;
+          align-items: center;
+          transition: 0.3s;
+          &:hover {
+            color: $cl-primary;
+          }
+        }
+        @media screen and (max-width: 768px) {
+          flex-direction: row;
+          .app__item {
+            font-size: 2.5rem;
+          }
+        }
+      }
+    }
+  }
+  .footer__bot {
+    border-top: 1px solid $cl-grey-1;
+    padding: 16px 0;
+    font-size: 1.1rem;
+  }
+  @media screen and (max-width: 1024px) {
+    margin-top: 0px;
+    padding-top: 10px;
+    .footer__top {
+        padding-bottom: 20px;
+    }
+    .footer__bot {
+        padding: 16px 0;
+        font-size: 14px;
+    }
+  }
+}

@@ -280,7 +280,7 @@ const QuickNews = () => {
       ),
   };
   return (
-    <div className="booking__news container mx-auto">
+    <div className="booking__news container mx-auto" id="quickNews">
       <Tabs
         animated
         className="news__content w-full lg:w-4/5 mx-auto"

@@ -12,6 +12,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import QuickSearch from "./components/QuickSearch";
 import QuickNews from "./components/QuickNews";
+import Appdownload from "./components/AppDownLoad";
 function Home() {
   const dispatch = useDispatch();
   const [paramsUrl, setParamsUrl] = useSearchParams();
@@ -24,12 +25,13 @@ function Home() {
   return (
     <section className="booking mx-auto">
       <PageLayout>
-        <Header />
+        <Header/>
         <BookingCarousel />
         <QuickSearch/>
         <MoviesList />
         <MoviesTab />
         <QuickNews />
+        <Appdownload />
         <Footer />
         <ModalClip />
       </PageLayout>

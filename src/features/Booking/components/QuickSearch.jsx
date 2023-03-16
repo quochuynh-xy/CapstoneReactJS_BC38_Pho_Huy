@@ -136,7 +136,7 @@ const QuickSearch = () => {
           key: index,
           label: (
             <p
-              className="hover:text-red-500 duration-300 font-semibold"
+              className="hover:text-red-500 duration-300 text-sm font-semibold"
               key={index}
               onClick={() => handleSelectMovie(item.tenPhim, item.maPhim)}
             >
@@ -158,7 +158,7 @@ const QuickSearch = () => {
       ];
     }
   };
-  const listOfCinemas = () => {
+  const renderListOfCinema = () => {
     if (cinemasNameList.length > 0) {
       return cinemasNameList.map((item, index) => {
         return {
@@ -186,7 +186,7 @@ const QuickSearch = () => {
       ];
     }
   };
-  const listOfDays = () => {
+  const renderListOfDays = () => {
     if (days.length > 0) {
       return days.map((item, index) => {
         return {
@@ -214,7 +214,7 @@ const QuickSearch = () => {
       ];
     }
   };
-  const listOfShows = () => {
+  const renderListOfShows = () => {
     if (listShows.length > 0) {
       return listShows.map((item, index) => {
         return {
@@ -247,7 +247,7 @@ const QuickSearch = () => {
   };
   return (
     <>
-      <div className="quick-search container mx-auto pb-4">
+      <div className="quick-search container mx-auto pb-4 relative">
         <h3 className="search__title text-orange-600 ml-4 tracking-wider italic">Mua vé nhanh</h3>
         <form
           action=""
@@ -285,7 +285,7 @@ const QuickSearch = () => {
                 overflowY: "scroll",
               }}
               menu={{
-                items: listOfCinemas(),
+                items: renderListOfCinema(),
               }}
             >
               <p className="w-full text-center lg:text-left search-item text-sm cursor-pointer px-2 py-1 font-semibold italic rounded-lg lg:rounded-sm overflow-hidden">
@@ -302,7 +302,7 @@ const QuickSearch = () => {
                 overflowY: "scroll",
               }}
               menu={{
-                items: listOfDays(),
+                items: renderListOfDays(),
               }}
             >
               <p className="w-full search-item text-sm cursor-pointer px-2 py-1 text-center font-semibold italic rounded-lg lg:rounded-sm overflow-hidden">
@@ -319,7 +319,7 @@ const QuickSearch = () => {
                 overflowY: "scroll",
               }}
               menu={{
-                items: listOfShows(),
+                items: renderListOfShows(),
               }}
             >
               <p className="w-full search-item text-sm cursor-pointer px-2 py-1 text-center font-semibold italic rounded-lg lg:rounded-sm overflow-hidden">
@@ -335,7 +335,7 @@ const QuickSearch = () => {
                 if (selectedShowId) {
                   navigate("/Booking/TicketRoom/" + selectedShowId);
                 } else {
-                  alert("Có cái đéo gì mà mua");
+                  return
                 }
               }}
             >
@@ -343,75 +343,9 @@ const QuickSearch = () => {
             </button>
           </div>
         </form>
+        <div id="quickSearch" className="absolute -top-32"></div>
       </div>
     </>
   );
 };
 export default QuickSearch;
-// const items = [
-//     {
-//       key: '1',
-//       label: (
-//         <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-//           1st menu item
-//         </a>
-//       ),
-//     },
-//     {
-//       key: '2',
-//       label: (
-//         <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
-//           2nd menu item
-//         </a>
-//       ),
-//     },
-//     {
-//       key: '3',
-//       label: (
-//         <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
-//           3rd menu item
-//         </a>
-//       ),
-//     },
-//   ];
-//   <Space wrap>
-//     <Dropdown
-//       menu={{
-//         items,
-//       }}
-//       placement="bottomLeft"
-//     >
-//       <Button>bottomLeft</Button>
-//     </Dropdown>
-//   </Space>
-// let array1 = [
-//     {a:1, b:22},
-//     {a:1, b:23},
-//     {a:1, b:24},
-//     {a:1, b:22},
-//     {a:1, b:21},
-//     {a:3, b:3},
-//     {a:0, b:0},
-//     {a:4, b:4},
-// ]
-// let array2 = [
-//     {a:1, b:21},
-//     {a:3, b:3},
-//     {a:0, b:0},
-//     {a:4, b:4},
-// ]
-// let array2 = [
-//     {aa:1, bb:2},
-//     {aa:3, bb:3},
-//     {aa:0, bb:0},
-//     {aa:4, bb:4},
-// ]
-// let sum = array1.reduce((init, item)=> {
-//     return init.push({
-//         a : item.a
-//     })
-// }, [])
-// c= [{a:1},
-// {a:3},
-// {a:0},
-// {a:4},]
