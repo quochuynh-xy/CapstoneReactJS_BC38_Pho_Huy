@@ -247,7 +247,7 @@ const QuickSearch = () => {
   };
   return (
     <>
-      <div className="quick-search container mx-auto pb-4">
+      <div className="quick-search container mx-auto pb-4 relative">
         <h3 className="search__title text-orange-600 ml-4 tracking-wider italic">Mua vé nhanh</h3>
         <form
           action=""
@@ -343,6 +343,7 @@ const QuickSearch = () => {
             </button>
           </div>
         </form>
+        <div id="quickSearch" className="absolute -top-32"></div>
       </div>
     </>
   );

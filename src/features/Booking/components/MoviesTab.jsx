@@ -111,6 +111,7 @@ function MoviesTab() {
         tabPosition="top"
         className="booking__tabs container mx-auto mt-4 hover:shadow-sm"
         items={mapItems}
+        id="movieTabs"
       />
     </>
   );

@@ -33,9 +33,7 @@ function Header() {
             <IoMdArrowDropdown className="inline ml-2 text-orange-400" />
           </h3>
           <ul className="user__action absolute">
-            <li 
-              onClick={()=> navigate("/Profile")}
-            >Tài khoản</li>
+            <li onClick={() => navigate("/Profile")}>Tài khoản</li>
             <li onClick={handleLogOut}>Đăng xuất</li>
           </ul>
         </div>
@@ -52,7 +50,7 @@ function Header() {
   const userLogin = useSelector((state) => state.auth.userLogin);
   return (
     <header className="nav-bar flex items-center">
-      <div className="flex justify-between items-center container mx-auto">
+      <div className="hidden lg:flex justify-between items-center container mx-auto">
         <NavLink to="/">
           <h1 className="home text-red-500 font-black flex items-center">
             <MdMovieFilter className="inline-block text-5xl mr-2" />
@@ -62,17 +60,23 @@ function Header() {
         <div>
           <nav>
             <NavLink
-              to="/trag lịch chiếu"
+              to="/Mua vé"
               className={(param) => {
                 return param.isActive ? `${headerMenu} active` : headerMenu;
+              }}
+              onClick={() => {
+                document.getElementById("quickSearch").scrollIntoView();
               }}
             >
               Mua vé
             </NavLink>
             <NavLink
-              to="/cụm rạp"
+              to="/Cụm rạp"
               className={(param) => {
                 return param.isActive ? `${headerMenu} active` : headerMenu;
+              }}
+              onClick={() => {
+                document.getElementById("movieTabs").scrollIntoView();
               }}
             >
               Cụm rạp
@@ -82,6 +86,9 @@ function Header() {
               className={(param) => {
                 return param.isActive ? `${headerMenu} active` : headerMenu;
               }}
+              onClick={() => {
+                document.getElementById("quickNews").scrollIntoView();
+              }}
             >
               Tin tức
             </NavLink>
@@ -90,12 +97,21 @@ function Header() {
               className={(param) => {
                 return param.isActive ? `${headerMenu} active` : headerMenu;
               }}
+              onClick={() => {
+                document.getElementById("appDownLoad").scrollIntoView();
+              }}
             >
               Ứng dụng
             </NavLink>
           </nav>
         </div>
         <div className="action">{!userLogin ? <NotLogin /> : <Logged />}</div>
+      </div>
+      <div className="flex lg:hidden container mx-auto justify-between items-center">
+        <h1 className="home text-red-500 font-black flex items-center">
+          <MdMovieFilter className="inline-block text-5xl mr-2" />
+          <span className="text-2xl">Tixket box</span>
+        </h1>
       </div>
     </header>
   );

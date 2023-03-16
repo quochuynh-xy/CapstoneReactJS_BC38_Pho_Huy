@@ -6,7 +6,7 @@ import slide4 from "../../../app/assets/img/images/mobile_screen_4.png";
 import slide5 from "../../../app/assets/img/images/mobile_screen_5.png";
 const Appdownload = () => {
   return (
-    <section className="booking__downloadapp relative">
+    <section className="booking__downloadapp relative" id="appDownLoad">
       <div className="downloadapp__content lg:w-4/5 mx-auto py-8 flex flex-wrap justify-center items-center relative">
         <div className="col basis-8/12 md:basis-6/12 px-8">
           <div className="downloadapp__text">
