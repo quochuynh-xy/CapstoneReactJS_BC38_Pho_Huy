@@ -8,7 +8,7 @@ import {
   FaAndroid,
   FaInfoCircle,
 } from "react-icons/fa";
-import "./sass/footer.scss";
+import "./styles/footer.scss";
 import { NavLink } from "react-router-dom";
 function Footer() {
   return (

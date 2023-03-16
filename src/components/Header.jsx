@@ -67,7 +67,7 @@ function Header() {
                 return param.isActive ? `${headerMenu} active` : headerMenu;
               }}
             >
-              Lịch chiếu
+              Mua vé
             </NavLink>
             <NavLink
               to="/cụm rạp"
