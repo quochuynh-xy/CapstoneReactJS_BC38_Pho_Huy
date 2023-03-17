@@ -63,7 +63,10 @@ const MovieInfo = (props) => {
               <div className="flex justify-center sm:block basis-full">
                 <button
                   className="buybtn text-white sm:text-sm px-6 md:px-4 lg:px-8 py-2 rounded-md font-bold"
-                  onClick={() => alert("lăn xuống phía dưới để chọn rạp kìa")}
+                  onClick={() => {
+                    document.getElementById('movieDetailsTabs').scrollIntoView()
+                    
+                  }}
                 >
                   MUA VÉ
                 </button>

@@ -4,27 +4,25 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import types from "../const";
+import successImg from "../../../app/assets/img/images/success.jpg";
+import errorImg from "../../../app/assets/img/images/error.jpg";
 const ResultPop = (props) => {
   const { requestCode, title } = props;
-  const modalPopUpStatus = useSelector(state => state.auth.modalPopUpStatus)
+  const modalPopUpStatus = useSelector((state) => state.auth.modalPopUpStatus);
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const successImage =
-    "https://t4.ftcdn.net/jpg/04/50/48/81/360_F_450488163_mSAKsfAWgmlzePsyGEuDtoRhKBz7W1ku.jpg";
-  const errorImage =
-    "https://t4.ftcdn.net/jpg/04/37/65/95/360_F_437659599_4CCVndUWyvCdVskW9SnBvlnY8Sg7ZMvT.jpg";
   const directToSignIn = () => {
-    dispatch({type: types.SHOW_MODAL, payload:false})
+    dispatch({ type: types.SHOW_MODAL, payload: false });
     if (requestCode === 200) {
       navigate("/Authentication/SignIn");
     } else {
       return;
     }
   };
-  useEffect(()=> {
-    setModalOpen(modalPopUpStatus)
-  }, [modalPopUpStatus])
+  useEffect(() => {
+    setModalOpen(modalPopUpStatus);
+  }, [modalPopUpStatus]);
   return (
     <Modal
       centered
@@ -40,7 +38,7 @@ const ResultPop = (props) => {
         <p className="text-center">
           <img
             className="h-64 mx-auto block"
-            src={requestCode === 200 ? successImage : errorImage}
+            src={requestCode === 200 ? successImg : errorImg}
             alt="img"
           />
         </p>

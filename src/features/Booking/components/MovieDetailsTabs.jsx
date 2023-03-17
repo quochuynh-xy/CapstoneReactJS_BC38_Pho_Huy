@@ -151,7 +151,7 @@ const MovieDetailsTabs = (props) => {
     </div>
   );
   return (
-    <section className="container mx-auto detail__showtime">
+    <section className="container mx-auto detail__showtime" id="movieDetailsTabs">
       <Tabs
         className="showtime__parent"
         tabPosition="top"
