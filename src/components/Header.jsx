@@ -4,6 +4,7 @@ import { MdMovieFilter } from "react-icons/md";
 import types from "../features/Authentication/const";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { stringTrimmer } from "../features/Authentication/utilities/utilities";
+import userImg from "../app/assets/img/icons/user-128.png"
 // THIS IS SITE HEADER
 function Header() {
   const headerMenu = "mx-3 nav-item";
@@ -25,7 +26,7 @@ function Header() {
     return (
       <div className="user flex items-center">
         <div className="avatar">
-          <img src="https://picsum.photos/id/40/100" alt="avatar" />
+          <img src={userImg} alt="avatar" />
         </div>
         <div className="user__mng ml-2 relative">
           <h3 className="user__name cursor-pointer text-sm">

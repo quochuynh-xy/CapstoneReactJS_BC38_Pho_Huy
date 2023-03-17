@@ -25,10 +25,9 @@ header.header {
           }
         }
         &.active {
-          font-size: 1.1rem;
           &::after {
             width: 100%;
-            height: 3px;
+            height: 2px;
           }
         }
       }
@@ -50,6 +49,10 @@ header.header {
   }
 }
 .profile-data {
+  padding-bottom: 24px;
+  .col-left, .col-right {
+    min-height: 280px;
+  }
 }
 .activities {
   .activity {
