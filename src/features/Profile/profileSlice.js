@@ -1,5 +1,5 @@
 import types from "./const";
-import authenTypes from "../Authentication/const";
+import authTypes from "../Authentication/const";
 const initState = {
   userData: {},
   userBookingHistory: [],
@@ -20,7 +20,7 @@ const profileReducer = (state = initState, action) => {
       localStorage.setItem("cyberfilmToken", "");
       return { ...initState, loginStatus: "error" };
     }
-    case authenTypes.LOGOUT: {
+    case authTypes.LOGOUT: {
       return initState;
     }
     default:

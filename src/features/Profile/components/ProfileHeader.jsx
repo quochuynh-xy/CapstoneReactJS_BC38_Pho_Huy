@@ -8,19 +8,12 @@ const ProfileHeader = () => {
   return (
     <header className="header">
       <div className="container mx-auto flex items-center justify-between py-4">
-        <div></div>
         <nav>
           <NavLink to="/" className="nav-item mx-3">
             Trang chủ
           </NavLink>
           <NavLink to="/Profile" className="nav-item mx-3">
             Trang cá nhân
-          </NavLink>
-          <NavLink to="/liên hệ" className="nav-item mx-3">
-            Liên Hệ
-          </NavLink>
-          <NavLink to="/tin tức" className="nav-item mx-3">
-            Tin Tức
           </NavLink>
           {userData?.maLoaiNguoiDung !== "KhachHang" ?<NavLink to="/Admin" className="nav-item mx-3">
             Quản lý

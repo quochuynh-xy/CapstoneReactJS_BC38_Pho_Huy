@@ -122,7 +122,7 @@ const MovieDetailsTabs = (props) => {
     />
   );
   const MovieIntroduce = (
-    <div className="movieInfo flex justify-around">
+    <div className="movieInfo w-4/5 flex justify-around">
       <div className="flex justify-between basis-5/12 my-11">
         <div className="text-lime-600 font-bold mr-4">
           <p>Tên Phim:</p>
@@ -151,7 +151,7 @@ const MovieDetailsTabs = (props) => {
     </div>
   );
   return (
-    <section className="container mx-auto detail__showtime">
+    <section className="container mx-auto detail__showtime" id="movieDetailsTabs">
       <Tabs
         className="showtime__parent"
         tabPosition="top"

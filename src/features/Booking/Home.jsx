@@ -11,6 +11,8 @@ import PageLayout from "../../HOCs/PageLayout";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import QuickSearch from "./components/QuickSearch";
+import QuickNews from "./components/QuickNews";
+import AppDownLoad from "./components/AppDownLoad";
 function Home() {
   const dispatch = useDispatch();
   const [paramsUrl, setParamsUrl] = useSearchParams();
@@ -21,13 +23,15 @@ function Home() {
     dispatch(fetchMovies(paramsUrl.get("page")));
   }, [dispatch, paramsUrl]);
   return (
-    <section className="booking">
+    <section className="booking mx-auto">
       <PageLayout>
-        <Header />
+        <Header/>
         <BookingCarousel />
         <QuickSearch/>
         <MoviesList />
         <MoviesTab />
+        <QuickNews />
+        <AppDownLoad />
         <Footer />
         <ModalClip />
       </PageLayout>

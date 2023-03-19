@@ -15,7 +15,6 @@ const Profile = () => {
   const { userData, userBookingHistory, loginStatus } = useSelector(
     (state) => state.profile
   );
-
   const totalSpent = useMemo(() => {
     return userBookingHistory.reduce((init, booking) => {
       return (init += booking.giaVe * booking.danhSachGhe.length);
@@ -81,9 +80,9 @@ const Profile = () => {
       <ProfileHeader />
       {loginStatus === "success" ? (
         <div className="profile-data pt-10">
-          <div className="container mx-auto flex">
-            <div className="col-left basis-6/12">
-              <div className="bg-slate-100 py-4 mb-4 px-4 rounded-md">
+          <div className="container mx-auto flex flex-wrap justify-center">
+            <div className="col-left  basis-11/12 md:basis-6/12 flex flex-col justify-between">
+              <div className="bg-slate-100 py-4 px-4 mb-2 rounded-md">
                 <p>
                   Hi,{" "}
                   <span className="text-blue-700 font-semibold">
@@ -95,9 +94,9 @@ const Profile = () => {
                   hoặc chỉnh sửa thông tin”
                 </p>
               </div>
-              <div className="avatar flex bg-slate-100 py-4 mb-4 px-4 rounded-md">
+              <div className="avatar flex bg-slate-100 py-4 px-4 rounded-md">
                 <img
-                  className="w-32 h-40 mr-5 rounded-sm shadow-md shadow-zinc-500"
+                  className="w-24 h-28 mr-5 rounded-sm shadow-md shadow-zinc-500"
                   src="https://picsum.photos/id/49/200/600"
                   alt="avatar"
                 />
@@ -117,7 +116,9 @@ const Profile = () => {
                     </li>
                     <li className="flex justify-between">
                       Tổng chi tiêu
-                      <span className="text-blue-600">{formatCurrency(totalSpent)} đ</span>
+                      <span className="text-blue-600">
+                        {formatCurrency(totalSpent)} đ
+                      </span>
                     </li>
                     <li className="flex justify-between">
                       Hạng thành viên
@@ -129,80 +130,86 @@ const Profile = () => {
                 </div>
               </div>
             </div>
-            <form className="select-none col-right h-fit basis-6/12 flex flex-wrap bg-slate-100 p-8 ml-4 rounded-md">
-              <div className="basis-6/12">
-                <div className="input-field mb-1">
-                  <label className="text-xs tracking-wider font-semibold text-red-600">
-                    Họ & tên
-                  </label>
-                  <br />
-                  <input
-                    className="border-dotted py-1 px-1 rounded-sm border border-blue-400"
-                    type="text"
-                    value={userData.hoTen || " "}
-                    disabled
-                  />
+            <div className="col-right basis-11/12 md:basis-6/12 mt-2 md:mt-0">
+              <form className="ml-0 p-4 md:ml-4 select-none h-full flex flex-wrap bg-slate-100 rounded-md"
+                onSubmit={(e) => {
+                  e.preventDefault()
+                }}
+              >
+                <div className="basis-6/12">
+                  <div className="input-field mb-1">
+                    <label className="text-xs tracking-wider font-semibold text-red-600">
+                      Họ & tên
+                    </label>
+                    <br />
+                    <input
+                      className="border-dotted py-1 px-1 rounded-sm border border-blue-400"
+                      type="text"
+                      value={userData.hoTen || " "}
+                      disabled
+                    />
+                  </div>
+                  <div className="input-field mb-1">
+                    <label className="text-xs tracking-wider font-semibold text-red-600">
+                      Email
+                    </label>
+                    <br />
+                    <input
+                      className="border-dotted py-1 px-1 rounded-sm border border-blue-400"
+                      type="text"
+                      value={userData.email || " "}
+                      disabled
+                    />
+                  </div>
+                  <div className="input-field mb-1">
+                    <label className="text-xs tracking-wider font-semibold text-red-600">
+                      Mật khẩu
+                    </label>
+                    <br />
+                    <input
+                      type="password"
+                      className="border-dotted py-1 px-1 rounded-sm border border-blue-400"
+                      value="Trần Thanh Tài"
+                      disabled
+                    />
+                  </div>
                 </div>
-                <div className="input-field mb-1">
-                  <label className="text-xs tracking-wider font-semibold text-red-600">
-                    Email
-                  </label>
-                  <br />
-                  <input
-                    className="border-dotted py-1 px-1 rounded-sm border border-blue-400"
-                    type="text"
-                    value={userData.email || " "}
-                    disabled
-                  />
+                <div className="basis-6/12">
+                  <div className="input-field mb-1">
+                    <label className="text-xs tracking-wider font-semibold text-red-600">
+                      Tài khoản
+                    </label>
+                    <br />
+                    <input
+                      className="border-dotted py-1 px-1 rounded-sm border border-blue-400"
+                      type="text"
+                      value={userData.taiKhoan || " "}
+                      disabled
+                    />
+                  </div>
+                  <div className="input-field mb-1">
+                    <label className="text-xs tracking-wider font-semibold text-red-600">
+                      Số điện thoại
+                    </label>
+                    <br />
+                    <input
+                      className="border-dotted py-1 px-1 rounded-sm border border-blue-400"
+                      type="text"
+                      value={userData.soDT || " "}
+                      disabled
+                    />
+                  </div>
+                  <div className="mt-5">
+                    <button
+                      type="submit"
+                      className=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                      Cập nhật
+                    </button>
+                  </div>
                 </div>
-                <div className="input-field mb-1">
-                  <label className="text-xs tracking-wider font-semibold text-red-600">
-                    Mật khẩu
-                  </label>
-                  <br />
-                  <input
-                    type="password"
-                    className="border-dotted py-1 px-1 rounded-sm border border-blue-400"
-                    value="Trần Thanh Tài"
-                    disabled
-                  />
-                </div>
-                <div className="mt-6">
-                  <button
-                    type="submit"
-                    className=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  >
-                    Cập nhật
-                  </button>
-                </div>
-              </div>
-              <div className="basis-6/12">
-                <div className="input-field mb-1">
-                  <label className="text-xs tracking-wider font-semibold text-red-600">
-                    Tài khoản
-                  </label>
-                  <br />
-                  <input
-                    className="border-dotted py-1 px-1 rounded-sm border border-blue-400"
-                    type="text"
-                    value={userData.taiKhoan || " "}
-                    disabled
-                  />
-                </div>
-                <div className="input-field mb-1">
-                  <label className="text-xs tracking-wider font-semibold text-red-600">
-                    Số điện thoại
-                  </label>
-                  <br />
-                  <input
-                    className="border-dotted py-1 px-1 rounded-sm border border-blue-400"
-                    type="text"
-                    value={userData.soDT || " "}
-                    disabled
-                  />
-                </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       ) : null}
@@ -219,7 +226,8 @@ const Profile = () => {
                   time: moment(row.ngayDat).format("hh:mm a"),
                   ticketNo: row.maVe,
                   movieName: row.tenPhim,
-                  bill: formatCurrency(row.danhSachGhe.length * row.giaVe) + " đ",
+                  bill:
+                    formatCurrency(row.danhSachGhe.length * row.giaVe) + " đ",
                   cinemaName: row.danhSachGhe[0].tenHeThongRap,
                   seats: row.danhSachGhe.length,
                 };
@@ -232,6 +240,7 @@ const Profile = () => {
                 showSizeChanger: false,
                 showLessItems: true,
               }}
+              scroll={{ x: 768 }}
             />
           </div>
         </div>

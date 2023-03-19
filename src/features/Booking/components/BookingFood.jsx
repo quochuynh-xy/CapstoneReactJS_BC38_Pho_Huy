@@ -8,16 +8,17 @@ import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 const BookingFood = () => {
   const dispatch = useDispatch();
   return (
-    <div className="foodandbill pt-20 flex justify-between container mx-auto">
-      <div className="food basis-8/12 flex flex-wrap justify-start">
+    <div className="foodandbill pt-20 flex flex-wrap justify-between container mx-auto">
+      <div className="food basis-full lg:basis-8/12 flex flex-wrap justify-around">
         <div className="basis-full text-red-500">
           <h2 className="text-lg pb-3">
-            *Tính năng này đang trong quá trình phát triển, vui lòng đến bước kế tiếp.
+            *Tính năng này đang trong quá trình phát triển, vui lòng đến bước kế
+            tiếp.
           </h2>
         </div>
-        <div className="food__item cursor-not-allowed basis-3/12 mb-10 flex flex-col px-3 justify-center items-center">
+        <div className="food__item cursor-not-allowed basis-5/12 lg:basis-3/12 mb-10 flex flex-col px-3 justify-center items-center">
           <div className="item__des">
-            <img className="w-44 h-44 block" src={coca} alt="combo1" />
+            <img className="w-full h-44 block" src={coca} alt="combo1" />
             <div className="border-x-4 border-b-4 border-green-700 border-solid p-2 pb-4">
               <h3 className="text-white font-semibold h-20">
                 Nước ngọt tùy chọn size S.
@@ -35,9 +36,9 @@ const BookingFood = () => {
             </div>
           </div>
         </div>
-        <div className="food__item cursor-not-allowed basis-3/12 mb-10 flex flex-col px-3 justify-center items-center">
+        <div className="food__item cursor-not-allowed basis-5/12 lg:basis-3/12 mb-10 flex flex-col px-3 justify-center items-center">
           <div className="item__des">
-            <img className="w-44 h-44 block" src={coca} alt="combo1" />
+            <img className="w-full h-44 block" src={coca} alt="combo1" />
             <div className="border-x-4 border-b-4 border-green-700 border-solid p-2 pb-4">
               <h3 className="text-white font-semibold h-20">
                 Nước ngọt tùy chọn size L.
@@ -55,9 +56,9 @@ const BookingFood = () => {
             </div>
           </div>
         </div>
-        <div className="food__item cursor-not-allowed basis-3/12 mb-10 flex flex-col px-3 justify-center items-center">
+        <div className="food__item cursor-not-allowed basis-5/12 lg:basis-3/12 mb-10 flex flex-col px-3 justify-center items-center">
           <div className="item__des">
-            <img className="w-44 h-44 block" src={popcorncoca} alt="combo1" />
+            <img className="w-full h-44 block" src={popcorncoca} alt="combo1" />
             <div className="border-x-4 border-b-4 border-green-700 border-solid p-2 pb-4">
               <h3 className="text-white font-semibold h-20">
                 Combo 1 bắp + nước vị tùy chọn.
@@ -75,9 +76,13 @@ const BookingFood = () => {
             </div>
           </div>
         </div>
-        <div className="food__item cursor-not-allowed basis-3/12 mb-10 flex flex-col px-3 justify-center items-center">
+        <div className="food__item cursor-not-allowed basis-5/12 lg:basis-3/12 mb-10 flex flex-col px-3 justify-center items-center">
           <div className="item__des">
-            <img className="w-44 h-44 block" src={popcorn2coca} alt="combo1" />
+            <img
+              className="w-full h-44 block"
+              src={popcorn2coca}
+              alt="combo1"
+            />
             <div className="border-x-4 border-b-4 border-green-700 border-solid p-2 pb-4">
               <h3 className="text-white font-semibold h-20">
                 Combo 1 bắp + 2 nước vị tùy chọn.
@@ -96,7 +101,7 @@ const BookingFood = () => {
           </div>
         </div>
       </div>
-      <div className="basis-3/12">
+      <div className="basis-full px-12 lg:basis-3/12 lg:px-0">
         <BookingBill />
         <div className="text-end">
           <button

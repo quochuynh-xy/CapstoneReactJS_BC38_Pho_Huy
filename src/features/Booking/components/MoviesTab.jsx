@@ -33,10 +33,10 @@ function MoviesTab() {
             return {
               key: index,
               label: (
-                <div className="theater--info flex w-80 text-ellipsis overflow-hidden">
+                <div className="theater--info flex w-40 sm:w-80 text-ellipsis overflow-hidden">
                   <img
                     src={theater.hinhAnh}
-                    className="w-14 h-14 rounded-md"
+                    className="hidden lg:block w-14 h-14 rounded-md"
                     alt="IMG_theater"
                   />
                   <div className="text-start ml-4">
@@ -44,7 +44,7 @@ function MoviesTab() {
                     {getStandFor(theater.tenCumRap)}
                     </span>
                     <br />
-                    <p className="info__address whitespace-pre-line text-sm indent-1 text-neutral-400">{theater.diaChi}</p>
+                    <p className="info__address hidden sm:block whitespace-pre-line text-sm indent-1 text-neutral-400">{theater.diaChi}</p>
                   </div>
                 </div>
               ),
@@ -63,25 +63,25 @@ function MoviesTab() {
                         <div className="flex">
                           <img
                             src={film.hinhAnh}
-                            className="w-12 h-14 rounded-b-sm"
+                            className="hidden sm:block w-12 h-14 rounded-b-sm"
                             alt="IMG_cover"
                           />
                           <div className="ml-2 ">
-                            <h1 className="font-semibold text-xl text-black">
+                            <h1 className="font-semibold text-sm sm:text-base lg:text-xl text-black">
                               {film.tenPhim} - {film.maPhim}
                             </h1>
-                            {film.hot ? <span className="bg-red-500 px-4 text-white rounded-sm w-4">Phim hot</span> : <span className="bg-orange-400 px-4 text-white rounded-sm w-4">Xem nhiều</span>}
+                            {film.hot ? <span className="bg-red-500 px-1 text-xs sm:text-base lg:px-4 text-white rounded-sm w-4">Phim hot</span> : <span className="bg-orange-400 px-1 text-xs sm:text-base lg:px-4 text-white rounded-sm w-4">Xem nhiều</span>}
                           </div>
                         </div>
                       }
                     >
-                      <div className="ml-3">
+                      <div className="lg:ml-3">
                         <div className="flex flex-wrap justify-start">
                           {film.lstLichChieuTheoPhim.map((time, index) => {
                             return (
                               <button
                               key={index}
-                              className="bg-green-100 hover:bg-white text-stone-600 border-solid border border-lime-500 hover:shadow-md hover:border-orange-500 hover:text-orange-500 duration-300 font-bold py-2 px-3 ml-4 rounded-md mb-3 "
+                              className="font-bold text-xs ml-2 px-1 py-1 sm:py-2 sm:px-3 sm:text-sm lg:ml-4 rounded-md mb-3 leading-5 bg-green-100 hover:bg-white text-stone-600 border-solid border border-lime-500 hover:shadow-md hover:border-orange-500 hover:text-orange-500 duration-300"
                               onClick={() => navigate(`/Booking/TicketRoom/${time.maLichChieu}`)}
                               >
                               {moment(time.ngayChieuGioChieu).format(
@@ -111,6 +111,7 @@ function MoviesTab() {
         tabPosition="top"
         className="booking__tabs container mx-auto mt-4 hover:shadow-sm"
         items={mapItems}
+        id="movieTabs"
       />
     </>
   );

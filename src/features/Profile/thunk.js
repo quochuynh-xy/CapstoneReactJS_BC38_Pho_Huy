@@ -3,7 +3,7 @@ import userServices from "./Services/profileServices";
 export const actionFetchUserData =
   (userToken) => async (dispatch, getState) => {
     try {
-        const promise = await userServices.fetchUserData(userToken);
+      const promise = await userServices.fetchUserData(userToken);
       const thongTinNguoiDung = {
         taiKhoan: promise.data.content.taiKhoan,
         matKhau: promise.data.content.matKhau,

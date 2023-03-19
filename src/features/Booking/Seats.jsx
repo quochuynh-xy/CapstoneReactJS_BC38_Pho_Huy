@@ -52,9 +52,9 @@ function Seats() {
   const step1 = (
     <section className="content container mx-auto mt-12 flex justify-center">
       <div className="booking__info">
-        <div className="info__movie flex">
-          <img src={movieInfo?.hinhAnh} alt={movieInfo?.tenPhim} />
-          <div className="detail">
+        <div className="info__movie flex flex-wrap">
+          <img className="mx-auto md:pl-0 sm:basis-4/12" src={movieInfo?.hinhAnh} alt={movieInfo?.tenPhim} />
+          <div className="detail basis-full sm:basis-8/12 sm:pl-4">
             <h3 className="detail__name font-semibold">{movieInfo?.tenPhim}</h3>
             <p className="detail__theater font-bold">{movieInfo?.tenCumRap}</p>
             <p className="detail__address">{movieInfo?.diaChi}</p>
@@ -97,17 +97,17 @@ function Seats() {
   );
   return (
     <PageLayout>
-      <div className="booking__checkout">
+      <div className="booking__checkout mx-auto">
         <section className="steps container mx-auto pt-8">
-          <div className="flex justify-between head relative">
+          <div className="flex flex-wrap justify-between head relative">
             <div
-              className="basis-3/12 step start text-center cursor-pointer"
+              className="basis-6/12 mb-2 md:mb-0 md:basis-3/12 step start text-center cursor-pointer"
               onClick={handleBackToStep0}
             >
               <p className="font-semibold text-white">1. Chọn vé.</p>
             </div>
             <div
-              className={`basis-3/12 step next text-center ${
+              className={`basis-6/12 mb-2 md:mb-0 md:basis-3/12 step next text-center ${
                 bookingStep >= 1 ? " active" : ""
               }`}
             >
@@ -116,7 +116,7 @@ function Seats() {
               </p>
             </div>
             <div
-              className={`basis-3/12 step next text-center ${
+              className={`basis-6/12 mb-2 md:mb-0 md:basis-3/12 step next text-center ${
                 bookingStep >= 2 ? " active" : ""
               }`}
             >
@@ -125,7 +125,7 @@ function Seats() {
               </p>
             </div>
             <div
-              className={`basis-3/12 step next text-center ${
+              className={`basis-6/12 mb-2 md:mb-0 md:basis-3/12 step next text-center ${
                 bookingStep >= 3 ? " active" : ""
               }`}
             >

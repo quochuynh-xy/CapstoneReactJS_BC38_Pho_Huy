@@ -36,7 +36,7 @@ export const showRating = (rating, one, half, none) => {
 export const getStandFor = (fullName) => {
   const cinemaStyles = {
     BHD: {
-      color: "green-600",
+      color: "green-500",
     },
     CGV: {
       color: "red-500",
