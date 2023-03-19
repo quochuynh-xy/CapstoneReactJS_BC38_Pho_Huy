@@ -9,7 +9,7 @@ const authentication = (state = initState, action) => {
   const { type, payload } = action;
   return produce(state, (draft) => {
     switch (type) {
-      case types.LOGIN: {
+      case types.LOGIN: { 
         draft.userLogin = payload;
         break;
       }

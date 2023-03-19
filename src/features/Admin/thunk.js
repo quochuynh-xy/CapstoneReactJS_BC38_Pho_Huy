@@ -47,10 +47,12 @@ export const deleteFilm = (idFilm) => async (dispatch, getState) => {
       const updatedFilmDetail = admin.filmDetail.filter(
         (film) => film.id !== idFilm
       );
+      console.log(updatedFilmDetail)
       dispatch({
         type: adminTypes.FETCH_MOVIE_DETAIL,
         payload: updatedFilmDetail,
       });
+      dispatch(fetchMovieDetail);
     }
   } catch (err) {
     console.log(err);

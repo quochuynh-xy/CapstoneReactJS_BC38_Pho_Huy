@@ -34,8 +34,7 @@ const AddNews = () => {
       onSubmit: (values) => {
         console.log(values);
 
-
-        // create dataForm 
+        // create dataForm
         values.maNhom = "GP01";
         let formData = new FormData();
         for (let key in values) {
