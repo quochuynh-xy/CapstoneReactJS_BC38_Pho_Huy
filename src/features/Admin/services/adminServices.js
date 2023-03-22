@@ -1,7 +1,13 @@
 import { https } from "../../../services/config";
 
 export const adminServices = {
-    fetchMovieDetail : () => https.get('api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01'),
+    fetchMovieDetail : (tenPhim = '') => {
+        if( tenPhim != ''){
+            return https.get(`api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01&tenPhim=${tenPhim}`)
+        } 
+        return    https.get('api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01')
+        
+    },
     fetchUserDetailPagination : (pagesize, pageindex) => {
         return https.get("api/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang", {
             params: {
@@ -25,8 +31,12 @@ export const adminServices = {
     adminAddNewFilm : (formData) => {
         return https.post('api/QuanLyPhim/ThemPhimUploadHinh',formData)
     },
-    adminEditedDetailFilm: (id) => {
-        return https.post('api/QuanLyPhim/CapNhatPhimUpload',id)
+    adminEditedDetailFilm: (formData) => {
+        return https.post('api/QuanLyPhim/CapNhatPhimUpload',formData,{
+            headers:{
+                Authorization: "Bearer " + localStorage.getItem('cyberfilmToken')
+            }
+        })
     },
     adminGetDetailFilm: (id) => {
         return https.get('api/QuanLyPhim/LayThongTinPhim',{
@@ -34,5 +44,6 @@ export const adminServices = {
                 MaPhim: id
             }
         })
-    }
+    },
+ 
 }

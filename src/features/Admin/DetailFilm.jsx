@@ -7,11 +7,16 @@ import Loading from "./utils/Loading";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import "./utils/antModal.css";
 import { NavLink } from "react-router-dom";
-import { deleteFilm, getDetailFilm } from "./thunk";
+import { deleteFilm, fetchMovieDetail, getDetailFilm } from "./thunk";
+import Search from "antd/es/input/Search";
 const App = () => {
   const dataDetailFilm = useSelector((state) => state.admin.filmDetail);
   const dispatch = useDispatch();
-
+  const onSearch = (value) => {
+    console.log(value);
+    // gọi API lấy phim
+    dispatch(fetchMovieDetail(value))
+  };
   // xử lý form
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
@@ -171,8 +176,8 @@ const App = () => {
             <button
               type="button"
               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xl px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-              onClick={()=> {
-                dispatch(getDetailFilm(film?.maPhim))
+              onClick={() => {
+                dispatch(getDetailFilm(film?.maPhim));
               }}
             >
               <AiOutlineEdit />
@@ -182,7 +187,7 @@ const App = () => {
             type="button"
             class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-xl px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
             onClick={() => {
-              dispatch(deleteFilm(film?.maPhim))
+              dispatch(deleteFilm(film?.maPhim));
             }}
           >
             <AiOutlineDelete />
@@ -191,9 +196,20 @@ const App = () => {
       ),
     },
   ];
+
   return (
-    <div>
-      <Table columns={columns} dataSource={dataDetailFilm} />
+    <div className="relative h-auto">
+      <div className="w-full mb-3 p-2 ">
+        <Search
+          placeholder="Nhập vào tên phim"
+          allowClear
+          size="large"
+          onSearch={onSearch}
+        />
+      </div>
+      <div className="h-auto">
+        <Table columns={columns} dataSource={dataDetailFilm} />
+      </div>
     </div>
   );
 };

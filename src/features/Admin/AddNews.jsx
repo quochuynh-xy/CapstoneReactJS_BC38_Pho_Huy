@@ -133,6 +133,7 @@ const AddNews = () => {
           <DatePicker
             format={"DD/MM/YYYY"}
             onChange={(value) => {
+              console.log(value)
               let ngayKhoiChieu = moment(value.$d).format("DD/MM/YYYY");
               setFieldValue("ngayKhoiChieu", ngayKhoiChieu);
             }}
@@ -171,7 +172,7 @@ const AddNews = () => {
             accept="image/png, image/jpeg, image/gif"
           />
           <br />
-          <img src={imgSrc} alt="img film" width="200px" height="150px" />
+          <img src={imgSrc} alt="imgFilm" width="200px" height="150px" />
         </Form.Item>
         <Form.Item label="Tác vụ">
           <button className="bg-blue-600 text-white p-1 rounded-md ">

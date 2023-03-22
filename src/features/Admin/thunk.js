@@ -3,9 +3,9 @@ import { adminTypes } from "./utils/const";
 import { adminServices } from "./services/adminServices";
 import Swal from "sweetalert2";
 
-export const fetchMovieDetail = async (dispatch) => {
+export const fetchMovieDetail = (tenPhim='') => async (dispatch) => {
   try {
-    const res = await adminServices.fetchMovieDetail();
+    const res = await adminServices.fetchMovieDetail(tenPhim);
     dispatch({
       type: adminTypes.FETCH_MOVIE_DETAIL,
       payload: res.data.content,
@@ -86,37 +86,25 @@ export const getDetailFilm = (id) => async (dispatch) => {
     console.log(err);
   }
 };
-export const updateDetailFilm = (id) => async (dispatch) => {
+
+export const updateDetailFilm = (formData) => async (dispatch, getState) => {
   try {
-    const res = await adminServices.adminEditedDetailFilm(id);
+    const res = await adminServices.adminEditedDetailFilm(formData);
     alert("Cập nhật thành công");
     console.log(res.data.content);
+
+    // Cập nhật thông tin phim trong danh sách phim hiện tại
+    const { admin } = getState();
+    const updatedMovies = admin.movies.map((movie) =>
+      movie.id === res.data.content.id ? res.data.content : movie
+    );
+    
     dispatch({
-      type: adminTypes.UPDATE_DETAIL_FILM,
-      payload: res.data.content,
+      type: adminTypes.FETCH_MOVIE_DETAIL,
+      payload: updatedMovies,
     });
+  
   } catch (err) {
     console.log(err);
   }
 };
-
-
-// export const updateDetailFilm = (id) => async (dispatch, getState) => {
-//   try {
-//     const res = await adminServices.adminEditedDetailFilm(id);
-//     alert("Cập nhật thành công");
-//     console.log(res.data.content);
-
-//     // Cập nhật thông tin phim trong danh sách phim hiện tại
-//     const { admin } = getState();
-//     const updatedMovies = admin.movies.map((movie) =>
-//       movie.id === res.data.content.id ? res.data.content : movie
-//     );
-//     dispatch({
-//       type: adminTypes.FETCH_MOVIE_DETAIL,
-//       payload: updatedMovies,
-//     });
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
