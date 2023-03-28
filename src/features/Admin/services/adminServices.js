@@ -1,8 +1,13 @@
 import { https } from "../../../services/config";
-import { adminToken } from "../utils/const";
 
 export const adminServices = {
-    fetchMovieDetail : () => https.get('api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01'),
+    fetchMovieDetail : (tenPhim = '') => {
+        if( tenPhim !== ''){
+            return https.get(`api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01&tenPhim=${tenPhim}`)
+        } 
+        return    https.get('api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01')
+        
+    },
     fetchUserDetailPagination : (pagesize, pageindex) => {
         return https.get("api/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang", {
             params: {
@@ -18,7 +23,49 @@ export const adminServices = {
                 MaPhim: idFilm
             },
             headers: {
-                Authorization:"Bearer " + adminToken
+                Authorization:"Bearer " + localStorage.getItem('cyberfilmToken')
+            }
+        })
+    },
+
+    adminAddNewFilm : (formData) => {
+        return https.post('api/QuanLyPhim/ThemPhimUploadHinh',formData)
+    },
+    adminEditedDetailFilm: (formData) => {
+        return https.post('api/QuanLyPhim/CapNhatPhimUpload',formData,{
+            headers:{
+                Authorization: "Bearer " + localStorage.getItem('cyberfilmToken')
+            }
+        })
+    },
+    adminGetDetailFilm: (id) => {
+        return https.get('api/QuanLyPhim/LayThongTinPhim',{
+            params: {
+                MaPhim: id
+            }
+        })
+    },
+    adminAddUser: (formData)=> {
+        return https.post('api/QuanLyNguoiDung/ThemNguoiDung',formData,{
+            headers:{
+                Authorization:"Bearer " + localStorage.getItem('cyberfilmToken')
+            }
+        })
+    },
+    adminGetInfoCinemaSys: ()=> {
+        return https.get('/api/QuanLyRap/LayThongTinHeThongRap')
+    },
+    adminGetInfoCinema: (maHeThongRap) => {
+        return https.get(`api/QuanLyRap/LayThongTinCumRapTheoHeThong`,{
+            params:{
+                maHeThongRap
+            }
+        } )
+    },
+    adminTaoLichChieu: (thongTinLichChieu) => {
+        return https.post(`api/QuanLyDatVe/TaoLichChieu`, thongTinLichChieu,{
+            headers:{
+                Authorization:'Bearer ' + localStorage.getItem('cyberfilmToken')
             }
         })
     }

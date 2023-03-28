@@ -1,0 +1,7 @@
+.ant-modal-footer {
+    display: none!important;
+}
+
+.ant-btn {
+    background-color: rgb(115, 115, 208);
+}

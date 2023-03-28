@@ -1,9 +1,13 @@
-import { Tabs } from "antd";
+import { Tabs, Collapse } from "antd";
 import { useState, useEffect } from "react";
-import { movieServices } from "../../../services/movieServices";
+import { movieServices } from "../Services/movieServices";
 import moment from "moment/moment";
+import { getStandFor } from "../utilities/utilities";
+import { useNavigate } from "react-router-dom";
+const { Panel } = Collapse;
 function MoviesTab() {
   const [dataMovies, setDataMovies] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     const promise = movieServices.getShowScheduleByTheater();
     promise
@@ -17,64 +21,82 @@ function MoviesTab() {
       key: Item.maHeThongRap,
       label: (
         <div>
-          <img src={Item.logo} alt="logo" className="h-12 w-12" />
+          <img src={Item.logo} alt="logo" className="h-12 w-12 tabs__logo" />
         </div>
       ),
       children: (
         <Tabs
-          className="bg-slate-400"
+          className="tabs__body"
           tabPosition="left"
-          items={Item.lstCumRap.map((theater) => {
+          moreIcon={null}
+          items={Item.lstCumRap.map((theater, index) => {
             return {
-              key: theater.maCumRap,
+              key: index,
               label: (
-                <div className="flex w-80">
+                <div className="theater--info flex w-40 sm:w-80 text-ellipsis overflow-hidden">
                   <img
                     src={theater.hinhAnh}
-                    className="w-20 h-20"
+                    className="hidden lg:block w-14 h-14 rounded-md"
                     alt="IMG_theater"
                   />
                   <div className="text-start ml-4">
-                    <span className="text-red-500 font-medium">
-                      {theater.tenCumRap}
+                    <span className="info__name font-medium">
+                    {getStandFor(theater.tenCumRap)}
                     </span>
                     <br />
-                    <p>{theater.diaChi}</p>
+                    <p className="info__address hidden sm:block whitespace-pre-line text-sm indent-1 text-neutral-400">{theater.diaChi}</p>
                   </div>
                 </div>
               ),
               children: theater.danhSachPhim.map((film) => {
                 return (
-                  <div className="flex mb-3" key={film.maPhim}>
-                    <img
-                      src={film.hinhAnh}
-                      className="w-16 h-16"
-                      alt="IMG_cover"
-                    />
-                    <div className="ml-3">
-                      <h3 className="font-semibold">{film.tenPhim}</h3>
-                      <div>
-                        {film.lstLichChieuTheoPhim.map((time, index) => {
-                          return (
-                            <button
+                  <Collapse
+                    className="border-b mb-1 border-solid border-neutral-200"
+                    key={film.maPhim}
+                    bordered={false}
+                    expandIconPosition="end"
+                    defaultActiveKey={[1]}
+                  >
+                    <Panel
+                      key={1}
+                      header={
+                        <div className="flex">
+                          <img
+                            src={film.hinhAnh}
+                            className="hidden sm:block w-12 h-14 rounded-b-sm"
+                            alt="IMG_cover"
+                          />
+                          <div className="ml-2 ">
+                            <h1 className="font-semibold text-sm sm:text-base lg:text-xl text-black">
+                              {film.tenPhim} - {film.maPhim}
+                            </h1>
+                            {film.hot ? <span className="bg-red-500 px-1 text-xs sm:text-base lg:px-4 text-white rounded-sm w-4">Phim hot</span> : <span className="bg-orange-400 px-1 text-xs sm:text-base lg:px-4 text-white rounded-sm w-4">Xem nhiều</span>}
+                          </div>
+                        </div>
+                      }
+                    >
+                      <div className="lg:ml-3">
+                        <div className="flex flex-wrap justify-start">
+                          {film.lstLichChieuTheoPhim.map((time, index) => {
+                            return (
+                              <button
                               key={index}
-                              className="mr-2 mb-2 bg-slate-200 px-3 rounded-md"
-                            >
-                              <span className="text-green-600 text-xl font-semibold">
-                                {moment(time.ngayChieuGioChieu).format("hh:MM")}
-                              </span>
-                              <br />
-                              <span className="text-red-400">
-                                {moment(time.ngayChieuGioChieu).format(
-                                  "DD.MM.YY"
-                                )}
-                              </span>
-                            </button>
-                          );
-                        })}
+                              className="font-bold text-xs ml-2 px-1 py-1 sm:py-2 sm:px-3 sm:text-sm lg:ml-4 rounded-md mb-3 leading-5 bg-green-100 hover:bg-white text-stone-600 border-solid border border-lime-500 hover:shadow-md hover:border-orange-500 hover:text-orange-500 duration-300"
+                              onClick={() => navigate(`/Booking/TicketRoom/${time.maLichChieu}`)}
+                              >
+                              {moment(time.ngayChieuGioChieu).format(
+                                "hh:mm a"
+                              )} - 
+                              {moment(time.ngayChieuGioChieu).format(
+                                " DD/MM/YY"
+                              )}
+                            </button>                              
+                            );
+                          })}
+                        </div>
                       </div>
-                    </div>
-                  </div>
+                    </Panel>
+                  </Collapse>
                 );
               }),
             };
@@ -86,14 +108,10 @@ function MoviesTab() {
   return (
     <>
       <Tabs
-        style={{
-          maxHeight: 800,
-          overflowY: "scroll",
-          scrollBehavior: "smooth",
-        }}
-        tabPosition="left"
-        className="container mx-auto mt-4 hover:shadow-sm"
+        tabPosition="top"
+        className="booking__tabs container mx-auto mt-4 hover:shadow-sm"
         items={mapItems}
+        id="movieTabs"
       />
     </>
   );

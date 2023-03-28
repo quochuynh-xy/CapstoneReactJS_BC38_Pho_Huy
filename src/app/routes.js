@@ -4,6 +4,7 @@ import Seats from "../features/Booking/Seats";
 import Detail from "../features/Booking/Detail";
 import SignIn from "../features/Authentication/SignIn";
 import SignUp from "../features/Authentication/SignUp";
+import Profile from "../features/Profile/Profile";
 import NotFound404 from "../components/NotFound404";
 import Admin from "../features/Admin/Admin";
 import User from "../features/Admin/User";
@@ -11,44 +12,82 @@ import DetailFilm from "../features/Admin/DetailFilm";
 import AddNews from "../features/Admin/AddNews";
 import { Navigate } from "react-router-dom";
 import ShowTime from "../features/Admin/ShowTime";
+import EditFilm from "../features/Admin/EditFilm";
+import EditUser from "../features/Admin/EditUser";
+import AddUser from "../features/Admin/AddUser";
 
 export const routes = [
   {
     path: "/",
     component: Home,
+    isPublic: true,
+    isAuth: false,
+    redirectPatch: "/",
   },
   {
-    path: "/Booking/:id",
+    path: "/:id",
+    component: Home,
+    isPublic: true,
+    isAuth: false,
+    redirectPatch: "/",
+  },
+  {
+    path: "/Booking/TicketRoom/:maLichChieu",
     component: Seats,
+    isPublic: false,
+    isAuth: false,
+    redirectPatch: "/Authentication/SignIn",
   },
   {
-    path: "/movie/:id",
+    path: "/Booking/Detail/:maPhim",
     component: Detail,
+    isPublic: true,
+    isAuth: false,
+    redirectPatch: "/Authentication/SignIn",
   },
   {
     path: "/Authentication/SignIn",
     component: SignIn,
+    isPublic: true,
+    isAuth: true,
+    redirectPatch: "",
   },
   {
     path: "/Authentication/SignUp",
     component: SignUp,
+    isPublic: true,
+    isAuth: true,
+    redirectPatch: "/",
   },
-  { path: "*", component: NotFound404 },
-
+  {
+    path: "/Profile",
+    component: Profile,
+    isPublic: false,
+    isAuth: false,
+    redirectPatch: "/Authentication/SignIn",
+  },
+  {
+    path: "*",
+    component: NotFound404,
+    isPublic: true,
+    isAuth: false,
+    redirectPatch: "/",  },
 ];
 
 export const routesAdmin = [
   {
     path: "/admin", component: Admin, children: [
       { path: '/admin', component: User },
-
+      { path: 'detail-films/edit-film/:id', component: EditFilm },
       { path: '/admin/user', component: User },
       { path: "/admin/detail-films", component: DetailFilm },
-
+      {path: 'detail-films/show-time/:idFilm',component: ShowTime },
       { path: "/admin/add-new", component: AddNews },
-      { path: "/admin/show-time", component: ShowTime },
-      { path: "*",  element: <Navigate to="user" /> }
-
+      // { path: "/admin/show-time", component: ShowTime },
+      { path: 'user/edit-user/:idUser', component: EditUser},
+      { path: 'user/add-user', component: AddUser},
+      { path: "*",  element: <Navigate to="user" /> },
+      
     ]
   },
 
