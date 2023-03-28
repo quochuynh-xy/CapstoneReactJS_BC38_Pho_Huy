@@ -10,22 +10,21 @@ import {
 } from "antd";
 import { useFormik } from "formik";
 import { object, string } from "yup";
-import {  useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { useNavigate, useParams } from "react-router-dom";
 import { getDetailFilm, updateDetailFilm } from "./thunk";
 
 const EditFilm = () => {
- 
   const dataFillForm = useSelector((state) => state.admin.filmDetailForUpdate);
-  console.log(dataFillForm)
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  let {id} =  useParams()
-  console.log(id)
-  useEffect(()=> {
-    dispatch(getDetailFilm(id))
-  },[id, dispatch])
+  console.log(dataFillForm);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  let { id } = useParams();
+  console.log(id);
+  useEffect(() => {
+    dispatch(getDetailFilm(id));
+  }, [id, dispatch]);
   const [imgSrc, setImgSrc] = useState("");
   const userSchema = object({
     tenPhim: string().required("*Vui lòng nhập tên phim"),
@@ -35,7 +34,7 @@ const EditFilm = () => {
   const fomik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      maPhim:dataFillForm.maPhim ,
+      maPhim: dataFillForm.maPhim,
       tenPhim: dataFillForm.tenPhim,
       trailer: dataFillForm.trailer,
       moTa: dataFillForm.moTa,
@@ -55,11 +54,11 @@ const EditFilm = () => {
       for (let key in values) {
         if (key !== "hinhAnh") {
           formData.append(key, values[key]);
-        } else if(values.hinhAnh !== null) {
+        } else if (values.hinhAnh !== null) {
           formData.append("File", values.hinhAnh, values.hinhAnh.name);
         }
       }
-      dispatch(updateDetailFilm(formData))
+      dispatch(updateDetailFilm(formData));
     },
     validationSchema: userSchema,
     validateOnBlur: false,
@@ -80,14 +79,15 @@ const EditFilm = () => {
   const handleChangeFile = async (e) => {
     // lấy ra file từ event
     let file = e.target.files[0];
-     await fomik.setFieldValue("hinhAnh", file);
+    await fomik.setFieldValue("hinhAnh", file);
     // tạo đối tượng để đọc file
     if (
       file.type === "image/png" ||
       file.type === "image/jpeg" ||
-      file.type === "image/gif"
-      ) {
-        let reader = new FileReader();
+      file.type === "image/gif" || 
+      file.type === 'image/webp'
+    ) {
+      let reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = (e) => {
         // console.log(e.target.result)
@@ -160,12 +160,12 @@ const EditFilm = () => {
             format={"DD/MM/YYYY"}
             onChange={handleDatePicker}
             value={moment(fomik.values.ngayKhoiChieu)}
-          />  
+          />
         </Form.Item>
         <Form.Item label="Số sao">
           <InputNumber
             name="danhGia"
-            onChange={handleChangeInputNumber('danhGia')}
+            onChange={handleChangeInputNumber("danhGia")}
             value={fomik.values.danhGia}
             min={1}
             max={5}
@@ -202,16 +202,23 @@ const EditFilm = () => {
             alt="img"
             width={150}
             height={125}
-            className='mt-2'
+            className="mt-2"
           />
         </Form.Item>
         <Form.Item label="Tác vụ: ">
-          <button  className="bg-blue-500 text-white px-3 py-1 rounded-md">
+        <button  className="bg-blue-500 text-white px-3 py-1 rounded-md">
             Xác nhận
           </button>
-          <Button className="ml-3 bg-green-500 text-white" onClick={()=> {
-            navigate('/admin/detail-films')
-          }}>Hủy</Button>
+
+
+          <Button
+            className="ml-3 bg-green-500 text-white"
+            onClick={() => {
+              navigate("/admin/detail-films");
+            }}
+          >
+            Hủy
+          </Button>
         </Form.Item>
       </Form>
     </div>
