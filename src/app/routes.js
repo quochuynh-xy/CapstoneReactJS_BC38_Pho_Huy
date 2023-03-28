@@ -13,6 +13,8 @@ import AddNews from "../features/Admin/AddNews";
 import { Navigate } from "react-router-dom";
 import ShowTime from "../features/Admin/ShowTime";
 import EditFilm from "../features/Admin/EditFilm";
+import EditUser from "../features/Admin/EditUser";
+import AddUser from "../features/Admin/AddUser";
 
 export const routes = [
   {
@@ -79,10 +81,13 @@ export const routesAdmin = [
       { path: 'detail-films/edit-film/:id', component: EditFilm },
       { path: '/admin/user', component: User },
       { path: "/admin/detail-films", component: DetailFilm },
+      {path: 'detail-films/show-time/:idFilm',component: ShowTime },
       { path: "/admin/add-new", component: AddNews },
-      { path: "/admin/show-time", component: ShowTime },
-      { path: "*",  element: <Navigate to="user" /> }
-
+      // { path: "/admin/show-time", component: ShowTime },
+      { path: 'user/edit-user/:idUser', component: EditUser},
+      { path: 'user/add-user', component: AddUser},
+      { path: "*",  element: <Navigate to="user" /> },
+      
     ]
   },
 

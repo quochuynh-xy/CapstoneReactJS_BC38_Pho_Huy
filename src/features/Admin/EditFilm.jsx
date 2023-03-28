@@ -22,6 +22,7 @@ const EditFilm = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   let {id} =  useParams()
+  console.log(id)
   useEffect(()=> {
     dispatch(getDetailFilm(id))
   },[id, dispatch])

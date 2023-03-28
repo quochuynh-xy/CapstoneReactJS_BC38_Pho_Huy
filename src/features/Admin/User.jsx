@@ -1,12 +1,14 @@
 import React from "react";
 import { Pagination } from "antd";
-import { useSearchParams } from "react-router-dom";
+import { NavLink,  useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { BsPencilSquare } from "react-icons/bs";
 import Loading from "./utils/Loading";
+import { FaPlus } from "react-icons/fa";
 const User = () => {
   const dataUser = useSelector((state) => state.admin.userDetail);
   const [searchParam, setUseSearchParam] = useSearchParams();
+
   if (!dataUser || !dataUser.items) {
     return (
       <div className="flex justify-center">
@@ -14,7 +16,7 @@ const User = () => {
       </div>
     );
   }
-console.log(dataUser.items)
+  console.log(dataUser.items);
   return (
     <div>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg h-screen">
@@ -58,10 +60,26 @@ console.log(dataUser.items)
                   <td className="px-6 py-4">{item.email}</td>
                   <td className="px-6 py-4">{item.soDt}</td>
                   <td className="px-6 py-4">{item.maLoaiNguoiDung}</td>
-                  <td className="px-6 py-4 text-white font-bold cursor-pointer ">
-                    <button className="p-2 rounded-md bg-green-600">
-                      <BsPencilSquare />
-                    </button>
+                  <td>
+                    <NavLink to={`edit-user/${index}`}>
+                      <button
+                        className="p-2 rounded-md bg-green-600 text-white"
+                        onClick={() => {
+
+                        }}
+                      >
+                        <BsPencilSquare />
+                      </button>
+                    </NavLink>
+                    <NavLink to={'add-user'}>
+                      <button
+                        className="p-2 rounded-md bg-blue-500 ml-2 text-white"
+                        onClick={() => {
+                        }}
+                      >
+                        <FaPlus />
+                      </button>
+                    </NavLink>
                   </td>
                 </tr>
               );

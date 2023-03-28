@@ -4,7 +4,7 @@ import {
   FaUserFriends,
   FaInfoCircle,
   FaPlus,
-  FaCalendarAlt,
+  // FaCalendarAlt,
 } from "react-icons/fa";
 
 const NavTab = () => {
@@ -63,7 +63,7 @@ const NavTab = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink
+              {/* <NavLink
                 to="/admin/show-time"
                    className={(params) => {
                   if (params.isActive) {
@@ -75,7 +75,7 @@ const NavTab = () => {
               >
                 <FaCalendarAlt />
                 <span className="ml-3">Show time</span>
-              </NavLink>
+              </NavLink> */}
             </li>
           </ul>
         </div>

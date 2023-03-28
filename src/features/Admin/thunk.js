@@ -108,3 +108,19 @@ export const updateDetailFilm = (formData) => async (dispatch, getState) => {
     console.log(err);
   }
 };
+
+export const addNewUser = (formData) => async (dispatch, getState)=> {
+  try {
+    const res = await adminServices.adminAddUser(formData);
+    alert("thêm thành công");
+    console.log(res.data.content);
+
+    const { admin } = getState();
+    dispatch({
+      type: adminTypes.FETCH_USER_PAGINATION,
+      payload: [...admin.userDetail, res.data.content],
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
