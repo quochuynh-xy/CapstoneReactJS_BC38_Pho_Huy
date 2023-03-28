@@ -58,7 +58,7 @@ export const adminServices = {
     adminGetInfoCinema: (maHeThongRap) => {
         return https.get(`api/QuanLyRap/LayThongTinCumRapTheoHeThong`,{
             params:{
-                maHeThongRap
+                maHeThongRap:  maHeThongRap
             }
         } )
     },

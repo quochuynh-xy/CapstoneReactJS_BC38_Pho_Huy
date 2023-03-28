@@ -52,12 +52,13 @@ export const deleteFilm = (idFilm) => async (dispatch, getState) => {
         type: adminTypes.FETCH_MOVIE_DETAIL,
         payload: updatedFilmDetail,
       });
-      dispatch(fetchMovieDetail);
+      dispatch(fetchMovieDetail()); // Gọi lại hàm fetchMovieDetail để cập nhật lại trang giao diện
     }
   } catch (err) {
     console.log(err);
   }
 };
+
 
 export const addNewFilm = (formData) => async (dispatch, getState) => {
   try {
@@ -91,12 +92,12 @@ export const updateDetailFilm = (formData) => async (dispatch, getState) => {
   try {
     const res = await adminServices.adminEditedDetailFilm(formData);
     alert("Cập nhật thành công");
-    console.log(res.data.content);
+    console.log(res);
 
     // Cập nhật thông tin phim trong danh sách phim hiện tại
     const { admin } = getState();
-    const updatedMovies = admin.movies.map((movie) =>
-      movie.id === res.data.content.id ? res.data.content : movie
+    const updatedMovies = admin.filmDetail.map((movie) =>
+      movie.maPhim === res.data.content.maPhim ? res.data.content : movie
     );
     
     dispatch({
