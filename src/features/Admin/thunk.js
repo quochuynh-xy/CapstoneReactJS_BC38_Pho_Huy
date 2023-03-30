@@ -45,7 +45,7 @@ export const deleteFilm = (idFilm) => async (dispatch, getState) => {
       Swal.fire("Xóa thành công!", "success");
       const { admin } = getState();
       const updatedFilmDetail = admin.filmDetail.filter(
-        (film) => film.id !== idFilm
+        (film) => film.maPhim !== idFilm
       );
       console.log(updatedFilmDetail)
       dispatch({
