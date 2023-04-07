@@ -12,7 +12,8 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import QuickSearch from "./components/QuickSearch";
 import QuickNews from "./components/QuickNews";
-import AppDownLoad from "./components/AppDownLoad";
+// import AppDownLoad from "./components/AppDownLoad";
+import DownloadApp from "./components/DownloadApp";
 function Home() {
   const dispatch = useDispatch();
   const [paramsUrl, setParamsUrl] = useSearchParams();
@@ -31,7 +32,7 @@ function Home() {
         <MoviesList />
         <MoviesTab />
         <QuickNews />
-        <AppDownLoad />
+        <DownloadApp />
         <Footer />
         <ModalClip />
       </PageLayout>

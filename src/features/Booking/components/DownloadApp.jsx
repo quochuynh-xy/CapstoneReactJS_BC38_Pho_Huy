@@ -4,7 +4,7 @@ import slide2 from "../../../app/assets/img/images/mobile_screen_2.png";
 import slide3 from "../../../app/assets/img/images/mobile_screen_3.png";
 import slide4 from "../../../app/assets/img/images/mobile_screen_4.png";
 import slide5 from "../../../app/assets/img/images/mobile_screen_5.png";
-const Appdownload = () => {
+const DownloadApp = () => {
   return (
     <section className="booking__downloadapp relative" id="appDownLoad">
       <div className="downloadapp__content lg:w-4/5 mx-auto py-8 flex flex-wrap justify-center items-center relative">
@@ -64,4 +64,4 @@ const Appdownload = () => {
     </section>
   );
 };
-export default Appdownload;
+export default DownloadApp;

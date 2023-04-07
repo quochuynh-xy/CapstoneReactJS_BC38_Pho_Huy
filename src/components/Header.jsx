@@ -9,10 +9,11 @@ import userImg from "../app/assets/img/icons/user-128.png"
 function Header() {
   const headerMenu = "mx-3 nav-item";
   const navigate = useNavigate();
+  const showDemo = () => alert("Demo user: \n \n username: abcde \n password: 1")
   const NotLogin = () => {
     return (
       <>
-        <NavLink to="/Authentication/SignIn" className="auth">
+        <NavLink to="/Authentication/SignIn" className="auth" onClick={showDemo}>
           Đăng nhập
         </NavLink>
         <span className=" text-white text-sm mx-2 cursor-default">hoặc</span>

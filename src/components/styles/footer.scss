@@ -66,11 +66,17 @@ footer.footer {
           &:hover {
             color: $cl-primary;
           }
+          span {
+            font-size: 18px;
+          }
         }
         @media screen and (max-width: 768px) {
           flex-direction: row;
           .app__item {
             font-size: 2.5rem;
+            span {
+              font-size: 16px;
+            }
           }
         }
       }
